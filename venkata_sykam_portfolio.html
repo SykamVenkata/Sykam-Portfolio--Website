@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venkata Narendra Kumar Sykam | Senior Power Platform Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --card: #161b24;
+    --border: rgba(99,179,237,0.15);
+    --border2: rgba(99,179,237,0.3);
+    --accent: #63b3ed;
+    --accent2: #4fd1c5;
+    --accent3: #f6ad55;
+    --text: #e2e8f0;
+    --muted: #718096;
+    --muted2: #a0aec0;
+    --mono: 'Space Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); overflow-x:hidden; }
+
+  .grid-bg {
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      linear-gradient(rgba(99,179,237,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99,179,237,0.03) 1px, transparent 1px);
+    background-size:40px 40px;
+  }
+
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,12,16,0.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 2.5rem; height:60px;
+  }
+  .nav-logo { font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:0.05em; }
+  .nav-links { display:flex; gap:2rem; }
+  .nav-links a { font-size:13px; color:var(--muted2); text-decoration:none; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--accent); }
+
+  .hero {
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    max-width:1100px; margin:0 auto; padding:0 2.5rem; position:relative; z-index:1;
+  }
+  .hero-tag {
+    font-family:var(--mono); font-size:11px; color:var(--accent2);
+    letter-spacing:0.14em; text-transform:uppercase; margin-bottom:1.5rem;
+    display:flex; align-items:center; gap:0.75rem;
+  }
+  .hero-tag::before { content:''; display:block; width:40px; height:1px; background:var(--accent2); }
+  .hero h1 {
+    font-family:var(--mono); font-size:clamp(2rem,5vw,3.6rem);
+    font-weight:700; line-height:1.08; letter-spacing:-0.02em;
+    color:#fff; margin-bottom:0.5rem;
+  }
+  .hero h1 span { color:var(--accent); }
+  .hero-subtitle {
+    font-family:var(--mono); font-size:clamp(0.85rem,2vw,1rem);
+    color:var(--accent3); margin-bottom:1.5rem; letter-spacing:0.04em;
+  }
+  .hero-desc { font-size:1.05rem; color:var(--muted2); max-width:600px; line-height:1.8; margin-bottom:2.5rem; }
+  .hero-badges { display:flex; flex-wrap:wrap; gap:0.55rem; margin-bottom:3rem; }
+  .badge {
+    font-family:var(--mono); font-size:11px; letter-spacing:0.05em;
+    padding:5px 13px; border-radius:3px;
+    border:1px solid var(--border2); color:var(--accent); background:rgba(99,179,237,0.06);
+  }
+  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    font-family:var(--mono); font-size:12px; letter-spacing:0.08em;
+    padding:12px 28px; background:var(--accent); color:#0a0c10;
+    border:none; border-radius:3px; cursor:pointer; transition:opacity 0.2s;
+    text-decoration:none; display:inline-block;
+  }
+  .btn-primary:hover { opacity:0.85; }
+  .btn-outline {
+    font-family:var(--mono); font-size:12px; letter-spacing:0.08em;
+    padding:12px 28px; background:transparent; color:var(--accent);
+    border:1px solid var(--border2); border-radius:3px;
+    transition:background 0.2s; text-decoration:none; display:inline-block;
+  }
+  .btn-outline:hover { background:rgba(99,179,237,0.08); }
+
+  section { padding:5rem 0 3rem; max-width:1100px; margin:0 auto; padding-left:2.5rem; padding-right:2.5rem; position:relative; z-index:1; }
+
+  .section-header { margin-bottom:2.75rem; }
+  .section-tag {
+    font-family:var(--mono); font-size:11px; color:var(--accent2);
+    letter-spacing:0.14em; text-transform:uppercase;
+    display:flex; align-items:center; gap:0.75rem; margin-bottom:0.6rem;
+  }
+  .section-tag::before { content:''; display:block; width:28px; height:1px; background:var(--accent2); }
+  .section-header h2 { font-size:clamp(1.5rem,3vw,2.1rem); font-weight:600; color:#fff; letter-spacing:-0.01em; }
+
+  /* STATS */
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:6px; overflow:hidden; margin-bottom:5rem; }
+  .stat { background:var(--card); padding:1.75rem 1.25rem; text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:2rem; font-weight:700; color:var(--accent); line-height:1; margin-bottom:0.4rem; }
+  .stat-label { font-size:11px; color:var(--muted); letter-spacing:0.07em; text-transform:uppercase; }
+
+  /* EXPERTISE */
+  .expertise-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(235px,1fr)); gap:1.2rem; }
+  .exp-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:6px; padding:1.6rem; position:relative; overflow:hidden;
+    transition:border-color 0.25s, transform 0.25s;
+  }
+  .exp-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    transform:scaleX(0); transform-origin:left; transition:transform 0.3s;
+  }
+  .exp-card:hover::before { transform:scaleX(1); }
+  .exp-card:hover { border-color:var(--border2); transform:translateY(-3px); }
+  .exp-icon { width:40px; height:40px; border-radius:8px; margin-bottom:1.1rem; display:flex; align-items:center; justify-content:center; font-size:19px; }
+  .icon-blue { background:rgba(99,179,237,0.12); }
+  .icon-teal { background:rgba(79,209,197,0.12); }
+  .icon-amber { background:rgba(246,173,85,0.12); }
+  .icon-purple { background:rgba(159,122,234,0.12); }
+  .icon-green { background:rgba(72,187,120,0.12); }
+  .exp-card h3 { font-size:0.93rem; font-weight:600; color:#fff; margin-bottom:0.55rem; }
+  .exp-card p { font-size:0.81rem; color:var(--muted2); line-height:1.65; }
+  .exp-tags { display:flex; flex-wrap:wrap; gap:0.38rem; margin-top:0.9rem; }
+  .exp-tag { font-family:var(--mono); font-size:10px; color:var(--muted); padding:3px 7px; border:1px solid var(--border); border-radius:2px; }
+
+  /* PROJECTS */
+  .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; }
+  .project-card { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:1.6rem; transition:border-color 0.25s; }
+  .project-card:hover { border-color:var(--border2); }
+  .project-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.65rem; gap:0.5rem; }
+  .project-title { font-size:0.93rem; font-weight:600; color:#fff; flex:1; }
+  .project-badge { font-family:var(--mono); font-size:10px; padding:3px 8px; border-radius:2px; white-space:nowrap; }
+  .badge-blue { background:rgba(99,179,237,0.12); color:var(--accent); border:1px solid rgba(99,179,237,0.2); }
+  .badge-teal { background:rgba(79,209,197,0.12); color:var(--accent2); border:1px solid rgba(79,209,197,0.2); }
+  .badge-amber { background:rgba(246,173,85,0.12); color:var(--accent3); border:1px solid rgba(246,173,85,0.2); }
+  .badge-purple { background:rgba(159,122,234,0.12); color:#b794f4; border:1px solid rgba(159,122,234,0.2); }
+  .project-client { font-family:var(--mono); font-size:10px; color:var(--muted); margin-bottom:0.55rem; letter-spacing:0.04em; }
+  .project-desc { font-size:0.81rem; color:var(--muted2); line-height:1.65; margin-bottom:0.9rem; }
+  .project-impact { font-size:0.8rem; color:var(--accent2); margin-bottom:0.9rem; font-family:var(--mono); }
+  .project-tech { display:flex; flex-wrap:wrap; gap:0.38rem; }
+  .tech-chip { font-family:var(--mono); font-size:10px; color:var(--muted); padding:3px 7px; border:1px solid var(--border); border-radius:2px; }
+
+  /* EXPERIENCE TIMELINE */
+  .exp-layout { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; }
+  .timeline { position:relative; padding-left:1.75rem; }
+  .timeline::before { content:''; position:absolute; left:0; top:8px; bottom:0; width:1px; background:var(--border); }
+  .timeline-item { position:relative; margin-bottom:2.25rem; }
+  .timeline-item::before { content:''; position:absolute; left:-2.125rem; top:6px; width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(99,179,237,0.2); }
+  .timeline-period { font-family:var(--mono); font-size:10px; color:var(--accent2); letter-spacing:0.07em; margin-bottom:0.35rem; }
+  .timeline-role { font-size:0.95rem; font-weight:600; color:#fff; margin-bottom:0.2rem; }
+  .timeline-company { font-size:0.82rem; color:var(--muted2); margin-bottom:0.65rem; }
+  .timeline-points { list-style:none; }
+  .timeline-points li { font-size:0.8rem; color:var(--muted2); line-height:1.65; padding-left:1rem; position:relative; margin-bottom:0.35rem; }
+  .timeline-points li::before { content:'▸'; position:absolute; left:0; color:var(--accent); font-size:10px; top:3px; }
+
+  /* SKILLS */
+  .skills-wrap { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  .skill-group h4 { font-family:var(--mono); font-size:10px; color:var(--accent); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.65rem; }
+  .skill-list { list-style:none; }
+  .skill-list li { font-size:0.8rem; color:var(--muted2); padding:0.3rem 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:0.5rem; }
+  .skill-list li::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--accent2); flex-shrink:0; }
+
+  /* CERTIFICATIONS */
+  .certs-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+  .cert-card { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:1.25rem; display:flex; align-items:center; gap:1rem; }
+  .cert-icon { font-size:22px; flex-shrink:0; }
+  .cert-name { font-size:0.82rem; font-weight:600; color:#fff; margin-bottom:0.2rem; }
+  .cert-org { font-size:0.75rem; color:var(--muted); font-family:var(--mono); }
+
+  /* CONTACT */
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+  .contact-info p { font-size:0.97rem; color:var(--muted2); line-height:1.8; margin-bottom:1.5rem; }
+  .contact-links { display:flex; flex-direction:column; gap:0.7rem; }
+  .contact-link { display:flex; align-items:center; gap:0.75rem; font-size:0.88rem; color:var(--muted2); text-decoration:none; transition:color 0.2s; }
+  .contact-link:hover { color:var(--accent); }
+  .contact-link-icon { width:34px; height:34px; border:1px solid var(--border); border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+  .avail-card { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:1.75rem; }
+  .avail-dot { width:8px; height:8px; border-radius:50%; background:#48bb78; display:inline-block; margin-right:0.5rem; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(72,187,120,0.4)} 50%{box-shadow:0 0 0 6px rgba(72,187,120,0)} }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .avail-status { font-family:var(--mono); font-size:11px; color:#68d391; margin-bottom:1.1rem; display:flex; align-items:center; }
+  .avail-card h3 { font-size:0.95rem; font-weight:600; color:#fff; margin-bottom:0.65rem; }
+  .avail-card p { font-size:0.81rem; color:var(--muted2); line-height:1.65; }
+  .avail-meta { margin-top:1.1rem; display:flex; flex-direction:column; gap:0.45rem; }
+  .avail-row { display:flex; justify-content:space-between; font-size:0.8rem; }
+  .avail-row span:first-child { color:var(--muted); }
+  .avail-row span:last-child { color:var(--accent); font-family:var(--mono); font-size:11px; }
+
+  footer { border-top:1px solid var(--border); text-align:center; padding:2rem; position:relative; z-index:1; }
+  footer p { font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:0.06em; }
+
+  @media(max-width:700px) {
+    .exp-layout, .contact-grid { grid-template-columns:1fr; }
+    nav { padding:0 1.25rem; }
+    .nav-links { gap:1rem; }
+    section, .hero { padding-left:1.25rem; padding-right:1.25rem; }
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="nav-logo">VNK_NARENDRA.exe</div>
+  <div class="nav-links">
+    <a href="#expertise">Expertise</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Open to C2C Contracts · Remote / On-site</div>
+  <h1>Venkata Narendra Kumar<br><span>Sykam</span></h1>
+  <div class="hero-subtitle">// Senior Microsoft Power Platform Developer</div>
+  <p class="hero-desc">
+    10+ years delivering enterprise Microsoft solutions across Power BI, Power Automate, Power Apps, and Microsoft Fabric — spanning Healthcare, Banking, Credit Union, and Tech industries. I bring the rare combination of deep Power Platform expertise backed by enterprise-grade data engineering, making solutions that don't just look good but scale.
+  </p>
+  <div class="hero-badges">
+    <span class="badge">Power BI</span>
+    <span class="badge">Power Automate</span>
+    <span class="badge">Power Apps</span>
+    <span class="badge">Microsoft Fabric</span>
+    <span class="badge">Copilot Studio</span>
+    <span class="badge">Dataverse</span>
+    <span class="badge">Azure</span>
+    <span class="badge">DAX · RLS · Dataflows</span>
+    <span class="badge">C2C Ready</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#contact" class="btn-primary">Let's Work Together →</a>
+    <a href="#projects" class="btn-outline">View Projects</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<section style="padding-top:2rem;padding-bottom:0;" class="reveal">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Industries Served</div></div>
+    <div class="stat"><div class="stat-num">M.S.</div><div class="stat-label">Computer Science</div></div>
+    <div class="stat"><div class="stat-num">IEEE</div><div class="stat-label">Published Research</div></div>
+    <div class="stat"><div class="stat-num">C2C</div><div class="stat-label">Contract Model</div></div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise" class="reveal">
+  <div class="section-header">
+    <div class="section-tag">Core expertise</div>
+    <h2>Power Platform Stack</h2>
+  </div>
+  <div class="expertise-grid">
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="exp-icon icon-blue">📊</div>
+      <h3>Power BI</h3>
+      <p>Enterprise-grade semantic models, complex DAX measures, multi-tenant RLS, incremental refresh, and Microsoft Fabric Lakehouse integration with Dataflows Gen2.</p>
+      <div class="exp-tags">
+        <span class="exp-tag">DAX</span><span class="exp-tag">RLS</span><span class="exp-tag">Tabular Editor</span><span class="exp-tag">Dataflows Gen2</span><span class="exp-tag">Performance Analyzer</span><span class="exp-tag">Paginated Reports</span>
+      </div>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="exp-icon icon-teal">🔄</div>
+      <h3>Power Automate</h3>
+      <p>End-to-end automation including cloud flows, scheduled BI refresh orchestration, approval workflows, and integration with SharePoint, Dynamics 365, and REST APIs.</p>
+      <div class="exp-tags">
+        <span class="exp-tag">Cloud Flows</span><span class="exp-tag">Scheduled Refresh</span><span class="exp-tag">Approvals</span><span class="exp-tag">SharePoint</span><span class="exp-tag">REST API</span>
+      </div>
+    </div>
+    <div class="exp-card reveal reveal-delay-3">
+      <div class="exp-icon icon-amber">⚡</div>
+      <h3>Power Apps</h3>
+      <p>Canvas and Model-Driven apps surfacing Dataverse and enterprise data sources, integrated with Power Automate flows and custom connectors for business processes.</p>
+      <div class="exp-tags">
+        <span class="exp-tag">Canvas Apps</span><span class="exp-tag">Model-Driven</span><span class="exp-tag">Dataverse</span><span class="exp-tag">Custom Connectors</span><span class="exp-tag">Power FX</span>
+      </div>
+    </div>
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="exp-icon icon-purple">🤖</div>
+      <h3>Copilot Studio</h3>
+      <p>Intelligent virtual agents with natural language understanding, generative AI responses, enterprise data source integration, and Microsoft Teams deployment.</p>
+      <div class="exp-tags">
+        <span class="exp-tag">Conversational AI</span><span class="exp-tag">Gen AI</span><span class="exp-tag">Teams</span><span class="exp-tag">Dataverse</span><span class="exp-tag">SharePoint KB</span>
+      </div>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="exp-icon icon-green">🏗️</div>
+      <h3>Microsoft Fabric</h3>
+      <p>Hands-on Fabric Lakehouse architecture (Bronze-Silver-Gold), Dataflows Gen2, Workspace governance, and integration with Databricks Unity Catalog for enterprise analytics.</p>
+      <div class="exp-tags">
+        <span class="exp-tag">Fabric Lakehouse</span><span class="exp-tag">Dataflows Gen2</span><span class="exp-tag">Workspace Gov.</span><span class="exp-tag">Databricks</span><span class="exp-tag">Unity Catalog</span>
+      </div>
+    </div>
+    <div class="exp-card reveal reveal-delay-3">
+      <div class="exp-icon icon-blue">🛡️</div>
+      <h3>Governance & DevOps</h3>
+      <p>Microsoft Purview data governance, DLP policies, ALM pipelines via Azure DevOps, Git-based version control, and HIPAA-compliant PHI data management at enterprise scale.</p>
+      <div class="exp-tags">
+        <span class="exp-tag">Purview</span><span class="exp-tag">DLP</span><span class="exp-tag">Azure DevOps</span><span class="exp-tag">ALM</span><span class="exp-tag">Git</span><span class="exp-tag">HIPAA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="reveal">
+  <div class="section-header">
+    <div class="section-tag">Portfolio</div>
+    <h2>Featured Projects</h2>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-header">
+        <div class="project-title">Multi-Tenant Power BI Platform</div>
+        <span class="project-badge badge-blue">Power BI</span>
+      </div>
+      <div class="project-client">// First Tech Federal Credit Union · 2025</div>
+      <p class="project-desc">Architected multi-tenant Power BI Service deployment across FTFCU business units with Row-Level Security, incremental refresh, and Microsoft Fabric Workspace governance aligned to Databricks Unity Catalog standards.</p>
+      <div class="project-impact">↑ 20% query performance · Fabric Lakehouse integrated</div>
+      <div class="project-tech">
+        <span class="tech-chip">Power BI Service</span><span class="tech-chip">DAX</span><span class="tech-chip">RLS</span><span class="tech-chip">Microsoft Fabric</span><span class="tech-chip">Databricks</span><span class="tech-chip">WhereScape</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-header">
+        <div class="project-title">Legacy Report Migration to Power BI</div>
+        <span class="project-badge badge-teal">Power Automate</span>
+      </div>
+      <div class="project-client">// First Tech Federal Credit Union · 2025</div>
+      <p class="project-desc">Migrated legacy cView and Cognos reports to Power BI platform, engineering stored procedures for complex business logic and automating scheduled refresh orchestration via Power Automate cloud flows.</p>
+      <div class="project-impact">Full legacy modernization · Automated refresh pipeline</div>
+      <div class="project-tech">
+        <span class="tech-chip">Power BI</span><span class="tech-chip">Power Automate</span><span class="tech-chip">T-SQL</span><span class="tech-chip">Power Query</span><span class="tech-chip">M Language</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-3">
+      <div class="project-header">
+        <div class="project-title">Healthcare Analytics Platform</div>
+        <span class="project-badge badge-blue">Power BI</span>
+      </div>
+      <div class="project-client">// Samaritan Health Services · 2022–2023</div>
+      <p class="project-desc">Built KPI-driven Power BI dashboards for Patient Access, Care Management, Claims, and Population Health. Designed dimensional models for encounters, providers, and payer claims aligned with HIPAA and PHI compliance standards.</p>
+      <div class="project-impact">10TB+ PHI-compliant data · 2× analytics team adoption</div>
+      <div class="project-tech">
+        <span class="tech-chip">Power BI</span><span class="tech-chip">DAX</span><span class="tech-chip">Azure Synapse</span><span class="tech-chip">HIPAA</span><span class="tech-chip">ERwin</span><span class="tech-chip">ADF</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-header">
+        <div class="project-title">Google Payments BI Dashboard</div>
+        <span class="project-badge badge-amber">Power BI</span>
+      </div>
+      <div class="project-client">// Google · 2018–2020</div>
+      <p class="project-desc">Consolidated Google Digital Payments traffic into Power BI and Looker dashboards from BigQuery semantic models, surfacing merchant-level KPIs including success rates, decline patterns, and latency metrics for product teams.</p>
+      <div class="project-impact">↓ 40% manual reporting effort · ↑ 30% payment visibility</div>
+      <div class="project-tech">
+        <span class="tech-chip">Power BI</span><span class="tech-chip">BigQuery</span><span class="tech-chip">Looker</span><span class="tech-chip">Fivetran</span><span class="tech-chip">Python</span><span class="tech-chip">Pub/Sub</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-header">
+        <div class="project-title">Banking Risk & Compliance Dashboards</div>
+        <span class="project-badge badge-amber">Power BI</span>
+      </div>
+      <div class="project-client">// Wells Fargo · 2020–2022</div>
+      <p class="project-desc">Developed C-suite Power BI dashboards providing visibility into delinquency trends, NPA movements, portfolio performance, and branch-level operational KPIs. Aligned with SOX controls and bank data governance standards.</p>
+      <div class="project-impact">C-suite reporting · SOX-compliant · Real-time KPIs</div>
+      <div class="project-tech">
+        <span class="tech-chip">Power BI</span><span class="tech-chip">Tableau</span><span class="tech-chip">SQL Server</span><span class="tech-chip">SSIS</span><span class="tech-chip">SOX</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-3">
+      <div class="project-header">
+        <div class="project-title">University Analytics Modernization</div>
+        <span class="project-badge badge-purple">Power BI</span>
+      </div>
+      <div class="project-client">// Texas A&M University Kingsville · 2023–2024</div>
+      <p class="project-desc">Designed robust Power BI models with DAX measures, RLS, and reusable Dataflows as semantic layers with incremental refresh. Built ADF pipelines migrating on-premise sources to Azure Data Lake for analytics-ready reporting.</p>
+      <div class="project-impact">Semantic layer reuse · Incremental refresh at scale</div>
+      <div class="project-tech">
+        <span class="tech-chip">Power BI</span><span class="tech-chip">Dataflows</span><span class="tech-chip">DAX Studio</span><span class="tech-chip">ADF</span><span class="tech-chip">Azure Data Lake</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="reveal">
+  <div class="section-header">
+    <div class="section-tag">Career</div>
+    <h2>Work Experience</h2>
+  </div>
+  <div class="exp-layout">
+    <div class="timeline">
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-period">JAN 2025 — PRESENT</div>
+        <div class="timeline-role">Power Platform & BI Developer</div>
+        <div class="timeline-company">First Tech Federal Credit Union (FTFCU) · California</div>
+        <ul class="timeline-points">
+          <li>Architected multi-tenant Power BI Service with RLS, incremental refresh, and Microsoft Fabric Workspace governance across FTFCU business units</li>
+          <li>Built complex DAX measures, calculated columns, and M-language Power Query transformations for analytics-ready datasets</li>
+          <li>Designed Power Automate cloud flows to fully automate scheduled BI refresh orchestration — eliminating manual intervention</li>
+          <li>Led end-to-end migration of legacy Cognos and cView reports to Power BI platform with reusable Dataflows Gen2 semantic layers</li>
+          <li>Integrated Microsoft Fabric Lakehouse (Bronze-Silver-Gold) with Databricks Unity Catalog for governed, scalable BI data pipelines</li>
+        </ul>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-period">SEP 2024 — DEC 2024</div>
+        <div class="timeline-role">Power BI & Data Platform Developer</div>
+        <div class="timeline-company">Analog Devices Inc (ADI) · California</div>
+        <ul class="timeline-points">
+          <li>Developed Power BI Desktop reports and Dataflows for visual validation and quality assurance of ADF-ingested datasets</li>
+          <li>Built Power BI-connected Azure Data Factory pipelines moving on-prem data to Azure Data Lake for reporting consumption</li>
+          <li>Applied advanced Excel Power Query and PivotTable analysis to complement and validate Power BI dashboard outputs</li>
+        </ul>
+      </div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-period">OCT 2023 — AUG 2024</div>
+        <div class="timeline-role">Power BI Developer & Analytics Engineer</div>
+        <div class="timeline-company">Texas A&M University Kingsville · Texas</div>
+        <ul class="timeline-points">
+          <li>Designed robust Power BI semantic models with advanced DAX, Row-Level Security, and reusable Dataflows as enterprise semantic layers</li>
+          <li>Optimized Power BI report performance using DAX Studio, Performance Analyzer, and Tabular Editor — reducing load times significantly</li>
+          <li>Implemented incremental refresh policies for large university datasets, enabling near-real-time reporting at scale</li>
+          <li>Built Power Automate-integrated ADF pipelines to feed Power BI reports from Azure Data Lake sources</li>
+        </ul>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-period">JUN 2022 — APR 2023</div>
+        <div class="timeline-role">Senior Power BI Developer</div>
+        <div class="timeline-company">Samaritan Health Services · Healthcare</div>
+        <ul class="timeline-points">
+          <li>Delivered Power BI dashboards for Patient Access, Care Management, Claims, Finance, and Population Health — enabling data-driven clinical decisions</li>
+          <li>Defined KPI-driven operational metrics (encounter throughput, claim lifecycle, reimbursement, provider performance) in Power BI DAX models</li>
+          <li>Ensured all Power BI data pipelines met HIPAA and PHI compliance standards across 10TB+ of healthcare data</li>
+          <li>Integrated Azure Synapse as the Power BI data source for clinical and revenue-cycle analytics at enterprise scale</li>
+        </ul>
+      </div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-period">MAR 2020 — MAY 2022</div>
+        <div class="timeline-role">Power BI & BI Developer</div>
+        <div class="timeline-company">Wells Fargo · Banking</div>
+        <ul class="timeline-points">
+          <li>Built Power BI and Tableau C-suite dashboards surfacing delinquency trends, NPA movements, portfolio performance, and branch-level KPIs</li>
+          <li>Implemented SOX-compliant data governance, schema management, and access controls supporting downstream Power BI reporting</li>
+          <li>Engineered high-volume SSIS ETL pipelines feeding structured data into Power BI-ready warehouse layers for risk and compliance reporting</li>
+        </ul>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-period">JUL 2018 — MAR 2020</div>
+        <div class="timeline-role">Power BI & Data Analytics Developer</div>
+        <div class="timeline-company">Google · Digital Payments</div>
+        <ul class="timeline-points">
+          <li>Built Power BI and Looker dashboards on BigQuery semantic models consolidating Google Digital Payments traffic for product teams</li>
+          <li>Reduced manual reporting effort by 40% across weekly and monthly decision cycles through Power BI automation and scheduled refresh</li>
+          <li>Surfaced merchant-level KPIs (success rates, decline patterns, latency) improving payment reliability visibility by 30% for regional teams</li>
+        </ul>
+      </div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-period">MAY 2014 — JUL 2018</div>
+        <div class="timeline-role">BI & Reporting Developer</div>
+        <div class="timeline-company">ULTA Beauty · Retail</div>
+        <ul class="timeline-points">
+          <li>Developed SSRS and Tableau reports from OLAP cubes, SSAS dimensions, and SQL Server — foundational BI reporting skills that evolved into Power BI</li>
+          <li>Built and optimized T-SQL stored procedures, triggers, views, and indexes powering front-end BI applications and reporting layers</li>
+          <li>Designed ETL workflows using SSIS and DTS to load curated datasets into the Data Warehouse for downstream reporting consumption</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="skills-wrap">
+        <div class="skill-group">
+          <h4>Power Platform</h4>
+          <ul class="skill-list">
+            <li>Power BI Desktop & Service</li>
+            <li>Power Automate</li>
+            <li>Power Apps (Canvas & MD)</li>
+            <li>Copilot Studio</li>
+            <li>Microsoft Fabric</li>
+            <li>Dataverse</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>BI & Analytics</h4>
+          <ul class="skill-list">
+            <li>DAX & Power Query (M)</li>
+            <li>RLS & Multi-tenant</li>
+            <li>Tabular Editor</li>
+            <li>DAX Studio</li>
+            <li>Paginated Reports</li>
+            <li>Tableau / Cognos</li>
+          </ul>
+        </div>
+        <div class="skill-group" style="margin-top:1.4rem;">
+          <h4>Data Platform</h4>
+          <ul class="skill-list">
+            <li>Azure Synapse</li>
+            <li>Azure Data Factory</li>
+            <li>Databricks (Delta)</li>
+            <li>Snowflake</li>
+            <li>SQL Server (2005–2022)</li>
+            <li>T-SQL / PL-SQL</li>
+          </ul>
+        </div>
+        <div class="skill-group" style="margin-top:1.4rem;">
+          <h4>Governance & DevOps</h4>
+          <ul class="skill-list">
+            <li>Microsoft Purview</li>
+            <li>Azure DevOps / Git</li>
+            <li>DLP Policies</li>
+            <li>ALM Pipelines</li>
+            <li>HIPAA Compliance</li>
+            <li>SOX Controls</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <div class="section-tag" style="margin-bottom:1rem;">Education & Research</div>
+        <div class="certs-grid" style="grid-template-columns:1fr;">
+          <div class="cert-card">
+            <div class="cert-icon">🎓</div>
+            <div>
+              <div class="cert-name">M.S., Computer Science</div>
+              <div class="cert-org">Texas A&M University Kingsville · May 2023 – Dec 2024</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">📄</div>
+            <div>
+              <div class="cert-name">IEEE Published Research</div>
+              <div class="cert-org">AVTAR Cyber Shield — ML-Enhanced Cybersecurity Framework</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">🎓</div>
+            <div>
+              <div class="cert-name">B.Tech, Information Technology</div>
+              <div class="cert-org">JNTUK University, India · 2009 – 2013</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+  <div class="section-header">
+    <div class="section-tag">Let's connect</div>
+    <h2>Available for C2C Contracts</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>Looking for Power Platform contract opportunities where I can bring enterprise-level Power BI, Power Automate, and Microsoft Fabric expertise to your team. Experienced across Healthcare, Banking, Credit Union, Government, and Tech sectors. Remote-first, available immediately.</p>
+      <div class="contact-links">
+        <a href="mailto:sykam.narendra@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          sykam.narendra@gmail.com
+        </a>
+        <a href="tel:+19723666249" class="contact-link">
+          <div class="contact-link-icon">☎</div>
+          +1 972-366-6249
+        </a>
+        <a href="https://linkedin.com/in/venkata-narendra-sykam" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          LinkedIn Profile
+        </a>
+      </div>
+    </div>
+    <div class="avail-card">
+      <div class="avail-status"><span class="avail-dot"></span>Available Now</div>
+      <h3>Open to C2C Contracts</h3>
+      <p>Senior Power Platform Developer with strong Power BI, Power Automate, Microsoft Fabric, and data engineering background. Short or long-term engagements welcome.</p>
+      <div class="avail-meta">
+        <div class="avail-row"><span>Contract type</span><span>C2C (Corp-to-Corp)</span></div>
+        <div class="avail-row"><span>Location</span><span>United States</span></div>
+        <div class="avail-row"><span>Work mode</span><span>Remote / On-site</span></div>
+        <div class="avail-row"><span>Availability</span><span>Immediate</span></div>
+        <div class="avail-row"><span>Rate</span><span>On request</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 VENKATA NARENDRA KUMAR · SYKAM &nbsp;·&nbsp; SENIOR POWER PLATFORM DEVELOPER &nbsp;·&nbsp; C2C</p>
+</footer>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
