@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "sykamsolutions.com",
+  "Id": "b59167fd-bd32-444a-b265-6b962da72c10"
+}
