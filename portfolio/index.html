@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Narendra Sykam | Senior Azure Data Engineer</title>
+<meta name="description" content="Narendra Sykam is a Senior Azure Data Engineer in Dallas-Fort Worth with 8+ years building Lakehouse and warehouse platforms on Azure Databricks, Microsoft Fabric, Azure Data Factory and Synapse.">
+<meta name="author" content="Narendra Sykam">
+<link rel="canonical" href="https://sykamsolutions.com/portfolio/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sykamsolutions.com/portfolio/">
+<meta property="og:title" content="Narendra Sykam | Senior Azure Data Engineer">
+<meta property="og:description" content="Lakehouse and warehouse platforms on Azure Databricks, Microsoft Fabric, ADF and Synapse. 8+ years. Dallas-Fort Worth.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Narendra Sykam | Senior Azure Data Engineer">
+<meta name="twitter:description" content="Lakehouse and warehouse platforms on Azure Databricks, Microsoft Fabric, ADF and Synapse.">
+<meta name="theme-color" content="#0a1120">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a1120'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='28' fill='%233ba0ff'%3ENS%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Narendra Sykam",
+  "jobTitle": "Senior Azure Data Engineer",
+  "url": "https://sykamsolutions.com/portfolio/",
+  "email": "mailto:venkatanksykam@gmail.com",
+  "address": {"@type": "PostalAddress", "addressLocality": "Dallas-Fort Worth", "addressRegion": "TX", "addressCountry": "US"},
+  "sameAs": ["https://www.linkedin.com/in/venkatanksykam"],
+  "knowsAbout": ["Azure Databricks","Microsoft Fabric","Azure Data Factory","Azure Synapse Analytics","Delta Lake","PySpark","SQL","dbt","Data Lakehouse","Data Governance"]
+}
+</script>
+
+<style>
+:root{
+  --bg:#0a1120; --bg-2:#0e1729; --surface:#111c31; --surface-2:#15223b;
+  --border:#1f2c47; --border-2:#2a3b5e;
+  --text:#e7eef9; --muted:#97a6c0; --dim:#6b7a96;
+  --accent:#3ba0ff; --accent-2:#2dd4bf; --accent-soft:rgba(59,160,255,.12);
+  --bronze:#c98a5a; --silver:#b8c4d6; --gold:#e3b84a;
+  --radius:14px; --max:1120px;
+  --display:'Space Grotesk',system-ui,sans-serif;
+  --body:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;background:rgba(10,17,32,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.scrolled{border-bottom-color:var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#06101f;font-weight:700;font-size:14px}
+.nav-links{display:flex;gap:30px;font-size:14.5px;color:var(--muted)}
+.nav-links a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;font-weight:500;font-size:14.5px;transition:all .18s;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--accent);color:#04101f}
+.btn-primary:hover{background:#5cb1ff;transform:translateY(-1px)}
+.btn-ghost{border-color:var(--border-2);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm{padding:8px 15px;font-size:13.5px}
+
+/* hero */
+.hero{position:relative;padding:96px 0 88px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 400px at 85% 10%,rgba(59,160,255,.14),transparent 70%),
+  radial-gradient(500px 360px at 5% 90%,rgba(45,212,191,.08),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:56px 56px;opacity:.25;mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 65%);-webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 65%);pointer-events:none}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;color:var(--accent-2);margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 4px rgba(45,212,191,.18)}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(36px,5vw,56px);line-height:1.08;letter-spacing:-.025em;margin-bottom:22px}
+h1 .grad{background:linear-gradient(100deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:18px;color:var(--muted);max-width:560px;margin-bottom:14px}
+.hook{font-size:15.5px;color:var(--dim);max-width:560px;margin-bottom:34px;border-left:2px solid var(--border-2);padding-left:14px}
+.hook strong{color:var(--text);font-weight:500}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:34px;font-size:14px;color:var(--muted)}
+.hero-meta span{display:inline-flex;align-items:center;gap:7px}
+.hero-meta svg{width:16px;height:16px;stroke:var(--accent)}
+
+/* medallion card */
+.lake{background:linear-gradient(180deg,var(--surface),var(--bg-2));border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.lake-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12.5px;color:var(--dim);padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:16px}
+.lake-head .ok{color:var(--accent-2);display:flex;align-items:center;gap:6px}
+.layer{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--bg-2);position:relative}
+.layer+.flow{height:22px;margin-left:30px;border-left:1px dashed var(--border-2)}
+.badge{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-weight:500}
+.b-bronze{background:rgba(201,138,90,.14);color:var(--bronze)}
+.b-silver{background:rgba(184,196,214,.12);color:var(--silver)}
+.b-gold{background:rgba(227,184,74,.14);color:var(--gold)}
+.layer h4{font-size:14.5px;font-weight:600;margin-bottom:2px}
+.layer p{font-size:12.5px;color:var(--muted);line-height:1.45}
+.layer .tag{font-family:var(--mono);font-size:11.5px;color:var(--dim);text-align:right;white-space:nowrap}
+.lake-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid var(--border);font-family:var(--mono);font-size:12px;color:var(--dim)}
+.lake-foot b{color:var(--text);font-weight:500}
+
+/* sections */
+section{padding:96px 0}
+.sec-head{margin-bottom:48px;max-width:680px}
+.kicker{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:12px;letter-spacing:.02em}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.02em;line-height:1.15;margin-bottom:14px}
+.sec-head p{color:var(--muted);font-size:16.5px}
+.alt{background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+
+/* impact */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.stat{background:var(--surface);padding:30px 28px}
+.stat .num{font-family:var(--display);font-size:40px;font-weight:600;letter-spacing:-.02em;line-height:1;margin-bottom:10px}
+.stat .num small{font-size:22px;color:var(--muted);font-weight:500}
+.stat .num .arrow{color:var(--accent);font-size:28px;margin:0 4px}
+.stat p{color:var(--muted);font-size:14.5px;line-height:1.5}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start}
+.about-grid p{color:var(--muted);margin-bottom:16px;font-size:16.5px}
+.about-grid p strong{color:var(--text);font-weight:500}
+.does{list-style:none;display:grid;gap:12px}
+.does li{display:flex;gap:12px;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;font-size:14.5px;color:var(--muted);line-height:1.5}
+.does li b{color:var(--text);font-weight:500;display:block;margin-bottom:2px}
+.does svg{flex:none;width:20px;height:20px;stroke:var(--accent);margin-top:2px}
+
+/* case studies */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.case{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.case:hover{border-color:var(--border-2);transform:translateY(-3px)}
+.case-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.case-ind{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.case-result{font-family:var(--display);font-size:30px;font-weight:600;color:var(--accent);letter-spacing:-.02em;line-height:1.1;margin-bottom:6px}
+.case h3{font-family:var(--display);font-size:19px;font-weight:600;line-height:1.3;margin-bottom:18px;letter-spacing:-.01em}
+.case dl{display:grid;gap:12px;margin-bottom:20px;flex:1}
+.case dt{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin-bottom:2px}
+.case dd{font-size:14.5px;color:var(--muted);line-height:1.55}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:11.5px;padding:4px 9px;border-radius:6px;background:var(--accent-soft);color:#9ccdff;border:1px solid rgba(59,160,255,.2)}
+
+/* experience */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--border-2)}
+.job{position:relative;padding-bottom:40px}
+.job:last-child{padding-bottom:0}
+.job::before{content:"";position:absolute;left:-32px;top:7px;width:15px;height:15px;border-radius:50%;background:var(--bg-2);border:2px solid var(--border-2)}
+.job.current::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
+.job-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:4px}
+.job h3{font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-.01em}
+.job .when{font-family:var(--mono);font-size:13px;color:var(--dim);white-space:nowrap}
+.job .where{color:var(--accent);font-size:14.5px;margin-bottom:12px}
+.job .where span{color:var(--dim)}
+.job ul{list-style:none;display:grid;gap:7px}
+.job li{position:relative;padding-left:18px;color:var(--muted);font-size:15px;line-height:1.55}
+.job li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:2px;background:var(--border-2)}
+.job li b{color:var(--text);font-weight:500}
+.edu-break{font-family:var(--mono);font-size:12.5px;color:var(--dim);padding:2px 0 34px;position:relative}
+.edu-break::before{content:"";position:absolute;left:-29px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--border-2)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.skill{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px}
+.skill h3{font-family:var(--display);font-size:16.5px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.skill h3 i{width:8px;height:8px;border-radius:2px;background:var(--accent);display:inline-block}
+.skill .chips{gap:7px}
+.skill .chip{font-size:12.5px;padding:5px 10px;background:var(--bg-2);color:var(--text);border-color:var(--border)}
+
+/* creds */
+.creds{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cred{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px}
+.cred .kicker{margin-bottom:16px}
+.cred-item{padding:12px 0;border-top:1px solid var(--border)}
+.cred-item:first-of-type{border-top:0;padding-top:0}
+.cred-item b{display:block;font-weight:500;font-size:15px;line-height:1.4;margin-bottom:3px}
+.cred-item span{color:var(--dim);font-size:13.5px}
+
+/* contact */
+.contact{text-align:center;padding:110px 0}
+.contact h2{font-size:clamp(32px,4.4vw,48px);margin-bottom:16px}
+.contact p{color:var(--muted);font-size:17.5px;max-width:560px;margin:0 auto 34px}
+.contact .cta{justify-content:center}
+.contact-line{margin-top:28px;font-family:var(--mono);font-size:14px;color:var(--dim)}
+.contact-line a{color:var(--muted);border-bottom:1px solid var(--border-2)}
+.contact-line a:hover{color:var(--accent);border-color:var(--accent)}
+
+footer{border-top:1px solid var(--border);padding:28px 0;font-size:13.5px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+
+/* 3D scene */
+#scene{position:absolute;inset:0;z-index:0;pointer-events:none}
+.scene-space{min-height:460px;position:relative}
+.scene-cap{position:absolute;right:0;bottom:-6px;font-size:12px;color:var(--dim);letter-spacing:.02em}
+@media (max-width:960px){.scene-space{display:none}}
+@media (min-width:961px){#scene{-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 46%);mask-image:linear-gradient(90deg,transparent 0%,#000 46%)}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* responsive */
+@media (max-width:960px){
+  .hero-grid,.about-grid{grid-template-columns:1fr;gap:44px}
+  .cases,.creds{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+}
+@media (max-width:620px){
+  section{padding:72px 0}
+  .hero{padding:64px 0 64px}
+  .stats,.skills{grid-template-columns:1fr}
+  .stat .num{font-size:34px}
+  .layer{grid-template-columns:auto 1fr}
+  .layer .tag{display:none}
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <nav class="wrap nav" aria-label="Main">
+    <a href="#top" class="logo"><span class="logo-mark">NS</span>Narendra Sykam</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Case Studies</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="Narendra_Sykam_Resume.pdf" class="btn btn-ghost btn-sm" download>Resume
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Open to full-time Senior Data Engineer roles</div>
+      <h1>Senior Azure Data Engineer building <span class="grad">Lakehouse platforms</span> for analytics and AI teams.</h1>
+      <p class="lede">8+ years designing pipelines, warehouses and Lakehouses on Azure Databricks, Microsoft Fabric, Azure Data Factory and Synapse, from raw ingestion to the Power BI models leadership uses every day.</p>
+      <p class="hook"><strong>Nightly job runs out of memory. Dashboard takes 18 seconds to load. A migration that can't lose a single row.</strong> That's usually where I get called in.</p>
+      <div class="cta">
+        <a href="#contact" class="btn btn-primary">Let's talk
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+        </a>
+        <a href="#work" class="btn btn-ghost">See my work</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0119 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Dallas-Fort Worth, TX</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>Microsoft Certified: Fabric Analytics Engineer</span>
+      </div>
+    </div>
+
+    <div class="scene-space" aria-hidden="true"><span class="scene-cap mono">live data factory · hover a tool</span></div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="alt" id="impact" style="padding:72px 0">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><div class="num">8<small>+ yrs</small></div><p>Building data platforms for banking, financial services, payments and automotive</p></div>
+      <div class="stat"><div class="num">2M<small>+/hr</small></div><p>Connected-vehicle telemetry events streamed into Delta Lake</p></div>
+      <div class="stat"><div class="num">40<small>%</small></div><p>Faster pipeline releases across 5 Agile teams</p></div>
+      <div class="stat"><div class="num">18s<span class="arrow">→</span>&lt;6s</div><p>Power BI semantic model query time after remodeling</p></div>
+      <div class="stat"><div class="num">99.9<small>%</small></div><p>SLA held with 24/7 production ownership</p></div>
+      <div class="stat"><div class="num">32<small>%</small></div><p>Lower incremental refresh latency with CDC pipelines</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="kicker">// about</div>
+      <h2>I build data platforms that stay fast and trustworthy as they grow.</h2>
+      <p>I'm a Senior Azure Data Engineer based in Dallas-Fort Worth. For more than eight years I've built the pipelines, warehouses and Lakehouses behind reporting, regulatory, analytics and AI workloads at US banks and financial institutions, a global payments platform and a Fortune 500 automaker.</p>
+      <p>My work starts at ingestion and ends at the dashboard: <strong>streaming and CDC pipelines</strong>, <strong>Medallion Lakehouses on Databricks and Fabric</strong>, <strong>dimensional models in dbt</strong>, and the <strong>governance, CI/CD and on-call ownership</strong> that keep everything running in production.</p>
+      <p>I care about the boring things that make data teams fast: reusable data products, data contracts, lineage from day one, and releases that don't need a war room.</p>
+    </div>
+    <ul class="does reveal">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg><div><b>Lakehouse architecture</b>Azure Databricks, Delta Lake and ADLS Gen2 with Bronze, Silver and Gold layers</div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><div><b>Batch, streaming and CDC</b>Azure Data Factory, Event Hubs, Kafka, PySpark and SQL</div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4m14-2v2a4 4 0 01-4 4H3"/></svg><div><b>Microsoft Fabric migrations</b>OneLake, Fabric Warehouse, Direct Lake semantic models</div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg><div><b>Governance built in</b>Unity Catalog, Microsoft Purview, RBAC, PII masking, lineage</div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="alt" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">// selected work</div>
+      <h2>Case studies</h2>
+      <p>A few problems I've owned end to end: what was broken, what I built, and what changed.</p>
+    </div>
+    <div class="cases">
+      <article class="case reveal">
+        <div class="case-top"><span class="case-ind">Financial services</span></div>
+        <div class="case-result">Full data integrity</div>
+        <h3>Databricks to Microsoft Fabric production migration</h3>
+        <dl>
+          <div><dt>Problem</dt><dd>A financial reporting platform had to move off Databricks to Fabric without breaking the Power BI reports the business relied on.</dd></div>
+          <div><dt>Approach</dt><dd>Moved legacy datasets into Fabric Lakehouse, Warehouse and OneLake with Fabric Data Pipelines. Added CDC from core banking databases and automated Dev/Test/Prod promotion with Fabric deployment pipelines and Azure DevOps.</dd></div>
+          <div><dt>Result</dt><dd>Production cutover with full historical data integrity. Direct Lake semantic models were re-pointed at cutover, refresh latency dropped 32%, and manual promotion errors were eliminated.</dd></div>
+        </dl>
+        <div class="chips"><span class="chip">Microsoft Fabric</span><span class="chip">OneLake</span><span class="chip">CDC</span><span class="chip">Direct Lake</span><span class="chip">Azure DevOps</span></div>
+      </article>
+
+      <article class="case reveal">
+        <div class="case-top"><span class="case-ind">Automotive · BI</span></div>
+        <div class="case-result">18s → under 6s</div>
+        <h3>Making leadership dashboards fast again</h3>
+        <dl>
+          <div><dt>Problem</dt><dd>Power BI semantic models on top of the warehouse took about 18 seconds per query, slowing down the reports leadership checks every day.</dd></div>
+          <div><dt>Approach</dt><dd>Profiled the slow queries, then redesigned the serving layer as star-schema fact and dimension tables with SCD Type 1 and 2 in dbt across Azure Synapse and Snowflake.</dd></div>
+          <div><dt>Result</dt><dd>Query time fell from 18 seconds to under 6, measured with SQL query profiling, on the models leadership uses every day.</dd></div>
+        </dl>
+        <div class="chips"><span class="chip">dbt</span><span class="chip">Synapse</span><span class="chip">Snowflake</span><span class="chip">Star schema</span><span class="chip">Power BI</span></div>
+      </article>
+
+      <article class="case reveal">
+        <div class="case-top"><span class="case-ind">Automotive · IoT</span></div>
+        <div class="case-result">2M+ events/hr</div>
+        <h3>Streaming Lakehouse for connected-vehicle telemetry</h3>
+        <dl>
+          <div><dt>Problem</dt><dd>Vehicle telemetry had to land reliably and quickly enough to feed analytics and ML, while 5 Agile teams shipped pipelines on the same platform.</dd></div>
+          <div><dt>Approach</dt><dd>Built Event Hubs, Kafka and PySpark streaming into Bronze, Silver and Gold Delta tables, reusable data products, data contracts and Unity Catalog governance, with Terraform and multi-stage CI/CD.</dd></div>
+          <div><dt>Result</dt><dd>2M+ events per hour ingested, pipeline releases 40% faster across 5 teams, and a 99.9% SLA held under 24/7 production ownership.</dd></div>
+        </dl>
+        <div class="chips"><span class="chip">Event Hubs</span><span class="chip">Kafka</span><span class="chip">PySpark</span><span class="chip">Delta Lake</span><span class="chip">Unity Catalog</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">// experience</div>
+      <h2>Where I've done it</h2>
+    </div>
+    <div class="timeline">
+      <div class="job current reveal">
+        <div class="job-head"><h3>Senior Azure Data Engineer</h3><span class="when">Jan 2026 – Present</span></div>
+        <div class="where">Virat Solutions Inc <span>· Fortune 500 automaker · Frisco, TX</span></div>
+        <ul>
+          <li>Building the Azure Lakehouse behind connected-vehicle analytics, ingesting <b>2M+ telemetry events per hour</b> into Medallion Delta Lake tables</li>
+          <li>Helped <b>5 Agile teams deploy pipelines 40% faster</b> with reusable data products and a modular Lakehouse on Databricks, ADF and Fabric</li>
+          <li>Cut Power BI query time from <b>18 seconds to under 6</b> with star schemas and SCD Type 1 and 2 in dbt</li>
+          <li>Own 24/7 production support at a <b>99.9% SLA</b>, and reduced Databricks compute spend with auto-scaling, Z-Ordering and compaction</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-head"><h3>Senior Data Engineer</h3><span class="when">Jan 2025 – Nov 2025</span></div>
+        <div class="where">Decision Minds Inc <span>· Financial services client · San Jose, CA</span></div>
+        <ul>
+          <li>Led the <b>Databricks-to-Microsoft Fabric production migration</b> and cutover of a financial data platform</li>
+          <li>Reduced incremental refresh latency by <b>32%</b> with CDC pipelines from core banking databases</li>
+          <li>Scaled ingestion to <b>500K+ daily records</b> with Python and Databricks, including vector embeddings for AI workloads</li>
+          <li>Fixed recurring nightly Spark memory bottlenecks on multi-terabyte jobs</li>
+        </ul>
+      </div>
+      <div class="edu-break reveal">May 2023 – Dec 2024 · M.S. Computer Science, Texas A&amp;M University-Kingsville</div>
+      <div class="job reveal">
+        <div class="job-head"><h3>Azure Data Engineer</h3><span class="when">Jun 2022 – Apr 2023</span></div>
+        <div class="where">Decision Minds Inc <span>· Financial services client · Bengaluru, India</span></div>
+        <ul>
+          <li>Reduced warehouse reporting latency by <b>15%</b> by moving legacy transformations into parameterized ADF and Databricks Medallion pipelines</li>
+          <li>Improved multi-terabyte query concurrency by tuning Synapse distribution keys, indexing and materialized views</li>
+          <li>Cataloged end-to-end lineage in Microsoft Purview for regulatory audits</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-head"><h3>Risk Data Engineer</h3><span class="when">Mar 2020 – May 2022</span></div>
+        <div class="where">W3Softech India <span>· Top US bank · Hyderabad, India</span></div>
+        <ul>
+          <li>Increased risk transaction processing throughput by <b>30%</b> by moving legacy batch to Spark and Databricks</li>
+          <li>Saved <b>13 hours of manual reconciliation a week</b> with automated data quality validation</li>
+          <li>Brought regulatory audit queries down from minutes to seconds with Snowflake and partitioned storage</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-head"><h3>Associate Data Engineer</h3><span class="when">Jul 2018 – Mar 2020</span></div>
+        <div class="where">Genpact <span>· Global digital payments platform · Hyderabad, India</span></div>
+        <ul>
+          <li>Reduced SQL query latency by <b>20%</b> on payment event logs with real-time Kafka ingestion</li>
+          <li>Made daily reports available <b>2 hours earlier</b> by optimizing orchestration across batch jobs</li>
+        </ul>
+      </div>
+      <div class="edu-break reveal">Aug 2015 – Dec 2017 · M.Tech Computer Science, Lovely Professional University</div>
+      <div class="job reveal">
+        <div class="job-head"><h3>Junior Data Warehouse Engineer</h3><span class="when">Jun 2013 – Jul 2015</span></div>
+        <div class="where">W3Softech India <span>· Major US bank · Hyderabad, India</span></div>
+        <ul>
+          <li>Improved reporting query latency by <b>14%</b> by tuning T-SQL, indexing and partitioning in SQL Server, and built SSIS ETL pipelines</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="alt" id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">// toolkit</div>
+      <h2>Skills</h2>
+    </div>
+    <div class="skills">
+      <div class="skill reveal"><h3><i></i>Azure &amp; Microsoft Fabric</h3><div class="chips">
+        <span class="chip">Azure Databricks</span><span class="chip">Delta Live Tables</span><span class="chip">Azure Data Factory</span><span class="chip">Azure Synapse Analytics</span><span class="chip">Microsoft Fabric</span><span class="chip">OneLake</span><span class="chip">Fabric Warehouse</span><span class="chip">ADLS Gen2</span><span class="chip">Event Hubs</span><span class="chip">Stream Analytics</span><span class="chip">Azure Functions</span><span class="chip">Cosmos DB</span><span class="chip">Azure SQL</span><span class="chip">Key Vault</span><span class="chip">Azure Monitor</span>
+      </div></div>
+      <div class="skill reveal"><h3><i></i>Languages</h3><div class="chips">
+        <span class="chip">Python</span><span class="chip">PySpark</span><span class="chip">SQL</span><span class="chip">T-SQL</span><span class="chip">Spark SQL</span><span class="chip">KQL</span><span class="chip">DAX</span><span class="chip">Java</span>
+      </div></div>
+      <div class="skill reveal"><h3><i></i>Data engineering &amp; modeling</h3><div class="chips">
+        <span class="chip">Lakehouse</span><span class="chip">Medallion architecture</span><span class="chip">Delta Lake</span><span class="chip">dbt</span><span class="chip">Apache Spark</span><span class="chip">Kafka</span><span class="chip">Airflow</span><span class="chip">CDC</span><span class="chip">ETL / ELT</span><span class="chip">Star &amp; snowflake schemas</span><span class="chip">SCD Type 1 &amp; 2</span><span class="chip">Snowflake</span><span class="chip">Power BI</span>
+      </div></div>
+      <div class="skill reveal"><h3><i></i>Governance &amp; DevOps</h3><div class="chips">
+        <span class="chip">Unity Catalog</span><span class="chip">Microsoft Purview</span><span class="chip">Data contracts</span><span class="chip">Data quality</span><span class="chip">Lineage</span><span class="chip">Observability</span><span class="chip">Azure DevOps CI/CD</span><span class="chip">GitHub Actions</span><span class="chip">Terraform</span><span class="chip">FinOps</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">// credentials</div>
+      <h2>Certifications &amp; education</h2>
+    </div>
+    <div class="creds">
+      <div class="cred reveal">
+        <div class="kicker">Certifications</div>
+        <div class="cred-item"><b>Microsoft Certified: Fabric Analytics Engineer Associate</b><span>Microsoft</span></div>
+        <div class="cred-item"><b>AWS Certified Data Engineer – Associate</b><span>Amazon Web Services</span></div>
+      </div>
+      <div class="cred reveal">
+        <div class="kicker">Education</div>
+        <div class="cred-item"><b>M.S. Computer Science</b><span>Texas A&amp;M University-Kingsville · 2024</span></div>
+        <div class="cred-item"><b>M.Tech Computer Science &amp; Engineering</b><span>Lovely Professional University · 2017</span></div>
+        <div class="cred-item"><b>B.Tech Information Technology</b><span>JNTU Kakinada · 2013</span></div>
+      </div>
+      <div class="cred reveal">
+        <div class="kicker">Publication &amp; honors</div>
+        <div class="cred-item"><b>AVTAR Cyber Shield: A Comprehensive Framework for Machine Learning-Enhanced Cybersecurity in Cyber-Physical Environment</b><span>Research publication</span></div>
+        <div class="cred-item"><b>College of Engineering Dean's Merit Scholarship</b><span>Texas A&amp;M University-Kingsville</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="alt contact" id="contact">
+  <div class="wrap reveal">
+    <div class="kicker">// contact</div>
+    <h2>If that sounds like your team, let's talk.</h2>
+    <p>I'm looking for a full-time Senior Data Engineer role on a team building serious data platforms on Azure. I'm based in Dallas-Fort Worth.</p>
+    <div class="cta">
+      <a href="mailto:venkatanksykam@gmail.com?subject=Senior%20Data%20Engineer%20opportunity" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email me</a>
+      <a href="https://www.linkedin.com/in/venkatanksykam" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4 0-3.2-1.95-3.2s-2.25 1.5-2.25 3.1V21H9z"/></svg>LinkedIn</a>
+      <a href="Narendra_Sykam_Resume.pdf" class="btn btn-ghost" download>Download resume</a>
+    </div>
+    <div class="contact-line"><a href="mailto:venkatanksykam@gmail.com">venkatanksykam@gmail.com</a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Narendra Sykam</span>
+    <span>Senior Azure Data Engineer · Dallas-Fort Worth, TX</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const hdr = document.querySelector('header');
+addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 8), {passive:true});
+const els = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(el => io.observe(el));
+} else { els.forEach(el => el.classList.add('in')); }
+
+/* ---- 3D "data factory" scene: each tool animates its own name in 0s and 1s (dependency-free canvas) ---- */
+(() => {
+  const cv = document.getElementById('scene'); if (!cv) return;
+  const ctx = cv.getContext('2d'); const hero = cv.parentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const MONO = '"JetBrains Mono", ui-monospace, Consolas, monospace';
+  const TAU = Math.PI * 2, rnd = (a, b) => a + Math.random() * (b - a), bitc = () => (Math.random() < .5 ? '0' : '1');
+  const frac = x => x - Math.floor(x);
+  let W, H, cx, cy, S, mobile;
+  function resize() {
+    const r = hero.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
+    W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr;
+    cv.style.width = W + 'px'; cv.style.height = H + 'px'; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    mobile = W < 960;
+    cx = mobile ? W * 0.5 : W * 0.735; cy = mobile ? H * 0.86 : H * 0.66;
+    S = mobile ? Math.min(W / 640, 0.75) : Math.min(W * 0.41 / 640, H / 560);
+  }
+
+  const NODES = [
+    { name: 'Sources',               fx: 'spring',  tip: 'SQL Server · Cosmos DB · REST APIs · core banking DBs', x: -450, z:  30, h: 50,  c: [140,160,200], g: 'db' },
+    { name: 'Event Hubs · Kafka',    fx: 'hub',     tip: '2M+ connected-vehicle events per hour',                x: -315, z: -35, h: 62,  c: [45,212,191],  g: 'bolt' },
+    { name: 'Data Factory',          fx: 'smoke',   tip: 'Orchestration · incremental CDC · schema drift',        x: -180, z:  35, h: 90,  c: [59,160,255],  g: 'pipe' },
+    { name: 'Databricks',            fx: 'bricks',  tip: 'PySpark · Delta Live Tables · Medallion pipelines',     x:  -45, z: -35, h: 70,  c: [255,112,80],  g: 'layers' },
+    { name: 'Delta Lakehouse',fx: 'lake',    tip: 'Bronze → Silver → Gold · Z-Order · compaction',          x:   90, z:  38, h: 3,   c: [94,234,212],  g: 'delta', w: 74, d: 56, rx: 68, rz: 50 },
+    { name: 'Fabric · OneLake',      fx: 'weave',   tip: 'Led a Databricks → Fabric production cutover',          x:  215, z: -35, h: 56,  c: [74,222,128],  g: 'lake' },
+    { name: 'Synapse · dbt',         fx: 'synapse', tip: 'Star schemas · SCD Type 1 & 2',                          x:  330, z:  35, h: 62,  c: [167,139,250], g: 'hex' },
+    { name: 'Power BI',              fx: 'bars',    tip: 'Direct Lake models · queries 18s → under 6s',           x:  445, z: -30, h: 58,  c: [250,204,21],  g: 'bars' }
+  ];
+  const GOV = { name: 'Unity Catalog · Purview', tip: 'RBAC · PII masking · lineage · data contracts', x: 20, y: 250, z: 0, c: [210,225,245], g: 'shield', hot: 0 };
+  NODES.forEach(n => { n.w = n.w || 24; n.d = n.d || 24; n.hot = 0; n.t = Math.random() * 10; n.acc = 0; n.P = []; });
+
+  const BASE_YAW = -0.22, BASE_PITCH = 0.42;
+  let yaw = BASE_YAW, pitch = BASE_PITCH, ty = BASE_YAW, tp = BASE_PITCH, mx = -1e4, my = -1e4, hovered = null;
+  function proj(x, y, z) {
+    const cyw = Math.cos(yaw), syw = Math.sin(yaw);
+    const X = x * cyw - z * syw, Z = x * syw + z * cyw;
+    const cp = Math.cos(pitch), sp = Math.sin(pitch);
+    const Y2 = y * cp + Z * sp, Z2 = -y * sp + Z * cp;
+    const f = 820 / (Z2 + 1100);
+    return [cx + X * f * S, cy - Y2 * f * S, f, Z2];
+  }
+  const rgba = (c, a) => `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${Math.max(0, Math.min(1, a)).toFixed(3)})`;
+  const tint = (c, k) => [c[0] + (255 - c[0]) * k, c[1] + (255 - c[1]) * k, c[2] + (255 - c[2]) * k];
+  const font = (px, f) => { ctx.font = `600 ${Math.max(6, px * 1.3 * f * S).toFixed(1)}px ${MONO}`; };
+  const bit = (x, y, z, ch, c, a) => { const p = proj(x, y, z); ctx.fillStyle = rgba(c, a); ctx.fillText(ch, p[0], p[1]); return p; };
+  const line = (a, b, c, al, w = 1) => { const p = proj(...a), q = proj(...b); ctx.strokeStyle = rgba(c, al); ctx.lineWidth = w; ctx.beginPath(); ctx.moveTo(p[0], p[1]); ctx.lineTo(q[0], q[1]); ctx.stroke(); };
+
+  /* ---------- per-tool effects ---------- */
+  const FX = {
+    // Sources: bits bubbling up like springs
+    spring(n, t, A) {
+      font(9, proj(n.x, n.h, n.z)[2]);
+      for (let col = -1; col <= 1; col++) for (let k = 0; k < 4; k++) {
+        const u = frac(t * 0.8 + k / 4 + col * 0.23);
+        bit(n.x + col * 12 + Math.sin(u * 9 + col) * 2, n.h + 6 + u * 44, n.z, (k + col + Math.floor(t * 2)) % 2 ? '1' : '0', tint(n.c, .2), Math.sin(u * Math.PI) * 0.85 * A);
+      }
+    },
+    // Event Hubs / Kafka: events race along spokes into a hub, which publishes one stream upward
+    hub(n, t, A) {
+      const hy = n.h + 30, R = 62, f = proj(n.x, hy, n.z)[2];
+      for (let s = 0; s < 8; s++) {
+        const a = s / 8 * TAU, ex = Math.cos(a) * R, ez = Math.sin(a) * R;
+        line([n.x, hy, n.z], [n.x + ex, hy, n.z + ez], n.c, 0.14 * A);
+      }
+      font(9, f);
+      for (let s = 0; s < 8; s++) for (let k = 0; k < 3; k++) {
+        const a = s / 8 * TAU, u = frac(t * 0.55 + k / 3 + s * 0.13), r = R * (1 - u);
+        bit(n.x + Math.cos(a) * r, hy, n.z + Math.sin(a) * r, (s + k) % 2 ? '1' : '0', n.c, Math.min(1, u * 3) * 0.9 * A);
+      }
+      const [hx, hyy] = proj(n.x, hy, n.z), pr = (7 + Math.sin(t * 6) * 2.5) * f * S;
+      const g = ctx.createRadialGradient(hx, hyy, 0, hx, hyy, pr * 2.4); g.addColorStop(0, rgba(tint(n.c, .4), .9 * A)); g.addColorStop(1, rgba(n.c, 0));
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(hx, hyy, pr * 2.4, 0, TAU); ctx.fill();
+      for (let k = 0; k < 5; k++) { const u = frac(t * 0.9 + k / 5); bit(n.x, hy + 10 + u * 60, n.z, k % 2 ? '1' : '0', tint(n.c, .3), (1 - u) * 0.9 * A); }
+    },
+    // Data Factory: factory smoke made of bits
+    smoke(n, t, A, dt, move) {
+      if (move) {
+        n.acc += dt * (8 + n.hot * 24); while (n.acc >= 1) { n.acc -= 1;
+          n.P.push({ x: n.x + rnd(-5, 5), y: n.h + 4, z: n.z + rnd(-5, 5), vx: rnd(5, 15), vy: rnd(26, 48), vz: rnd(-5, 5), age: 0, life: rnd(3.5, 5.5), ch: bitc(), seed: rnd(0, TAU) }); }
+        for (let i = n.P.length - 1; i >= 0; i--) { const p = n.P[i]; p.age += dt; if (p.age > p.life) { n.P.splice(i, 1); continue; }
+          p.x += (p.vx + Math.sin(p.age * 1.8 + p.seed) * 9) * dt; p.y += p.vy * dt; p.z += p.vz * dt; p.vy *= .997; if (Math.random() < .012) p.ch = p.ch === '0' ? '1' : '0'; }
+      }
+      for (const p of n.P) { const u = p.age / p.life, f = proj(p.x, p.y, p.z)[2];
+        font(9 + u * 9, f); bit(p.x, p.y, p.z, p.ch, tint(n.c, .15 * (1 - u)), Math.min(1, u * 6) * Math.pow(1 - u, 1.3) * .95 * A); }
+    },
+    // Databricks: binary bricks fly in, lock into a wall, then crumble and rebuild
+    bricks(n, t, A) {
+      const CYCLE = 7.5, cyc = Math.floor(t / CYCLE), ct = t - cyc * CYCLE, BW = 34, BH = 13;
+      if (n.cyc !== cyc) { n.cyc = cyc; n.B = [];
+        for (let r = 0; r < 4; r++) { const cnt = r % 2 ? 2 : 3;
+          for (let c = 0; c < cnt; c++) n.B.push({ x: (c - (cnt - 1) / 2) * BW, y: n.h + 3 + r * BH + BH / 2,
+            bits: [bitc(), bitc(), bitc(), bitc()].join(''), ox: rnd(-90, 90), oy: rnd(70, 150), oz: rnd(-70, 70), dx: rnd(-30, 30), dz: rnd(-20, 20) }); } }
+      font(8, proj(n.x, n.h + 25, n.z)[2]);
+      n.B.forEach((b, k) => {
+        const tin = (ct - k * 0.33) / 0.65; if (tin <= 0) return;
+        let e = Math.min(1, tin); e = 1 - Math.pow(1 - e, 3);
+        let x = n.x + b.x + b.ox * (1 - e), y = b.y + b.oy * (1 - e), z = n.z + b.oz * (1 - e), al = Math.min(1, tin * 1.5);
+        const dis = (ct - 5.8) / 1.7;
+        if (dis > 0) { // crumble
+          for (let i = 0; i < 4; i++) bit(x + (i - 1.5) * 7.6 + b.dx * dis * (i - 1.5) * .5, y + dis * (30 + i * 8), z + b.dz * dis, b.bits[i], tint(n.c, .25), (1 - dis) * A);
+          return;
+        }
+        const p1 = proj(x - BW / 2 + 1.5, y - BH / 2 + 1, z), p2 = proj(x + BW / 2 - 1.5, y - BH / 2 + 1, z),
+              p3 = proj(x + BW / 2 - 1.5, y + BH / 2 - 1, z), p4 = proj(x - BW / 2 + 1.5, y + BH / 2 - 1, z);
+        ctx.beginPath(); ctx.moveTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]); ctx.lineTo(p3[0], p3[1]); ctx.lineTo(p4[0], p4[1]); ctx.closePath();
+        ctx.fillStyle = rgba(n.c, 0.13 * al * A); ctx.fill(); ctx.strokeStyle = rgba(n.c, (e === 1 ? 0.75 : 0.45) * al * A); ctx.lineWidth = 1; ctx.stroke();
+        for (let i = 0; i < 4; i++) bit(x + (i - 1.5) * 7.6, y - 0.5, z, b.bits[i], tint(n.c, .3), al * A);
+      });
+    },
+    // Delta Lakehouse: a real lake — binary raindrops fall in, ripple the water, and it evaporates as binary vapor
+    lake(n, t, A, dt, move) {
+      n.R = n.R || []; n.D = n.D || []; n.rt = n.rt || 0;
+      if (move) {
+        n.rt -= dt; if (n.rt <= 0) { n.rt = rnd(0.7, 1.5) / (1 + n.hot * 3);
+          const a = rnd(0, TAU), r = Math.sqrt(Math.random()) * 0.7; n.D.push({ x: Math.cos(a) * n.rx * r, z: Math.sin(a) * n.rz * r, y: rnd(70, 110), vy: 0, ch: bitc() }); }
+        for (let k = n.D.length - 1; k >= 0; k--) { const d = n.D[k]; d.vy += 140 * dt; d.y -= d.vy * dt;
+          if (d.y <= 2) { n.R.push({ x: d.x, z: d.z, age: 0, life: 2.8 }); n.D.splice(k, 1); } }
+        for (let k = n.R.length - 1; k >= 0; k--) { n.R[k].age += dt; if (n.R[k].age > n.R[k].life) n.R.splice(k, 1); }
+        n.acc += dt * (8 + n.hot * 18); while (n.acc >= 1) { n.acc -= 1; const a = rnd(0, TAU), r = Math.sqrt(Math.random()) * 0.9;
+          n.P.push({ x: n.x + Math.cos(a) * n.rx * r, y: n.h + 4, z: n.z + Math.sin(a) * n.rz * r, vy: rnd(10, 18), age: 0, life: rnd(2.6, 3.8), ch: bitc(), seed: rnd(0, TAU) }); }
+        for (let k = n.P.length - 1; k >= 0; k--) { const p = n.P[k]; p.age += dt; if (p.age > p.life) { n.P.splice(k, 1); continue; } p.y += p.vy * dt; p.x += Math.sin(p.age * 2.5 + p.seed) * 6 * dt; }
+      }
+      const f0 = proj(n.x, n.h, n.z)[2];
+      // ripple rings
+      for (const r of n.R) { const u = r.age / r.life, R = r.age * 16; ctx.strokeStyle = rgba([200, 240, 255], 0.45 * (1 - u) * A); ctx.lineWidth = 1; ctx.beginPath(); let pen = false;
+        for (let k = 0; k <= 36; k++) { const a = k / 36 * TAU, lx = r.x + Math.cos(a) * R, lz = r.z + Math.sin(a) * R * 0.95;
+          if ((lx / n.rx) ** 2 + (lz / n.rz) ** 2 > 0.97) { pen = false; continue; }
+          const p = proj(n.x + lx, n.h + 1.2, n.z + lz); pen ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]); pen = true; } ctx.stroke(); }
+      // sun glints
+      if (n.V) for (let i = 1; i < n.V.length; i++) for (let j = 0; j < n.V[i].length; j++) { const v = n.V[i][j]; if (v.spec < 0.3) continue;
+        const fl = 0.5 + 0.5 * Math.sin(t * 9 + i * 3.1 + j * 1.7), sz = (1 + v.spec * 3) * v.p[2] * S, al = v.spec * fl * A;
+        ctx.strokeStyle = rgba([255, 255, 240], al); ctx.lineWidth = 1; ctx.beginPath();
+        ctx.moveTo(v.p[0] - sz, v.p[1]); ctx.lineTo(v.p[0] + sz, v.p[1]); ctx.moveTo(v.p[0], v.p[1] - sz * .6); ctx.lineTo(v.p[0], v.p[1] + sz * .6); ctx.stroke(); }
+      // falling binary raindrops
+      font(10, f0);
+      for (const d of n.D) { bit(n.x + d.x, d.y, n.z + d.z, d.ch, [220, 245, 255], 0.95 * A);
+        const tr = proj(n.x + d.x, d.y + 6, n.z + d.z), hd = proj(n.x + d.x, d.y + 2, n.z + d.z);
+        ctx.strokeStyle = rgba([180, 230, 255], 0.35 * A); ctx.beginPath(); ctx.moveTo(tr[0], tr[1] - 10); ctx.lineTo(hd[0], hd[1] - 6); ctx.stroke(); }
+      // binary vapor
+      for (const p of n.P) { const u = p.age / p.life; font(7 + u * 6, f0);
+        bit(p.x, p.y, p.z, p.ch, tint(n.c, .5 + u * .3), Math.sin(u * Math.PI) * 0.55 * A); }
+    },
+    // Fabric: warp and weft threads of bits woven into a cloth rippling in the wind
+    weave(n, t, A) {
+      const COLS = 9, ROWS = 7, X0 = -48, Y0 = n.h + 12, ST = 12, pts = [];
+      for (let j = 0; j < ROWS; j++) { pts.push([]); for (let i = 0; i < COLS; i++) {
+        const x = n.x + X0 + i * ST, y = Y0 + j * ST, z = n.z + Math.sin(i * 0.6 + t * 2) * 7 + Math.sin(j * 0.7 + t * 1.3) * 3;
+        pts[j].push([x, y, z]); } }
+      for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS - 1; i++) line(pts[j][i], pts[j][i + 1], [94,234,212], 0.12 * A);
+      for (let i = 0; i < COLS; i++) for (let j = 0; j < ROWS - 1; j++) line(pts[j][i], pts[j + 1][i], n.c, 0.12 * A);
+      font(8.5, proj(n.x, Y0 + 30, n.z)[2]);
+      for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS; i++) {
+        const over = (i + j) % 2 === 0, [x, y, z] = pts[j][i];
+        bit(x, y, z, over ? '1' : '0', over ? tint(n.c, .25) : [94,234,212], (over ? 0.9 : 0.45) * A);
+      }
+      const row = Math.floor(t * 0.7) % ROWS, u = frac(t * 0.7), i = Math.min(COLS - 1, Math.floor(u * COLS));
+      const [sx, sy, sz] = pts[row][i]; font(11, proj(sx, sy, sz)[2]); bit(sx, sy, sz - 2, '1', [255, 255, 255], 0.9 * A);
+    },
+    // Synapse: binary sparks fire between neurons
+    synapse(n, t, A, dt, move) {
+      if (!n.N) {
+        n.N = Array.from({ length: 7 }, (_, k) => { const a = k / 7 * TAU + rnd(-.3, .3);
+          return { x: n.x + Math.cos(a) * rnd(26, 50), y: n.h + rnd(24, 92), z: n.z + Math.sin(a) * rnd(16, 34), flash: 0 }; });
+        n.E = []; n.N.forEach((p, i) => n.N.map((q, j) => [j, Math.hypot(p.x - q.x, p.y - q.y, p.z - q.z)]).filter(([j]) => j !== i)
+          .sort((a, b) => a[1] - b[1]).slice(0, 2).forEach(([j]) => { if (!n.E.some(e => (e[0] === j && e[1] === i))) n.E.push([i, j]); }));
+        n.S = Array.from({ length: 4 }, () => { const e = n.E[Math.floor(Math.random() * n.E.length)]; return { a: e[0], b: e[1], u: Math.random() }; });
+      }
+      if (move) for (const s of n.S) { s.u += dt * (1.3 + n.hot * 1.5); if (s.u >= 1) { n.N[s.b].flash = 1; const nb = n.E.filter(e => e.includes(s.b)).map(e => e[0] === s.b ? e[1] : e[0]);
+        s.a = s.b; s.b = nb[Math.floor(Math.random() * nb.length)]; s.u = 0; } }
+      for (const [i, j] of n.E) line([n.N[i].x, n.N[i].y, n.N[i].z], [n.N[j].x, n.N[j].y, n.N[j].z], n.c, 0.22 * A);
+      for (const p of n.N) { if (move) p.flash *= 0.93; const [px, py, pf] = proj(p.x, p.y, p.z), r = (3 + p.flash * 5) * pf * S;
+        const g = ctx.createRadialGradient(px, py, 0, px, py, r * 2.2); g.addColorStop(0, rgba(tint(n.c, .3 + p.flash * .5), .9 * A)); g.addColorStop(1, rgba(n.c, 0));
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, r * 2.2, 0, TAU); ctx.fill(); }
+      font(9, proj(n.x, n.h + 50, n.z)[2]);
+      for (const s of n.S) { const p = n.N[s.a], q = n.N[s.b];
+        bit(p.x + (q.x - p.x) * s.u, p.y + (q.y - p.y) * s.u, p.z + (q.z - p.z) * s.u, s.u < .5 ? '1' : '0', [255, 255, 255], 0.95 * A); }
+    },
+    // Power BI: a live bar chart built from stacked bits
+    bars(n, t, A) {
+      font(9, proj(n.x, n.h + 30, n.z)[2]);
+      for (let i = 0; i < 4; i++) {
+        const cnt = 2 + Math.round(2.5 + 2.5 * Math.sin(t * 1.1 + i * 1.7)), x = n.x + (i - 1.5) * 15;
+        for (let k = 0; k < cnt; k++) { const top = k === cnt - 1;
+          bit(x, n.h + 9 + k * 12, n.z, ((k + i + Math.floor(t * 3)) % 2) ? '1' : '0', top ? [255, 255, 255] : n.c, (top ? 1 : 0.6) * A); }
+      }
+    }
+  };
+
+  /* ---------- shared drawing ---------- */
+  function glyph(g, x, y, s, col) {
+    ctx.save(); ctx.translate(x, y); ctx.scale(s / 10, s / 10);
+    ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 1.6; ctx.lineJoin = ctx.lineCap = 'round';
+    ctx.beginPath(); let fill = false;
+    switch (g) {
+      case 'db': ctx.ellipse(0, -5, 6, 2.4, 0, 0, TAU); ctx.moveTo(-6, -5); ctx.lineTo(-6, 5); ctx.moveTo(6, -5); ctx.lineTo(6, 5);
+        ctx.moveTo(6, 0); ctx.ellipse(0, 0, 6, 2.4, 0, 0, Math.PI); ctx.moveTo(6, 5); ctx.ellipse(0, 5, 6, 2.4, 0, 0, Math.PI); break;
+      case 'bolt': ctx.moveTo(2, -8); ctx.lineTo(-5, 1); ctx.lineTo(0, 1); ctx.lineTo(-2, 8); ctx.lineTo(5, -1); ctx.lineTo(0, -1); ctx.closePath(); fill = true; break;
+      case 'pipe': ctx.rect(-9, -2.5, 5, 5); ctx.rect(-2.5, -2.5, 5, 5); ctx.rect(4, -2.5, 5, 5);
+        ctx.moveTo(-4, 0); ctx.lineTo(-2.5, 0); ctx.moveTo(2.5, 0); ctx.lineTo(4, 0); ctx.moveTo(-6.5, -2.5); ctx.lineTo(-6.5, -6); ctx.lineTo(6.5, -6); ctx.lineTo(6.5, -2.5); break;
+      case 'layers': for (const k of [-4, 0, 4]) { ctx.moveTo(-7, k); ctx.lineTo(0, k - 3.5); ctx.lineTo(7, k); ctx.lineTo(0, k + 3.5); ctx.closePath(); } break;
+      case 'delta': ctx.moveTo(0, -7); ctx.lineTo(7.5, 6); ctx.lineTo(-7.5, 6); ctx.closePath(); break;
+      case 'lake': for (const k of [-3, 3]) { ctx.moveTo(-8, k); ctx.quadraticCurveTo(-4, k - 4, 0, k); ctx.quadraticCurveTo(4, k + 4, 8, k); } break;
+      case 'hex': for (let i = 0; i <= 6; i++) { const a = Math.PI / 3 * i + Math.PI / 6; ctx[i ? 'lineTo' : 'moveTo'](7.5 * Math.cos(a), 7.5 * Math.sin(a)); }
+        ctx.moveTo(2, 0); ctx.arc(0, 0, 2, 0, TAU); break;
+      case 'bars': ctx.rect(-7, 1, 3, 6); ctx.rect(-1.5, -3, 3, 10); ctx.rect(4, -7, 3, 14); fill = true; break;
+      case 'shield': ctx.moveTo(0, -8); ctx.lineTo(7, -5); ctx.lineTo(6, 3); ctx.quadraticCurveTo(4, 7, 0, 9); ctx.quadraticCurveTo(-4, 7, -6, 3); ctx.lineTo(-7, -5); ctx.closePath();
+        ctx.moveTo(-3, 0); ctx.lineTo(-0.5, 2.5); ctx.lineTo(3.5, -2.5); break;
+    }
+    fill ? ctx.fill() : ctx.stroke(); ctx.restore();
+  }
+  /* ---------- realistic lake surface ---------- */
+  const nrm = (x, y, z) => { const l = Math.hypot(x, y, z); return [x / l, y / l, z / l]; };
+  const LGT = nrm(-0.3, 0.6, 0.75), HV = nrm(LGT[0], LGT[1] + 0.55, LGT[2] - 0.83);
+  const DEEP = [6, 38, 78], SHALLOW = [34, 150, 175], SKY = [90, 130, 185];
+  function lakeH(n, lx, lz, t) {
+    let y = Math.sin(lx * 0.09 + t * 1.6) + Math.sin(lz * 0.13 - t * 1.3) * 0.7 + Math.sin((lx + lz) * 0.05 + t * 2.1) * 0.5;
+    if (n.R) for (const r of n.R) { const d = Math.hypot(lx - r.x, lz - r.z), u = r.age / r.life, R = r.age * 16;
+      y += 2.8 * (1 - u) * Math.exp(-((d - R) ** 2) / 10) * Math.cos((d - R) * 0.9); }
+    return y * 0.9;
+  }
+  function drawLake(n) {
+    const t = n.t, RN = 7, SG = 30, V = [];
+    // shore bank
+    ctx.beginPath();
+    for (let k = 0; k <= 40; k++) { const a = k / 40 * TAU, wob = 1.13 + Math.sin(a * 5 + 1) * 0.03, p = proj(n.x + Math.cos(a) * n.rx * wob, n.h, n.z + Math.sin(a) * n.rz * wob); k ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]); }
+    ctx.closePath(); ctx.fillStyle = 'rgba(46,58,70,0.95)'; ctx.fill(); ctx.strokeStyle = 'rgba(120,150,170,0.35)'; ctx.lineWidth = 1; ctx.stroke();
+    for (let i = 0; i <= RN; i++) { const rr = i / RN; V.push([]);
+      for (let j = 0; j < SG; j++) { const a = j / SG * TAU, lx = Math.cos(a) * n.rx * rr, lz = Math.sin(a) * n.rz * rr, e = rr === 1 ? 0.25 : 1;
+        const h = lakeH(n, lx, lz, t) * e, hx = (lakeH(n, lx + 1.5, lz, t) - lakeH(n, lx - 1.5, lz, t)) * e, hz = (lakeH(n, lx, lz + 1.5, t) - lakeH(n, lx, lz - 1.5, t)) * e;
+        const N = nrm(-hx * 0.75, 1, -hz * 0.75);
+        const dif = Math.max(0, N[0] * LGT[0] + N[1] * LGT[1] + N[2] * LGT[2]), spec = Math.pow(Math.max(0, N[0] * HV[0] + N[1] * HV[1] + N[2] * HV[2]), 70);
+        V[i].push({ p: proj(n.x + lx, n.h + 1 + h * 0.6, n.z + lz), rr, dif, spec }); } }
+    n.V = V;
+    const Q = [];
+    for (let i = 0; i < RN; i++) for (let j = 0; j < SG; j++) { const a = V[i][j], b = V[i][(j + 1) % SG], c = V[i + 1][(j + 1) % SG], d = V[i + 1][j];
+      Q.push({ q: [a, b, c, d], z: (a.p[3] + b.p[3] + c.p[3] + d.p[3]) / 4 }); }
+    Q.sort((u, v) => v.z - u.z);
+    for (const { q } of Q) {
+      const rr = (q[0].rr + q[2].rr) / 2, dif = (q[0].dif + q[1].dif + q[2].dif + q[3].dif) / 4, spec = (q[0].spec + q[1].spec + q[2].spec + q[3].spec) / 4;
+      const base = [0, 1, 2].map(k => DEEP[k] + (SHALLOW[k] - DEEP[k]) * Math.pow(rr, 2.2));
+      const col = [0, 1, 2].map(k => Math.min(255, base[k] * (0.42 + 0.5 * dif) + SKY[k] * 0.1 + 255 * spec * 0.85 + n.hot * 12));
+      ctx.beginPath(); ctx.moveTo(q[0].p[0], q[0].p[1]); for (let k = 1; k < 4; k++) ctx.lineTo(q[k].p[0], q[k].p[1]); ctx.closePath();
+      ctx.fillStyle = rgba(col, 0.96); ctx.fill(); ctx.strokeStyle = rgba(col, 0.96); ctx.lineWidth = 0.7; ctx.stroke();
+    }
+    // shoreline foam
+    ctx.strokeStyle = rgba([200, 240, 250], 0.25 + 0.1 * Math.sin(t * 2)); ctx.lineWidth = 1; ctx.beginPath();
+    V[RN].forEach((v, j) => j ? ctx.lineTo(v.p[0], v.p[1]) : ctx.moveTo(v.p[0], v.p[1])); ctx.closePath(); ctx.stroke();
+    // reeds swaying on the bank
+    if (!n.G) n.G = Array.from({ length: 44 }, () => ({ a: rnd(0, TAU), s: rnd(0, TAU), l: rnd(6, 13), r: rnd(1.1, 1.2) }));
+    for (const g of n.G) { const p = proj(n.x + Math.cos(g.a) * n.rx * g.r, n.h, n.z + Math.sin(g.a) * n.rz * g.r), f = p[2] * S;
+      ctx.strokeStyle = 'rgba(86,160,110,0.75)'; ctx.lineWidth = 1; ctx.beginPath();
+      for (let b = -1; b <= 1; b++) { const sw = Math.sin(t * 1.5 + g.s + b) * 2.2 * f; ctx.moveTo(p[0] + b * 1.6 * f, p[1]); ctx.quadraticCurveTo(p[0] + b * 2 * f, p[1] - g.l * f * 0.6, p[0] + b * 3 * f + sw, p[1] - g.l * f * (b ? 0.85 : 1)); }
+      ctx.stroke(); }
+  }
+  const FACES = [[0,1,3,2],[4,5,7,6],[0,1,5,4],[2,3,7,6],[0,2,6,4],[1,3,7,5]];
+  function building(n) {
+    const pts = [];
+    for (const dx of [-n.w, n.w]) for (const dy of [0, n.h]) for (const dz of [-n.d, n.d]) pts.push(proj(n.x + dx, dy, n.z + dz));
+    const faces = FACES.map(f => ({ f, d: f.reduce((s, i) => s + pts[i][3], 0) / 4 })).sort((a, b) => b.d - a.d);
+    for (const { f } of faces) {
+      ctx.beginPath(); f.forEach((i, k) => ctx[k ? 'lineTo' : 'moveTo'](pts[i][0], pts[i][1])); ctx.closePath();
+      ctx.fillStyle = rgba(n.c, 0.07 + n.hot * 0.08); ctx.fill();
+      ctx.strokeStyle = rgba(n.c, 0.45 + n.hot * 0.5); ctx.lineWidth = 1; ctx.stroke();
+    }
+    for (let r = 1; r * 20 < n.h - 6; r++) {
+      const [wx, wy, wf] = proj(n.x, r * 20, n.z - n.d);
+      ctx.fillStyle = rgba(n.c, 0.3 + n.hot * 0.5); ctx.fillRect(wx - 5 * wf * S, wy - 1.2 * wf * S, 10 * wf * S, 2.4 * wf * S);
+    }
+  }
+  function badge(n, x, y, f) {
+    const r = 15 * f * S;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fillStyle = 'rgba(10,17,32,0.92)'; ctx.fill();
+    ctx.strokeStyle = rgba(n.c, 0.7 + n.hot * 0.3); ctx.lineWidth = 1.2; ctx.stroke();
+    glyph(n.g, x, y, 13 * f * S, rgba(n.c, 1)); return r;
+  }
+  function tooltip(n, x, y) {
+    ctx.font = `600 12px Inter, system-ui, sans-serif`; const w1 = ctx.measureText(n.name).width;
+    ctx.font = `400 11px ${MONO}`; const w2 = ctx.measureText(n.tip).width;
+    const w = Math.max(w1, w2) + 24, h = 46, tx = Math.min(Math.max(8, x - w / 2), W - w - 8), ty2 = Math.max(8, y - h - 22);
+    ctx.beginPath(); ctx.roundRect ? ctx.roundRect(tx, ty2, w, h, 9) : ctx.rect(tx, ty2, w, h);
+    ctx.fillStyle = 'rgba(14,23,41,0.96)'; ctx.fill(); ctx.strokeStyle = rgba(n.c, 0.7); ctx.lineWidth = 1; ctx.stroke();
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = '#e7eef9'; ctx.font = `600 12px Inter, system-ui, sans-serif`; ctx.fillText(n.name, tx + 12, ty2 + 19);
+    ctx.fillStyle = rgba(n.c, 1); ctx.font = `400 11px ${MONO}`; ctx.fillText(n.tip, tx + 12, ty2 + 36);
+  }
+  const PACKETS = [];
+  for (let i = 0; i < NODES.length - 1; i++) for (let k = 0; k < 2; k++) PACKETS.push({ seg: i, u: Math.random(), sp: .18 + Math.random() * .12, ch: bitc() });
+
+  let last = performance.now(), t0 = last, visible = true, raf = 0;
+  function draw(now, move) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now; const T = (now - t0) / 1000;
+    if (move) { yaw += (ty + Math.sin(T * 0.2) * 0.06 - yaw) * 0.05; pitch += (tp - pitch) * 0.05; }
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalAlpha = mobile ? 0.38 : 1; ctx.globalCompositeOperation = 'source-over';
+
+    ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(120,150,200,0.10)';
+    for (let x = -540; x <= 560; x += 60) { const a = proj(x, 0, -260), b = proj(x, 0, 260); ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
+    for (let z = -260; z <= 260; z += 60) { const a = proj(-540, 0, z), b = proj(560, 0, z); ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
+
+    ctx.setLineDash([4, 6]); ctx.strokeStyle = 'rgba(59,160,255,0.3)'; ctx.beginPath();
+    NODES.forEach((n, i) => { const p = proj(n.x, 1, n.z); ctx[i ? 'lineTo' : 'moveTo'](p[0], p[1]); }); ctx.stroke(); ctx.setLineDash([]);
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    for (const pk of PACKETS) {
+      if (move) { pk.u += pk.sp * dt; if (pk.u > 1) { pk.u -= 1; pk.ch = bitc(); } }
+      const a = NODES[pk.seg], b = NODES[pk.seg + 1], c = [0, 1, 2].map(i => a.c[i] + (b.c[i] - a.c[i]) * pk.u);
+      font(9, proj(a.x, 0, a.z)[2]); bit(a.x + (b.x - a.x) * pk.u, 5, a.z + (b.z - a.z) * pk.u, pk.ch, c, 0.9);
+    }
+
+    const order = NODES.map(n => ({ n, d: proj(n.x, 0, n.z)[3] })).sort((a, b) => b.d - a.d);
+    for (const n of NODES) if (n.fx === 'lake') drawLake(n);
+    for (const { n } of order) if (n.fx !== 'lake') building(n);
+
+    ctx.globalCompositeOperation = 'lighter'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    for (const { n } of order) {
+      if (move) n.t += dt * (1 + n.hot * 1.2);
+      FX[n.fx](n, n.t, 0.78 + n.hot * 0.22, dt, move);
+    }
+
+    // governance shield with orbiting catalog bits
+    const gyw = GOV.y + Math.sin(T * 1.2) * 6, [gx, gy, gf] = proj(GOV.x, gyw, GOV.z);
+    font(9, gf);
+    for (let k = 0; k < 16; k++) { const a = T * 0.7 + k / 16 * TAU;
+      bit(GOV.x + Math.cos(a) * 38, gyw + Math.sin(a) * 9, GOV.z + Math.sin(a) * 34, k % 3 ? '0' : '1', GOV.c, (0.35 + 0.35 * (Math.sin(a) + 1) / 2) * (0.8 + GOV.hot * 0.2)); }
+    ctx.globalCompositeOperation = 'source-over';
+
+    let hit = null; const labels = [];
+    for (const n of NODES) {
+      const [bx, by, bf] = proj(n.x, Math.max(n.h * 0.55, 8), n.z - n.d - 1);
+      const r = badge(n, bx, by, bf); if (Math.hypot(mx - bx, my - by) < r + 14) hit = n;
+      const [lx, ly] = proj(n.x, 0, n.z - n.d - 2); labels.push([n, lx, ly + 16]);
+    }
+    const gr = badge(GOV, gx, gy, gf); if (Math.hypot(mx - gx, my - gy) < gr + 14) hit = GOV;
+    if (!mobile) {
+      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic'; ctx.font = `500 11px ${MONO}`;
+      for (const [n, lx, ly] of labels) { ctx.fillStyle = rgba(n.c, 0.8 + n.hot * 0.2); ctx.fillText(n.name, lx, ly); }
+      ctx.fillStyle = rgba(GOV.c, 0.75); ctx.fillText(GOV.name, gx, gy - 46 * gf * S);
+    }
+    hovered = hit;
+    for (const n of [...NODES, GOV]) n.hot += ((n === hovered ? 1 : 0) - n.hot) * 0.12;
+    if (hovered && !mobile) { const [hx, hy] = hovered === GOV ? [gx, gy - 30] : proj(hovered.x, hovered.h + 80, hovered.z); tooltip(hovered, hx, hy); }
+  }
+  function loop(now) { draw(now, true); raf = visible && !document.hidden ? requestAnimationFrame(loop) : 0; }
+  const start = () => { if (!reduce && !raf && visible && !document.hidden) { last = performance.now(); raf = requestAnimationFrame(loop); } };
+
+  resize();
+  if (reduce) { NODES.forEach(n => n.t = 2.5); draw(performance.now(), false); } else start();
+  addEventListener('resize', () => { resize(); if (reduce) draw(performance.now(), false); });
+  hero.addEventListener('mousemove', e => {
+    const r = hero.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top;
+    ty = BASE_YAW + (mx / W - 0.5) * 0.5; tp = BASE_PITCH + (my / H - 0.5) * 0.22;
+    if (reduce) draw(performance.now(), false);
+  });
+  hero.addEventListener('mouseleave', () => { mx = my = -1e4; ty = BASE_YAW; tp = BASE_PITCH; });
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; start(); }).observe(hero);
+  document.addEventListener('visibilitychange', start);
+})();
+</script>
+</body>
+</html>
