@@ -42,7 +42,7 @@
   --bg:#faf8f4; --bg-2:#f4f1eb; --card:#ffffff; --tile:#f7f5f0;
   --ink:#141414; --ink-2:#2b2b2b; --muted:#5d6271; --dim:#8a8f9c;
   --line:#e8e3da; --line-2:#dad4c8;
-  --accent:#3b5bfd; --green:#16a34a;
+  --accent:#0369a1; --green:#16a34a;
   --dark:#141414;
   --max:1180px;
   --display:'Inter Tight','Inter',system-ui,sans-serif;
@@ -84,11 +84,11 @@ header.scrolled{border-bottom-color:var(--line)}
 .hero{padding:120px 0 150px;text-align:center;overflow:hidden;
   background:
     radial-gradient(55% 40% at 50% 46%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%),
-    linear-gradient(180deg,#faf8f4 0%,#e3e7fb 16%,#a9b9ff 34%,#6f8dff 50%,#b38cf5 66%,#ef86d8 80%,#f472b6 90%,#f0507e 100%);}
+    linear-gradient(180deg,#faf8f4 0%,#e4f3ef 16%,#b9e8de 32%,#86d9e6 48%,#4fbfe8 64%,#1f97d4 80%,#0b6fae 92%,#0a4f86 100%);}
 .hero .eyebrow{margin-bottom:22px}
 .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,6.4vw,82px);line-height:1.02;letter-spacing:-.04em;max-width:1000px;margin:0 auto 24px;color:#111}
 .hero .lede{font-size:clamp(17px,1.6vw,19px);color:#1f2230;max-width:660px;margin:0 auto 40px;line-height:1.6}
-.prompt{max-width:780px;margin:0 auto;background:#fff;border-radius:26px;box-shadow:0 30px 70px -30px rgba(30,20,90,.45);padding:22px 22px 16px;text-align:left}
+.prompt{max-width:780px;margin:0 auto;background:#fff;border-radius:26px;box-shadow:0 30px 70px -30px rgba(8,47,73,.5);padding:22px 22px 16px;text-align:left}
 .prompt-text{font-family:var(--mono);font-size:14.5px;color:var(--ink-2);line-height:1.7;padding:0 4px}
 .prompt-text .c{color:var(--dim)}
 .prompt-row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:18px;flex-wrap:wrap}
@@ -127,9 +127,9 @@ header.scrolled{border-bottom-color:var(--line)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font-size:12.5px;padding:4px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink-2)}
 .panel{position:relative;border-radius:16px;overflow:hidden;min-height:380px;display:flex;align-items:center;justify-content:center;padding:36px}
-.panel.p1{background:linear-gradient(135deg,#9aa9ff 0%,#6f84ff 45%,#a6b4ff 100%)}
-.panel.p2{background:linear-gradient(140deg,#7f97ff 0%,#a78bfa 50%,#f0a4d8 100%)}
-.panel.p3{background:linear-gradient(135deg,#6aa6ff 0%,#7c8cff 55%,#e48ae6 100%)}
+.panel.p1{background:linear-gradient(135deg,#7dd3c0 0%,#38b2ac 45%,#5ec4d8 100%)}
+.panel.p2{background:linear-gradient(140deg,#7cc7f0 0%,#2f8fd0 55%,#1d6fae 100%)}
+.panel.p3{background:linear-gradient(135deg,#5eb8e6 0%,#2aa59b 55%,#8fd6b8 100%)}
 .win{width:100%;max-width:440px;background:#fbfaf7;border-radius:14px;box-shadow:0 30px 60px -25px rgba(20,20,60,.5);overflow:hidden}
 .win-bar{display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-bottom:1px solid var(--line);background:#fff}
 .win-bar i{width:9px;height:9px;border-radius:50%;background:var(--line-2)}
@@ -159,7 +159,7 @@ header.scrolled{border-bottom-color:var(--line)}
 .commit{position:relative;padding-bottom:38px}
 .commit:last-child{padding-bottom:0}
 .commit::before{content:"";position:absolute;left:-30px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--line-2)}
-.commit.head::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 5px rgba(59,91,253,.12)}
+.commit.head::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 5px rgba(3,105,161,.12)}
 .c-meta{font-family:var(--mono);font-size:12.5px;color:var(--dim);margin-bottom:6px}
 .c-meta .ref{color:var(--green);font-weight:500}
 .commit h3{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.015em;margin-bottom:2px}
@@ -206,9 +206,9 @@ details p a{color:var(--accent);text-decoration:underline;text-underline-offset:
 /* contact (dark gradient band) */
 .contact{background:var(--dark);color:#fff;text-align:center;padding:120px 0 150px;overflow:hidden;
   background:
-    radial-gradient(60% 55% at 50% 115%,#f0507e 0%,rgba(240,80,126,0) 60%),
-    radial-gradient(70% 65% at 50% 100%,#ef86d8 0%,rgba(239,134,216,0) 62%),
-    radial-gradient(90% 80% at 50% 92%,#6f8dff 0%,rgba(111,141,255,0) 65%),
+    radial-gradient(60% 55% at 50% 115%,#2dd4bf 0%,rgba(45,212,191,0) 60%),
+    radial-gradient(70% 65% at 50% 100%,#0ea5e9 0%,rgba(14,165,233,0) 62%),
+    radial-gradient(90% 80% at 50% 92%,#1e3a8a 0%,rgba(30,58,138,0) 65%),
     var(--dark);}
 .contact h2{color:#fff;margin-bottom:14px}
 .contact p{color:#d6d8e0;font-size:17px;max-width:560px;margin:0 auto 34px}
@@ -316,12 +316,12 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
     </div>
     <div class="features">
       <div class="feature reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5" opacity=".55"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5" opacity=".55"/></svg>
         <h3>Lakehouse architecture</h3>
         <p>Medallion Lakehouses on Azure Databricks, Delta Lake and ADLS Gen2, with Bronze, Silver and Gold layers built for analytics and ML.</p>
       </div>
       <div class="feature reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
         <h3>Batch, streaming and CDC</h3>
         <p>Pipelines with Azure Data Factory, Event Hubs, Kafka, PySpark and SQL, from REST APIs and core databases to Delta tables.</p>
       </div>
@@ -331,7 +331,7 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
         <p>Moving workloads to OneLake, Fabric Warehouse and Power BI Direct Lake semantic models, with production cutovers that keep history intact.</p>
       </div>
       <div class="feature reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
         <h3>Governance built in</h3>
         <p>Unity Catalog and Microsoft Purview, RBAC, PII masking, lineage and data contracts, plus CI/CD in Azure DevOps and Terraform.</p>
       </div>
@@ -393,7 +393,7 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
               <div class="big">18s → &lt;6s</div>
               <div class="big-sub">Semantic model query time</div>
               <div class="bar-row"><span>Before</span><div class="bar"><b style="width:100%;background:#c9c3b8"></b></div><span class="v">18s</span></div>
-              <div class="bar-row"><span>After</span><div class="bar"><b style="width:31%;background:linear-gradient(90deg,#3b5bfd,#8b5cf6)"></b></div><span class="v">&lt;6s</span></div>
+              <div class="bar-row"><span>After</span><div class="bar"><b style="width:31%;background:linear-gradient(90deg,#0369a1,#14b8a6)"></b></div><span class="v">&lt;6s</span></div>
             </div>
           </div>
         </div>
@@ -540,8 +540,8 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
     <h2 class="reveal">Certifications &amp; education</h2>
     <div class="creds">
       <div class="cred reveal">
-        <div class="cred-art" style="--g1:#3b82f6;--g2:#a855f7">
-          <svg viewBox="0 0 64 64" fill="none" stroke="#c7d2fe" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="26" r="14"/><path d="M25 26l5 5 9-9"/><path d="M24 38l-4 18 12-6 12 6-4-18"/></svg>
+        <div class="cred-art" style="--g1:#0ea5e9;--g2:#2563eb">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#bae6fd" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="26" r="14"/><path d="M25 26l5 5 9-9"/><path d="M24 38l-4 18 12-6 12 6-4-18"/></svg>
         </div>
         <div class="eyebrow">Certifications</div>
         <h3>Certified on Microsoft Fabric and AWS</h3>
@@ -563,8 +563,8 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
         </ul>
       </div>
       <div class="cred reveal">
-        <div class="cred-art" style="--g1:#ec4899;--g2:#8b5cf6">
-          <svg viewBox="0 0 64 64" fill="none" stroke="#fbcfe8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="8" width="36" height="48" rx="4"/><path d="M22 20h20M22 28h20M22 36h12"/><circle cx="44" cy="46" r="6"/></svg>
+        <div class="cred-art" style="--g1:#14b8a6;--g2:#0ea5e9">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#99f6e4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="8" width="36" height="48" rx="4"/><path d="M22 20h20M22 28h20M22 36h12"/><circle cx="44" cy="46" r="6"/></svg>
         </div>
         <div class="eyebrow">Publication &amp; honors</div>
         <h3>Research and recognition</h3>
