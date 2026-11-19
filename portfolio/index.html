@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="Lakehouse and warehouse platforms on Azure Databricks, Microsoft Fabric, ADF and Synapse.">
 <meta name="theme-color" content="#faf8f4">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111111'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='26' fill='%23ffffff'%3E~%2F%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230369a1'/%3E%3Cstop offset='1' stop-color='%2314b8a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='26' fill='%23ffffff'%3ENS%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,8 +74,6 @@ section{position:relative;padding:110px 0}
 header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
 header.scrolled{border-bottom-color:var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-family:var(--mono);font-weight:600;font-size:15px}
-.logo b{color:var(--accent);font-weight:600}
 .nav-links{display:flex;gap:30px;font-size:14.5px;color:var(--ink-2)}
 .nav-links a:hover{color:var(--accent)}
 .nav-cta{display:flex;gap:10px}
@@ -257,7 +255,9 @@ details p a{color:var(--accent);text-decoration:underline;text-underline-offset:
 footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px}
 .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
 .foot h4{color:#fff;font-size:14.5px;font-weight:600;margin-bottom:14px}
-.foot a,.foot span{display:block;color:#b9bdc8;margin-bottom:10px}
+.foot a,.foot > div > span{display:block;color:#b9bdc8;margin-bottom:10px}
+.foot .logo{color:#fff;margin-bottom:0}
+.foot .mark{display:grid;margin:0;color:#fff}
 .foot a:hover{color:#fff}
 .foot .logo{color:#fff}
 .copy{border-top:1px solid #2a2a2a;margin-top:40px;padding-top:22px;font-size:13px;color:#8b8f99;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
@@ -291,13 +291,125 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
   .big{font-size:38px}
   br.d{display:none}
 }
+
+/* ===== UX upgrade ===== */
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em;color:var(--ink)}
+.mark{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#0369a1,#14b8a6);color:#fff;font-size:12.5px;font-weight:800;letter-spacing:.02em;box-shadow:0 6px 14px -8px rgba(3,105,161,.8)}
+footer .logo{color:#fff}
+.nav-links a{position:relative;padding:4px 0;transition:color .2s}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transition:transform .25s}
+.nav-links a.active{color:var(--accent)}
+.nav-links a.active::after,.nav-links a:hover::after{transform:scaleX(1)}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:100;background:linear-gradient(90deg,#0369a1,#14b8a6);transform-origin:0 50%;transform:scaleX(0)}
+
+.hero{padding:64px 0 96px}
+.hero h1{font-size:clamp(40px,5.6vw,74px);margin-bottom:20px}
+.hero .lede{margin-bottom:34px}
+.hero .stats{max-width:1080px;margin:0 auto 34px}
+.hl{background-image:linear-gradient(transparent 64%,rgba(20,184,166,.38) 64%,rgba(20,184,166,.38) 92%,transparent 92%);background-repeat:no-repeat;background-size:0% 100%;animation:hl 1.1s .5s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes hl{to{background-size:100% 100%}}
+.stat{transition:transform .25s,box-shadow .25s}
+.stat:hover{transform:translateY(-4px);box-shadow:0 22px 40px -26px rgba(8,47,73,.7)}
+.btn .arr{transition:transform .2s}
+.btn:hover .arr{transform:translateX(3px)}
+
+.glance{padding:56px 0 0}
+.glance-card{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px 24px;box-shadow:0 20px 50px -40px rgba(8,47,73,.5)}
+.glance-title span{display:block;font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em}
+.glance-title small{font-size:12.5px;color:var(--dim)}
+.glance-grid{display:grid;grid-template-columns:1fr 1.5fr 1.3fr 1.5fr;gap:0}
+.glance-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.glance-grid div{padding:2px 20px;border-left:1px solid var(--line)}
+.glance-grid div:first-child{padding-left:0;border-left:0}
+.glance-grid span{display:block;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.glance-grid b{font-size:14.5px;font-weight:600;line-height:1.4;color:var(--ink)}
+
+.plain{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line-2);font-size:14.5px;color:var(--ink-2)}
+.plain span{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:rgba(3,105,161,.08);border-radius:999px;padding:3px 9px;margin-right:8px}
+.feature{transition:border-color .25s,transform .25s,box-shadow .25s}
+.feature:hover{border-color:var(--line-2);transform:translateY(-3px);box-shadow:0 24px 40px -34px rgba(0,0,0,.35)}
+.feature svg{transition:transform .3s}
+.feature:hover svg{transform:scale(1.12) rotate(-4deg)}
+
+/* case study visuals animate in */
+.case{transition:box-shadow .3s}
+.case:hover{box-shadow:0 30px 60px -45px rgba(8,47,73,.55)}
+.win{animation:float 7s ease-in-out infinite}
+.case.flip .win{animation-delay:-3.5s}
+@keyframes float{50%{transform:translateY(-8px)}}
+.loglines > div{opacity:0;transform:translateX(-8px);transition:opacity .45s,transform .45s}
+.case.in .loglines > div{opacity:1;transform:none}
+.case.in .loglines > div:nth-child(2){transition-delay:.18s}.case.in .loglines > div:nth-child(3){transition-delay:.36s}
+.case.in .loglines > div:nth-child(4){transition-delay:.54s}.case.in .loglines > div:nth-child(5){transition-delay:.72s}
+.case.in .loglines > div:nth-child(n+6){transition-delay:.95s}
+.bar b{transition:width 1.4s cubic-bezier(.2,.7,.2,1) .3s}
+.case:not(.in) .bar b{width:0!important}
+.pipe span{transition:box-shadow .3s,transform .3s}
+.case.in .pipe span{animation:lit 3.2s ease-in-out infinite}
+.case.in .pipe span:nth-of-type(2){animation-delay:.4s}.case.in .pipe span:nth-of-type(3){animation-delay:.8s}.case.in .pipe span:nth-of-type(4){animation-delay:1.2s}
+@keyframes lit{0%,60%,100%{transform:none;box-shadow:none}20%{transform:translateY(-2px);box-shadow:0 0 0 3px rgba(20,184,166,.25)}}
+
+/* timeline fill */
+.log::after{content:"";position:absolute;left:6px;top:10px;width:2px;height:calc((100% - 20px) * var(--p,0));background:linear-gradient(#0369a1,#14b8a6);border-radius:2px}
+.commit.in::before{border-color:var(--accent)}
+.commit.in.head::before{background:var(--accent)}
+
+/* skills filter */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.fchip{font:inherit;font-size:14px;font-weight:500;color:var(--ink-2);background:#fff;border:1px solid var(--line-2);border-radius:999px;padding:8px 14px;cursor:pointer;transition:all .2s}
+.fchip em{font-style:normal;font-size:12px;color:var(--dim);margin-left:4px}
+.fchip:hover{border-color:var(--ink)}
+.fchip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.fchip.on em{color:#cbd5e1}
+.tiles{margin-top:22px}
+.tile{transition:opacity .3s,transform .3s,border-color .2s}
+.tile.off{display:none}
+.tile .mono-ic{transition:transform .25s}
+.tile:hover .mono-ic{transform:scale(1.1)}
+
+/* contact copy */
+.mail-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.copy-btn{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13px;font-weight:500;color:var(--ink-2);background:var(--tile);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;transition:all .2s}
+.copy-btn:hover{border-color:var(--ink)}
+.copy-btn.done{background:#dcfce7;border-color:#86efac;color:#166534}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--ink);color:#fff;font-size:14px;padding:10px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:all .3s;z-index:120}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.to-top{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 24px -14px rgba(0,0,0,.4);opacity:0;transform:translateY(10px);pointer-events:none;transition:all .3s;z-index:90}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{border-color:var(--ink)}
+.mbar{display:none}
+
+@media (max-width:1060px){.glance-grid{grid-template-columns:repeat(2,1fr);row-gap:16px}.glance-grid div:nth-child(3){border-left:0}.glance-grid div:first-child{border-left:0}}
+@media (max-width:560px){
+  .hero{padding:40px 0 70px}
+  .hl{background-image:none;color:#0f766e;animation:none}
+  body{padding-bottom:84px}
+  footer{padding-bottom:20px}
+  .glance-grid{grid-template-columns:1fr}
+  .glance-grid div{border-left:0;padding:0}
+  .glance-btn{justify-content:center}
+  .to-top{display:none}
+  .mbar{display:flex;gap:8px;position:fixed;left:12px;right:12px;bottom:12px;z-index:95;padding:8px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;box-shadow:0 16px 40px -20px rgba(0,0,0,.45);transform:translateY(120%);transition:transform .35s}
+  .mbar.show{transform:none}
+  .mbar .btn{flex:1;justify-content:center}
+  .toast{bottom:84px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hl{animation:none;background-size:100% 100%}
+  .win,.case.in .pipe span{animation:none}
+  .loglines > div{opacity:1;transform:none;transition:none}
+  .bar b{transition:none}
+  .case:not(.in) .bar b{width:auto!important}
+}
 </style>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 
 <header>
   <nav class="wrap nav" aria-label="Main">
-    <a href="#top" class="logo">~/narendra<b>.sykam</b></a>
+    <a href="#top" class="logo" aria-label="Narendra Sykam, home"><span class="mark">NS</span>Narendra Sykam</a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#work">Case Studies</a>
@@ -316,10 +428,18 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <div class="avail"><i></i>Open to new opportunities · Dallas-Fort Worth, TX</div>
+    <div class="avail"><i></i>Open to new opportunities</div>
     <div class="eyebrow">Narendra Sykam · Senior Azure Data Engineer</div>
-    <h1>I build Lakehouse platforms for analytics &amp; AI teams</h1>
+    <h1>I build <span class="hl">Lakehouse platforms</span> for analytics &amp; AI teams</h1>
     <p class="lede">8+ years designing pipelines, warehouses and Lakehouses on Azure Databricks, Microsoft Fabric, Azure Data Factory and Synapse, from raw ingestion to the Power BI models leadership uses every day.</p>
+    <div class="stats">
+      <div class="stat"><div class="num"><span class="cu" data-to="8">8</span><small>+ yrs</small></div><p>Data platforms for banking, payments and automotive</p></div>
+      <div class="stat"><div class="num"><span class="cu" data-to="2" data-suffix="M">2M</span><small>+/hr</small></div><p>Telemetry events streamed into Delta Lake</p></div>
+      <div class="stat"><div class="num"><span class="cu" data-to="40">40</span><small>%</small></div><p>Faster pipeline releases across 5 teams</p></div>
+      <div class="stat"><div class="num"><span class="cu" data-to="6" data-prefix="&lt;" data-from="18">&lt;6</span><small>s</small></div><p>Power BI queries, down from 18 seconds</p></div>
+      <div class="stat"><div class="num"><span class="cu" data-to="99.9" data-dec="1">99.9</span><small>%</small></div><p>SLA held with 24/7 production ownership</p></div>
+      <div class="stat"><div class="num"><span class="cu" data-to="32">32</span><small>%</small></div><p>Lower refresh latency with CDC pipelines</p></div>
+    </div>
     <div class="prompt callin">
       <div class="prompt-label">Where I usually get called in</div>
       <div class="callin-grid">
@@ -343,24 +463,32 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
         <span>Sound familiar?</span>
         <div class="btns">
           <a href="#work" class="btn btn-light btn-sm">See my work</a>
-          <a href="#contact" class="btn btn-dark btn-sm">Let's talk</a>
+          <a href="#contact" class="btn btn-dark btn-sm">Let's talk <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- AT A GLANCE -->
+<section class="glance" aria-label="At a glance">
+  <div class="wrap">
+    <div class="glance-card reveal">
+      <div class="glance-head"><div class="glance-title"><span>At a glance</span><small>The 30-second version</small></div>
+      <a href="Narendra_Sykam_Resume.pdf" class="btn btn-dark glance-btn" download>Download resume
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg></a></div>
+      <div class="glance-grid">
+        <div><span>Experience</span><b>8+ years in data engineering</b></div>
+        <div><span>Specialty</span><b>Azure data platforms: Databricks, Fabric, Data Factory, Synapse</b></div>
+        <div><span>Industries</span><b>Banking, financial services, payments, automotive</b></div>
+        <div><span>Certifications</span><b>Microsoft Fabric Analytics Engineer · AWS Data Engineer</b></div>
       </div>
     </div>
-    <div class="stats">
-      <div class="stat"><div class="num">8<small>+ yrs</small></div><p>Data platforms for banking, payments and automotive</p></div>
-      <div class="stat"><div class="num">2M<small>+/hr</small></div><p>Telemetry events streamed into Delta Lake</p></div>
-      <div class="stat"><div class="num">40<small>%</small></div><p>Faster pipeline releases across 5 teams</p></div>
-      <div class="stat"><div class="num">&lt;6<small>s</small></div><p>Power BI queries, down from 18 seconds</p></div>
-      <div class="stat"><div class="num">99.9<small>%</small></div><p>SLA held with 24/7 production ownership</p></div>
-      <div class="stat"><div class="num">32<small>%</small></div><p>Lower refresh latency with CDC pipelines</p></div>
   </div>
 </section>
 
 <!-- WHAT I DO -->
-<section id="about" style="padding-top:96px">
+<section id="about" style="padding-top:70px">
   <div class="wrap">
     <h2 class="reveal">Data platforms that stay fast<br class="d"> and trustworthy as they grow</h2>
     <div class="about-copy reveal">
@@ -372,21 +500,25 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
         <svg viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5" opacity=".55"/></svg>
         <h3>Lakehouse architecture</h3>
         <p>Medallion Lakehouses on Azure Databricks, Delta Lake and ADLS Gen2, with Bronze, Silver and Gold layers built for analytics and ML.</p>
+        <div class="plain"><span>In plain terms</span>One reliable home for a company's data, ready for reports and AI.</div>
       </div>
       <div class="feature reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
         <h3>Batch, streaming and CDC</h3>
         <p>Pipelines with Azure Data Factory, Event Hubs, Kafka, PySpark and SQL, from REST APIs and core databases to Delta tables.</p>
+        <div class="plain"><span>In plain terms</span>Moving data from source systems to analysts, in real time or on a schedule.</div>
       </div>
       <div class="feature reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
         <h3>Microsoft Fabric migrations</h3>
         <p>Moving workloads to OneLake, Fabric Warehouse and Power BI Direct Lake semantic models, with production cutovers that keep history intact.</p>
+        <div class="plain"><span>In plain terms</span>Moving a company's data to Microsoft's newest platform without disrupting reports.</div>
       </div>
       <div class="feature reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
         <h3>Governance built in</h3>
         <p>Unity Catalog and Microsoft Purview, RBAC, PII masking, lineage and data contracts, plus CI/CD in Azure DevOps and Terraform.</p>
+        <div class="plain"><span>In plain terms</span>Keeping data secure, compliant and trustworthy from day one.</div>
       </div>
     </div>
   </div>
@@ -558,31 +690,38 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
   <div class="wrap">
     <h2 class="reveal">Tools I work with</h2>
     <p class="sub reveal">The Azure data stack end to end: ingestion, processing, modeling, governance and delivery.</p>
+    <div class="filters reveal" role="group" aria-label="Filter tools">
+      <button type="button" class="fchip on" data-f="all">All <em>24</em></button>
+      <button type="button" class="fchip" data-f="az">Azure &amp; Fabric <em>8</em></button>
+      <button type="button" class="fchip" data-f="st">Streaming &amp; processing <em>6</em></button>
+      <button type="button" class="fchip" data-f="mo">Modeling &amp; BI <em>3</em></button>
+      <button type="button" class="fchip" data-f="gov">Governance &amp; DevOps <em>7</em></button>
+    </div>
     <div class="tiles">
-      <div class="tile reveal"><div class="mono-ic" style="background:#ef6a4b"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div><b>Azure Databricks</b><span>Lakehouse</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#0d9488"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div><b>Delta Lake</b><span>Storage</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#0284c7"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="5" height="6" rx="1"/><rect x="16" y="9" width="5" height="6" rx="1"/><path d="M8 12h8"/><path d="M13 9l3 3-3 3"/></svg></div><b>Azure Data Factory</b><span>Orchestration</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#16a34a"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div><b>Microsoft Fabric</b><span>OneLake · Warehouse</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#4f46e5"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div><b>Azure Synapse</b><span>Warehouse</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#0369a1"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div><b>ADLS Gen2</b><span>Storage</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#0891b2"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><b>Event Hubs</b><span>Streaming</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#334155"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><b>Apache Kafka</b><span>Streaming</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#d97706"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6"/><path d="M16 6l6 6-6 6"/></svg></div><b>PySpark</b><span>Processing</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#2563eb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6"/><path d="M16 6l6 6-6 6"/></svg></div><b>Python</b><span>Language</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#475569"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6"/><path d="M16 6l6 6-6 6"/></svg></div><b>SQL · T-SQL</b><span>Language</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#ea580c"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12"/><path d="M21 7l-9 5-9-5"/></svg></div><b>dbt</b><span>Modeling</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#0ea5e9"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div><b>Snowflake</b><span>Warehouse</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#ca8a04"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg></div><b>Power BI</b><span>Direct Lake · DAX</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#0e7490"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="5" height="6" rx="1"/><rect x="16" y="9" width="5" height="6" rx="1"/><path d="M8 12h8"/><path d="M13 9l3 3-3 3"/></svg></div><b>Apache Airflow</b><span>Orchestration</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#dc2626"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><b>Unity Catalog</b><span>Governance</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#7c3aed"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><b>Microsoft Purview</b><span>Lineage</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#1d4ed8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10"/><path d="M18 10c0 4-6 4-10 7"/></svg></div><b>Azure DevOps</b><span>CI/CD</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#6d28d9"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10"/><path d="M18 10c0 4-6 4-10 7"/></svg></div><b>Terraform</b><span>Infra as code</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#111827"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10"/><path d="M18 10c0 4-6 4-10 7"/></svg></div><b>GitHub Actions</b><span>CI/CD</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#0369a1"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div><b>Cosmos DB</b><span>NoSQL</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#ca8a04"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><b>Azure Functions</b><span>Event-driven</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#be185d"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div><b>Key Vault</b><span>Security</span></div>
-      <div class="tile reveal"><div class="mono-ic" style="background:#0d9488"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg></div><b>Azure Monitor</b><span>Observability</span></div>
+      <div class="tile reveal" data-cat="az"><div class="mono-ic" style="background:#ef6a4b"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div><b>Azure Databricks</b><span>Lakehouse</span></div>
+      <div class="tile reveal" data-cat="az"><div class="mono-ic" style="background:#0d9488"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div><b>Delta Lake</b><span>Storage</span></div>
+      <div class="tile reveal" data-cat="az"><div class="mono-ic" style="background:#0284c7"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="5" height="6" rx="1"/><rect x="16" y="9" width="5" height="6" rx="1"/><path d="M8 12h8"/><path d="M13 9l3 3-3 3"/></svg></div><b>Azure Data Factory</b><span>Orchestration</span></div>
+      <div class="tile reveal" data-cat="az"><div class="mono-ic" style="background:#16a34a"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div><b>Microsoft Fabric</b><span>OneLake · Warehouse</span></div>
+      <div class="tile reveal" data-cat="az"><div class="mono-ic" style="background:#4f46e5"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div><b>Azure Synapse</b><span>Warehouse</span></div>
+      <div class="tile reveal" data-cat="az"><div class="mono-ic" style="background:#0369a1"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div><b>ADLS Gen2</b><span>Storage</span></div>
+      <div class="tile reveal" data-cat="st"><div class="mono-ic" style="background:#0891b2"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><b>Event Hubs</b><span>Streaming</span></div>
+      <div class="tile reveal" data-cat="st"><div class="mono-ic" style="background:#334155"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><b>Apache Kafka</b><span>Streaming</span></div>
+      <div class="tile reveal" data-cat="st"><div class="mono-ic" style="background:#d97706"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6"/><path d="M16 6l6 6-6 6"/></svg></div><b>PySpark</b><span>Processing</span></div>
+      <div class="tile reveal" data-cat="st"><div class="mono-ic" style="background:#2563eb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6"/><path d="M16 6l6 6-6 6"/></svg></div><b>Python</b><span>Language</span></div>
+      <div class="tile reveal" data-cat="st"><div class="mono-ic" style="background:#475569"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6"/><path d="M16 6l6 6-6 6"/></svg></div><b>SQL · T-SQL</b><span>Language</span></div>
+      <div class="tile reveal" data-cat="mo"><div class="mono-ic" style="background:#ea580c"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12"/><path d="M21 7l-9 5-9-5"/></svg></div><b>dbt</b><span>Modeling</span></div>
+      <div class="tile reveal" data-cat="mo"><div class="mono-ic" style="background:#0ea5e9"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div><b>Snowflake</b><span>Warehouse</span></div>
+      <div class="tile reveal" data-cat="mo"><div class="mono-ic" style="background:#ca8a04"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg></div><b>Power BI</b><span>Direct Lake · DAX</span></div>
+      <div class="tile reveal" data-cat="st"><div class="mono-ic" style="background:#0e7490"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="5" height="6" rx="1"/><rect x="16" y="9" width="5" height="6" rx="1"/><path d="M8 12h8"/><path d="M13 9l3 3-3 3"/></svg></div><b>Apache Airflow</b><span>Orchestration</span></div>
+      <div class="tile reveal" data-cat="gov"><div class="mono-ic" style="background:#dc2626"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><b>Unity Catalog</b><span>Governance</span></div>
+      <div class="tile reveal" data-cat="gov"><div class="mono-ic" style="background:#7c3aed"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><b>Microsoft Purview</b><span>Lineage</span></div>
+      <div class="tile reveal" data-cat="gov"><div class="mono-ic" style="background:#1d4ed8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10"/><path d="M18 10c0 4-6 4-10 7"/></svg></div><b>Azure DevOps</b><span>CI/CD</span></div>
+      <div class="tile reveal" data-cat="gov"><div class="mono-ic" style="background:#6d28d9"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10"/><path d="M18 10c0 4-6 4-10 7"/></svg></div><b>Terraform</b><span>Infra as code</span></div>
+      <div class="tile reveal" data-cat="gov"><div class="mono-ic" style="background:#111827"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10"/><path d="M18 10c0 4-6 4-10 7"/></svg></div><b>GitHub Actions</b><span>CI/CD</span></div>
+      <div class="tile reveal" data-cat="az"><div class="mono-ic" style="background:#0369a1"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div><b>Cosmos DB</b><span>NoSQL</span></div>
+      <div class="tile reveal" data-cat="az"><div class="mono-ic" style="background:#ca8a04"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><b>Azure Functions</b><span>Event-driven</span></div>
+      <div class="tile reveal" data-cat="gov"><div class="mono-ic" style="background:#be185d"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div><b>Key Vault</b><span>Security</span></div>
+      <div class="tile reveal" data-cat="gov"><div class="mono-ic" style="background:#0d9488"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg></div><b>Azure Monitor</b><span>Observability</span></div>
     </div>
   </div>
 </section>
@@ -651,9 +790,10 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
     <p class="reveal">I'm open to new Senior Data Engineer opportunities on teams building serious data platforms on Azure.</p>
     <div class="prompt reveal">
       <div class="prompt-label">Email</div>
-      <a class="mail-line" href="mailto:venkatanksykam@gmail.com">venkatanksykam@gmail.com</a>
+      <div class="mail-row"><a class="mail-line" href="mailto:venkatanksykam@gmail.com">venkatanksykam@gmail.com</a>
+        <button type="button" class="copy-btn" data-copy="venkatanksykam@gmail.com" aria-label="Copy email address"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg><span>Copy</span></button></div>
       <div class="prompt-row">
-        <div class="status"><i></i>Open to new opportunities · Dallas-Fort Worth, TX</div>
+        <div class="status"><i></i>Open to new opportunities</div>
         <div class="btns">
           <a href="https://www.linkedin.com/in/venkatanksykam" target="_blank" rel="noopener" class="btn btn-light btn-sm">LinkedIn</a>
           <a href="mailto:venkatanksykam@gmail.com?subject=Senior%20Data%20Engineer%20opportunity" class="btn btn-dark btn-sm">Email me</a>
@@ -667,7 +807,7 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div><a href="#top" class="logo">~/narendra.sykam</a><span style="margin-top:12px">Senior Azure Data Engineer<br>Dallas-Fort Worth, TX</span></div>
+      <div><a href="#top" class="logo" style="display:flex"><span class="mark">NS</span>Narendra Sykam</a><span style="margin-top:14px">Senior Azure Data Engineer<br>Dallas-Fort Worth, TX</span></div>
       <div><h4>Portfolio</h4><a href="#about">About</a><a href="#work">Case studies</a><a href="#experience">Experience</a><a href="#skills">Skills</a></div>
       <div><h4>More</h4><a href="#credentials">Certifications</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
       <div><h4>Connect</h4><a href="mailto:venkatanksykam@gmail.com">Email</a><a href="https://www.linkedin.com/in/venkatanksykam" target="_blank" rel="noopener">LinkedIn</a><a href="Narendra_Sykam_Resume.pdf" download>Resume (PDF)</a></div>
@@ -675,6 +815,13 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
     <div class="copy"><span>© <span id="yr">2026</span> Narendra Sykam</span><span>sykamsolutions.com/portfolio</span></div>
   </div>
 </footer>
+
+<button type="button" class="to-top" aria-label="Back to top"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m-6 6l6-6 6 6"/></svg></button>
+<div class="mbar" aria-label="Quick actions">
+  <a href="mailto:venkatanksykam@gmail.com?subject=Senior%20Data%20Engineer%20opportunity" class="btn btn-dark">Email me</a>
+  <a href="Narendra_Sykam_Resume.pdf" class="btn btn-light" download>Resume</a>
+</div>
+<div class="toast" role="status" aria-live="polite"></div>
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
@@ -685,6 +832,67 @@ if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.1, rootMargin:'0px 0px -40px 0px'});
   els.forEach(el => io.observe(el));
 } else { els.forEach(el => el.classList.add('in')); }
+
+/* ===== UX upgrade ===== */
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (q, r = document) => r.querySelector(q), $$ = (q, r = document) => [...r.querySelectorAll(q)];
+
+  // staggered reveal inside grids
+  $$('.features,.tiles,.creds,.cases').forEach(g => [...g.children].forEach((c, i) => c.style.transitionDelay = (i % 6) * 70 + 'ms'));
+
+  // count-up metrics
+  const fmt = (el, v) => { const d = +el.dataset.dec || 0; el.textContent = (el.dataset.prefix || '') + v.toFixed(d) + (el.dataset.suffix || ''); };
+  const countUp = el => {
+    const to = +el.dataset.to, from = el.dataset.from ? +el.dataset.from : 0, t0 = performance.now(), dur = 1400;
+    const step = now => { const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3); fmt(el, from + (to - from) * e); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  const cus = $$('.cu');
+  if (!reduce && 'IntersectionObserver' in window) {
+    cus.forEach(el => fmt(el, el.dataset.from ? +el.dataset.from : 0));
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { countUp(e.target); io.unobserve(e.target); } }), { threshold: .6 });
+    cus.forEach(el => io.observe(el));
+  }
+
+  // skills filter
+  $$('.fchip').forEach(b => b.addEventListener('click', () => {
+    $$('.fchip').forEach(x => x.classList.toggle('on', x === b));
+    const f = b.dataset.f;
+    $$('.tile').forEach(t => t.classList.toggle('off', f !== 'all' && t.dataset.cat !== f));
+  }));
+
+  // copy email
+  const toast = $('.toast');
+  const say = msg => { toast.textContent = msg; toast.classList.add('show'); clearTimeout(say.t); say.t = setTimeout(() => toast.classList.remove('show'), 1800); };
+  $$('.copy-btn').forEach(b => b.addEventListener('click', async () => {
+    const v = b.dataset.copy;
+    try { await navigator.clipboard.writeText(v); }
+    catch { const ta = document.createElement('textarea'); ta.value = v; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+    b.classList.add('done'); b.querySelector('span').textContent = 'Copied'; say('Email address copied');
+    setTimeout(() => { b.classList.remove('done'); b.querySelector('span').textContent = 'Copy'; }, 2000);
+  }));
+
+  // scroll-driven: progress bar, timeline fill, back-to-top, mobile bar, nav scrollspy
+  const bar = $('.progress'), log = $('.log'), top = $('.to-top'), mbar = $('.mbar'), contact = $('#contact'), hero = $('.hero');
+  const links = $$('.nav-links a'), secs = links.map(a => $(a.getAttribute('href'))).filter(Boolean);
+  let ticking = false;
+  const onScroll = () => {
+    ticking = false;
+    const h = document.documentElement, y = scrollY, max = h.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    if (log) { const r = log.getBoundingClientRect(); log.style.setProperty('--p', Math.max(0, Math.min(1, (innerHeight * .65 - r.top) / r.height)).toFixed(3)); }
+    top.classList.toggle('show', y > 900);
+    const pastHero = hero.getBoundingClientRect().bottom < 0, atContact = contact.getBoundingClientRect().top < innerHeight * .8;
+    mbar.classList.toggle('show', pastHero && !atContact);
+    let cur = null; secs.forEach(s => { if (s.getBoundingClientRect().top < innerHeight * .35) cur = s; });
+    links.forEach(a => a.classList.toggle('active', cur && a.getAttribute('href') === '#' + cur.id));
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener('resize', onScroll);
+  onScroll();
+  top.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+})();
 </script>
 </body>
 </html>
