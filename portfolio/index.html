@@ -81,7 +81,7 @@ header.scrolled{border-bottom-color:var(--line)}
 .nav-cta{display:flex;gap:10px}
 
 /* hero gradient band */
-.hero{padding:120px 0 150px;text-align:center;overflow:hidden;
+.hero{padding:110px 0 110px;text-align:center;overflow:hidden;
   background:
     radial-gradient(55% 40% at 50% 46%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%),
     linear-gradient(180deg,#faf8f4 0%,#e4f3ef 16%,#b9e8de 32%,#86d9e6 48%,#4fbfe8 64%,#1f97d4 80%,#0b6fae 92%,#0a4f86 100%);}
@@ -97,7 +97,8 @@ header.scrolled{border-bottom-color:var(--line)}
 .prompt-row .btns{display:flex;gap:8px}
 
 /* impact strip */
-.impact{padding:70px 0 20px}
+.hero .stats{max-width:1080px;margin:44px auto 0;text-align:left}
+.hero .stat{background:rgba(255,255,255,.86);border-color:rgba(255,255,255,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 18px 40px -28px rgba(8,47,73,.6)}
 .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
 .stat{background:var(--tile);border:1px solid var(--line);border-radius:18px;padding:20px 18px}
 .stat .num{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.035em;line-height:1;margin-bottom:8px}
@@ -289,25 +290,18 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- IMPACT -->
-<section class="impact" aria-label="Impact">
-  <div class="wrap">
     <div class="stats">
-      <div class="stat reveal"><div class="num">8<small>+ yrs</small></div><p>Data platforms for banking, payments and automotive</p></div>
-      <div class="stat reveal"><div class="num">2M<small>+/hr</small></div><p>Telemetry events streamed into Delta Lake</p></div>
-      <div class="stat reveal"><div class="num">40<small>%</small></div><p>Faster pipeline releases across 5 teams</p></div>
-      <div class="stat reveal"><div class="num">&lt;6<small>s</small></div><p>Power BI queries, down from 18 seconds</p></div>
-      <div class="stat reveal"><div class="num">99.9<small>%</small></div><p>SLA held with 24/7 production ownership</p></div>
-      <div class="stat reveal"><div class="num">32<small>%</small></div><p>Lower refresh latency with CDC pipelines</p></div>
-    </div>
+      <div class="stat"><div class="num">8<small>+ yrs</small></div><p>Data platforms for banking, payments and automotive</p></div>
+      <div class="stat"><div class="num">2M<small>+/hr</small></div><p>Telemetry events streamed into Delta Lake</p></div>
+      <div class="stat"><div class="num">40<small>%</small></div><p>Faster pipeline releases across 5 teams</p></div>
+      <div class="stat"><div class="num">&lt;6<small>s</small></div><p>Power BI queries, down from 18 seconds</p></div>
+      <div class="stat"><div class="num">99.9<small>%</small></div><p>SLA held with 24/7 production ownership</p></div>
+      <div class="stat"><div class="num">32<small>%</small></div><p>Lower refresh latency with CDC pipelines</p></div>
   </div>
 </section>
 
 <!-- WHAT I DO -->
-<section id="about">
+<section id="about" style="padding-top:96px">
   <div class="wrap">
     <h2 class="reveal">Data platforms that stay fast<br class="d"> and trustworthy as they grow</h2>
     <div class="about-copy reveal">
