@@ -411,7 +411,7 @@ footer .logo{color:#fff}
 
 /* ===== Bitsy: pixel buddy + Ask-me assistant ===== */
 .to-top{bottom:26px;right:86px}
-.bitsy{position:fixed;left:0;bottom:10px;z-index:85;width:56px;height:63px;pointer-events:none;will-change:transform;display:none}
+.bitsy{position:fixed;left:0;top:0;z-index:85;width:56px;height:63px;pointer-events:none;will-change:transform;display:none}
 .bitsy.on{display:block}
 .bitsy .bz{width:56px;height:63px;cursor:pointer;pointer-events:auto;display:block;overflow:visible;filter:drop-shadow(0 6px 6px rgba(8,47,73,.22))}
 .bitsy .bz:focus-visible{outline:2px solid #0369a1;outline-offset:4px;border-radius:12px}
@@ -451,6 +451,8 @@ footer .logo{color:#fff}
 .bitsy-shadow{position:absolute;left:12px;bottom:-1px;width:32px;height:5px;border-radius:50%;background:rgba(8,47,73,.18);transition:transform .1s}
 .bitsy-bubble{position:absolute;bottom:72px;left:50%;transform:translateX(-50%) scale(.9);transform-origin:bottom center;white-space:nowrap;background:#fff;color:var(--ink);font-size:13px;font-weight:500;padding:8px 12px;border-radius:12px;border:1px solid var(--line);box-shadow:0 10px 24px -14px rgba(0,0,0,.4);opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
 .bitsy-bubble::after{content:"";position:absolute;left:50%;bottom:-6px;width:10px;height:10px;background:#fff;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:translateX(-50%) rotate(45deg)}
+.bitsy.near-top .bitsy-bubble{bottom:auto;top:70px}
+.bitsy.near-top .bitsy-bubble::after{bottom:auto;top:-6px;transform:translateX(-50%) rotate(225deg)}
 .bitsy-bubble.show{opacity:1;transform:translateX(-50%) scale(1);pointer-events:auto;cursor:pointer}
 .bitsy-hide{position:absolute;top:-6px;right:-10px;width:20px;height:20px;border-radius:50%;border:1px solid var(--line-2);background:#fff;color:var(--muted);font-size:12px;line-height:1;display:grid;place-items:center;cursor:pointer;opacity:0;transition:opacity .2s;pointer-events:none}
 .bitsy:hover .bitsy-hide,.bitsy-hide:focus-visible{opacity:1;pointer-events:auto}
@@ -494,7 +496,6 @@ footer .logo{color:#fff}
 .ask-foot{font-size:11.5px;color:var(--dim);text-align:center;padding:0 12px 10px}
 .ask-foot button{font:inherit;color:#0369a1;background:none;border:0;cursor:pointer;text-decoration:underline;padding:0}
 @media (max-width:560px){
-  .bitsy{bottom:80px}
   .ask-fab{bottom:80px;right:14px;width:46px;height:46px}
   .ask-chips{display:none}
   .ask-panel{right:12px;bottom:12px}
@@ -1364,26 +1365,34 @@ if ('IntersectionObserver' in window) {
   const W = 56;
   const mobile = () => innerWidth < 560;
 
-  const st = { x: 40, y: 0, vy: 0, dir: 1, mode: 'walk', target: 300, until: 0, frame: 'idle', lastInput: performance.now(),
-               runUntil: 0, nextJump: 0, waving: false, lastBit: 0 };
+  /* Bitsy hops between "steps": headings, cards and text blocks on the page.
+     It rides on its current step while you scroll and jumps to the next one,
+     faster the faster you scroll. With nothing to stand on it waits on the floor. */
+  const STEP_SEL = 'main h1, main h2, main h3, .stat, .ci, .feature, .case, .proj, .commit, .cred, .tile, .prompt, main details, .glance';
+  const H = 63, HEADER = 64;
+  let steps = [];
+  const collect = () => { steps = [...document.querySelectorAll(STEP_SEL)].filter(n => !n.closest('.ask-panel, .bitsy, .hero-visual')); };
+  const band = () => ({ top: HEADER + H + 14, bottom: innerHeight - (mobile() ? 86 : 14) });
+  const maxX = () => innerWidth - W - (mobile() ? 70 : 104);
+  const usable = r => r.width > 70 && r.height > 0 && r.right - 20 > 8 && r.left + 20 < maxX();
+  const footOf = n => n ? n.getBoundingClientRect().top : band().bottom + 4;
+
+  const st = { plat: null, off: 0, hop: null, dir: 1, mode: 'idle', walkTo: 0, until: 0, frame: 'idle',
+               lastInput: performance.now(), waving: false, lastBit: 0, nextHop: 0, nextPoke: 0 };
   let raf = 0, last = performance.now(), active = false;
+  let scrollV = 0, scrollDir = 1, lastScrollAt = 0, lastY = scrollY, lastT = performance.now();
 
   function setVisible(on) {
     active = on;
     el.classList.toggle('on', on);
     back.hidden = on;
-    if (on) { st.x = mobile() ? 16 : Math.min(innerWidth * 0.2, 200); loopStart(); }
+    if (on) { collect(); st.plat = pick(0, innerHeight * 0.68) || null; st.off = 20; st.hop = null; loopStart(); }
   }
   function say(text, ms = 5000) {
     speech.textContent = text;
     speech.classList.add('show');
     clearTimeout(say.t);
     say.t = setTimeout(() => speech.classList.remove('show'), ms);
-  }
-  function jump(power = 260) {
-    if (st.y > 0 || st.mode === 'sit') return;
-    st.vy = power;
-    st.mode = 'jump';
   }
   function emitBit() {
     const b = document.createElement('span');
@@ -1395,55 +1404,120 @@ if ('IntersectionObserver' in window) {
     document.body.appendChild(b);
     setTimeout(() => b.remove(), 1300);
   }
-  function pickTarget() {
-    const max = innerWidth - W - (mobile() ? 70 : 90);
-    if (mobile()) { st.target = 16; return; }
-    st.target = 16 + Math.random() * Math.max(40, max - 16);
+  // Find a step whose top edge is inside the visible band.
+  // dir 1 = the nearest step below fromY, -1 = nearest above, 0 = nearest to fromY.
+  function pick(dir, fromY) {
+    const { top, bottom } = band();
+    let best = null, bestD = Infinity;
+    for (const n of steps) {
+      if (n === st.plat) continue;
+      const r = n.getBoundingClientRect();
+      if (r.top < top || r.top > bottom || !usable(r)) continue;
+      const d = r.top - fromY;
+      if (dir === 1 && d < 24) continue;
+      if (dir === -1 && d > -24) continue;
+      const score = Math.abs(d) + (dir ? 0 : Math.random() * 40);
+      if (score < bestD) { bestD = score; best = n; }
+    }
+    return best;
+  }
+  function curX() {
+    if (!st.plat) return st.off;
+    return st.plat.getBoundingClientRect().left + st.off;
+  }
+  function clampOff(n, off) {
+    if (!n) return Math.max(8, Math.min(maxX(), off));
+    const r = n.getBoundingClientRect();
+    const lo = Math.max(0, 8 - r.left), hi = Math.min(r.width - W, maxX() - r.left);
+    return Math.max(lo, Math.min(Math.max(lo, hi), off));
+  }
+  function hopTo(target, fast) {
+    const x = curX(), y = footOf(st.plat);
+    let off;
+    if (target) {
+      const r = target.getBoundingClientRect();
+      off = clampOff(target, x - r.left + (Math.random() - 0.5) * 120);
+    } else off = clampOff(null, x);
+    const ty = footOf(target);
+    const dur = Math.max(260, Math.min(560, 560 - scrollV * 0.12)) * (fast ? 0.8 : 1);
+    st.hop = { x0: x, y0: y, to: target, off, t0: performance.now(), dur, h: 36 + Math.max(0, y - ty) * 0.35 };
+    st.dir = (target ? target.getBoundingClientRect().left + off : off) >= x ? 1 : -1;
+    st.mode = 'idle';
   }
 
   function step(now) {
     const dt = Math.min(0.05, (now - last) / 1000); last = now;
     const idleFor = now - st.lastInput;
-    const t = now / 1000;
+    const scrolling = now - lastScrollAt < 180;
+    const { top, bottom } = band();
+    let x, y;
 
-    if (st.mode === 'jump' || st.y > 0) {
-      st.vy -= 900 * dt; st.y = Math.max(0, st.y + st.vy * dt);
-      if (st.y === 0 && st.vy < 0) { st.vy = 0; st.mode = 'idle'; st.until = now + 600; }
-      st.frame = 'jump';
-    } else if (st.waving) {
-      st.frame = 'wave';
-    } else if (st.mode === 'sit') {
-      st.frame = 'sit';
-      if (!reduce && now - st.lastBit > 450) { st.lastBit = now; emitBit(); }
-      if (idleFor < 400) { st.mode = 'idle'; st.until = now + 500; }
-    } else if (idleFor > 5000 && st.mode !== 'jump') {
-      st.mode = 'sit';
-    } else if (st.mode === 'idle') {
-      st.frame = 'idle';
-      if (now > st.until) { pickTarget(); st.mode = 'walk'; }
-    } else {
-      const running = now < st.runUntil;
-      const speed = running ? 150 : 45;
-      const dx = st.target - st.x;
-      if (Math.abs(dx) < 3) {
-        st.mode = 'idle'; st.until = now + 800 + Math.random() * 2200;
-        if (Math.random() < 0.4) st.dir *= -1; // look around
-      } else {
-        st.dir = dx > 0 ? 1 : -1;
-        st.x += st.dir * Math.min(Math.abs(dx), speed * dt);
-        st.frame = running ? 'run' : 'walk';
+    if (st.plat && !st.plat.isConnected) st.plat = null;
+
+    if (!st.hop) {
+      const fy = footOf(st.plat);
+      // Step leaving the screen: jump to the next one (down when it rises past the top, up when it sinks off the bottom)
+      if (st.plat && fy < top) hopTo(pick(1, fy) || pick(1, top - 30), true);
+      else if (st.plat && fy > bottom) hopTo(pick(-1, fy) || null, true);
+      // Scrolling: keep hopping like going down (or up) stairs; faster scroll, more frequent hops
+      else if (scrolling && now > st.nextHop) {
+        const t = pick(scrollDir, fy) || (scrollDir === -1 && !st.plat ? pick(-1, bottom + 10) : null);
+        if (t) hopTo(t);
+        st.nextHop = now + Math.max(240, 1000 - scrollV * 0.3);
+      }
+      // Standing on the floor and a step comes into view: climb onto it
+      else if (!st.plat && now > st.nextHop) {
+        const t = pick(-1, bottom + 10);
+        if (t) hopTo(t);
+        st.nextHop = now + 1500;
       }
     }
-    st.x = Math.max(8, Math.min(innerWidth - W - 8, st.x));
-    el.style.transform = `translate(${st.x.toFixed(1)}px, ${(-st.y).toFixed(1)}px)`;
-    shadow.style.transform = `translateY(${st.y.toFixed(1)}px) scale(${Math.max(0.5, 1 - st.y / 160)})`;
+
+    if (st.hop) {
+      const h = st.hop, p = Math.min(1, (now - h.t0) / h.dur);
+      const tx = h.to ? h.to.getBoundingClientRect().left + h.off : h.off;
+      const ty = footOf(h.to);
+      x = h.x0 + (tx - h.x0) * p;
+      y = h.y0 + (ty - h.y0) * p - h.h * 4 * p * (1 - p);
+      st.frame = 'jump';
+      if (p >= 1) { st.plat = h.to; st.off = h.off; st.hop = null; st.until = now + 400; st.frame = 'idle'; }
+    }
+
+    if (!st.hop) {
+      if (st.waving) st.frame = 'wave';
+      else if (st.mode === 'sit') {
+        st.frame = 'sit';
+        if (!reduce && now - st.lastBit > 450) { st.lastBit = now; emitBit(); }
+        if (idleFor < 400) { st.mode = 'idle'; st.until = now + 500; }
+      } else if (idleFor > 5000 && !scrolling) st.mode = 'sit';
+      else if (st.mode === 'walk' && !scrolling) {
+        const dx = st.walkTo - st.off;
+        if (Math.abs(dx) < 3) { st.mode = 'idle'; st.until = now + 900 + Math.random() * 2200; if (Math.random() < 0.4) st.dir *= -1; }
+        else { st.dir = dx > 0 ? 1 : -1; st.off += st.dir * Math.min(Math.abs(dx), 45 * dt); st.frame = 'walk'; }
+      } else {
+        st.frame = 'idle';
+        if (!scrolling && now > st.until) {
+          const r = st.plat ? st.plat.getBoundingClientRect() : { width: innerWidth, left: 0 };
+          st.walkTo = clampOff(st.plat, Math.random() * Math.max(0, r.width - W));
+          st.mode = 'walk';
+        }
+      }
+      st.off = clampOff(st.plat, st.off);
+      x = curX(); y = footOf(st.plat);
+      if (!st.plat) y = bottom + 4;
+    }
+
+    y = Math.max(HEADER + H - 6, Math.min(innerHeight - (mobile() ? 82 : 6), y));
+    el.style.transform = `translate(${x.toFixed(1)}px, ${(y - H).toFixed(1)}px)`;
+    shadow.style.opacity = st.hop ? '0' : '';
+    el.classList.toggle('near-top', y < HEADER + H + 70);
     setPose(el, st.frame, st.dir < 0);
     raf = active && !document.hidden ? requestAnimationFrame(step) : 0;
   }
   function loopStart() { if (!raf && active && !document.hidden) { last = performance.now(); raf = requestAnimationFrame(step); } }
 
   function input() { st.lastInput = performance.now(); }
-  let lastY = scrollY, lastT = performance.now(), firstInteraction = false;
+  let firstInteraction = false;
   function onFirst() {
     if (firstInteraction) return;
     firstInteraction = true;
@@ -1454,35 +1528,24 @@ if ('IntersectionObserver' in window) {
   }
   addEventListener('scroll', () => {
     input();
-    const now = performance.now(), v = Math.abs(scrollY - lastY) / Math.max(1, now - lastT) * 1000;
-    if (v > 1800) st.runUntil = now + 1500;
-    lastY = scrollY; lastT = now;
+    const now = performance.now(), dy = scrollY - lastY;
+    if (dy) { scrollDir = dy > 0 ? 1 : -1; scrollV = scrollV * 0.6 + Math.abs(dy) / Math.max(1, now - lastT) * 1000 * 0.4; }
+    lastY = scrollY; lastT = now; lastScrollAt = now;
     if (scrollY > 200) onFirst();
   }, { passive: true });
   addEventListener('mousemove', e => {
     input();
     if (performance.now() > 1500) onFirst();
-    if (!active || mobile()) return;
+    if (!active || mobile() || st.hop) return;
     const r = cv.getBoundingClientRect();
     const near = Math.abs(e.clientX - (r.left + 28)) < 70 && e.clientY > r.top - 60 && e.clientY < r.bottom + 10;
-    if (near && performance.now() > st.nextJump) { st.nextJump = performance.now() + 2500; jump(); }
+    if (near && performance.now() > st.nextPoke) { st.nextPoke = performance.now() + 2500; hopTo(st.plat); }
   }, { passive: true });
   addEventListener('touchstart', () => { input(); onFirst(); }, { passive: true });
   addEventListener('keydown', input);
-  addEventListener('resize', () => { st.x = Math.min(st.x, innerWidth - W - 8); });
+  addEventListener('resize', collect);
+  addEventListener('load', collect);
   document.addEventListener('visibilitychange', loopStart);
-
-  // Hop when a new section heading scrolls into view
-  if ('IntersectionObserver' in window) {
-    const seen = new WeakSet();
-    const io = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting && !seen.has(e.target)) {
-        seen.add(e.target);
-        if (active && performance.now() > st.nextJump) { st.nextJump = performance.now() + 2000; setTimeout(() => jump(300), 150); }
-      }
-    }), { threshold: 1 });
-    document.querySelectorAll('main h2').forEach(h => io.observe(h));
-  }
 
   cv.addEventListener('mouseenter', () => { st.waving = true; });
   cv.addEventListener('mouseleave', () => { st.waving = false; });
