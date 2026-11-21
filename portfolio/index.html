@@ -358,6 +358,10 @@ footer .logo{color:#fff}
 .log::after{content:"";position:absolute;left:6px;top:10px;width:2px;height:calc((100% - 20px) * var(--p,0));background:linear-gradient(#0369a1,#14b8a6);border-radius:2px}
 .commit.in::before{border-color:var(--accent)}
 .commit.in.head::before{background:var(--accent)}
+.commit::before{transition:background .35s ease,border-color .35s ease,box-shadow .35s ease}
+.commit.lit::before{background:linear-gradient(135deg,#0369a1,#14b8a6);border-color:#0d8bb0;box-shadow:0 0 0 4px rgba(20,184,166,.16);animation:dotpop .45s ease-out}
+@keyframes dotpop{0%{transform:scale(.7)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.commit.lit::before{animation:none}}
 
 /* skills filter */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
@@ -1230,7 +1234,13 @@ if ('IntersectionObserver' in window) {
     ticking = false;
     const h = document.documentElement, y = scrollY, max = h.scrollHeight - innerHeight;
     bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
-    if (log) { const r = log.getBoundingClientRect(); log.style.setProperty('--p', Math.max(0, Math.min(1, (innerHeight * .65 - r.top) / r.height)).toFixed(3)); }
+    if (log) {
+      const r = log.getBoundingClientRect(), p = Math.max(0, Math.min(1, (innerHeight * .65 - r.top) / r.height));
+      log.style.setProperty('--p', p.toFixed(3));
+      // fill each dot once the line has reached its centre
+      const lineEnd = r.top + 10 + (r.height - 20) * p;
+      log.querySelectorAll('.commit').forEach(c => c.classList.toggle('lit', c.getBoundingClientRect().top + 13 <= lineEnd + 1));
+    }
     top.classList.toggle('show', y > 900);
     const pastHero = hero.getBoundingClientRect().bottom < 0, atContact = contact.getBoundingClientRect().top < innerHeight * .8;
     mbar.classList.toggle('show', pastHero && !atContact);
