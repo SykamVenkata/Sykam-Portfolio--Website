@@ -578,6 +578,20 @@ footer .logo{color:#fff}
 .proj-arch.paused *{animation-play-state:paused!important}
 @media (prefers-reduced-motion:reduce){.pa-lines path,.pa-flow,.pa-pulse,.pa-dot{animation:none}.pa-packets{display:none}}
 @media (max-width:900px){.proj{grid-template-columns:1fr}.proj-text{padding:18px 14px}}
+.proj+.proj{margin-top:22px}
+.proj-media{position:relative;display:block;width:100%;padding:0;border:0;border-radius:12px;overflow:hidden;cursor:pointer;background:#0b1629;box-shadow:0 10px 30px -14px rgba(11,22,41,.55)}
+.proj-media img{display:block;width:100%;height:auto;transition:transform .35s ease}
+.proj-media:hover img{transform:scale(1.02)}
+.play-badge{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;padding:8px 14px 8px 10px;border-radius:999px;background:rgba(255,255,255,.95);color:#111;font:600 13.5px var(--body);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.play-badge i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#111;color:#fff;font-style:normal;font-size:10px;padding-left:2px}
+.btn-watch i{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:8px;padding-left:1px}
+.vid-modal{border:0;padding:0;margin:auto;background:transparent;max-width:min(1100px,94vw);width:100%;overflow:visible}
+.vid-modal::backdrop{background:rgba(8,12,20,.82);backdrop-filter:blur(3px)}
+.vid-modal video{display:block;width:100%;aspect-ratio:16/9;border-radius:14px;background:#0b1629}
+.vid-head{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#fff;margin-bottom:10px;font:600 15px var(--body)}
+.vid-close{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font-size:20px;line-height:1;cursor:pointer}
+.vid-close:hover{background:rgba(255,255,255,.12)}
+.vid-note{color:rgba(255,255,255,.7);font-size:13px;margin-top:8px}
 /* ===== Accessibility ===== */
 .skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;transition:top .2s}
 .skip:focus{top:12px}
@@ -869,8 +883,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 <!-- PROJECTS -->
 <section id="projects" style="padding-top:40px">
   <div class="wrap">
-    <h2 class="reveal">Open-source project</h2>
-    <p class="sub reveal">Real, runnable code you can read today. Built the way I build production pipelines.</p>
+    <h2 class="reveal">Open-source projects</h2>
+    <p class="sub reveal">Real, runnable code you can read today, built the way I build production pipelines. Each one has a 60-second walkthrough.</p>
     <article class="proj reveal">
       <div class="proj-text">
         <div class="eyebrow">Featured · Streaming Lakehouse</div>
@@ -886,6 +900,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         <div class="proj-btns">
           <a href="https://github.com/SykamVenkata/realtime-vehicle-telemetry-lakehouse" class="btn btn-dark btn-sm" target="_blank" rel="noopener">View code on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
           <a href="https://github.com/SykamVenkata/realtime-vehicle-telemetry-lakehouse/blob/main/docs/design-decisions.md" class="btn btn-light btn-sm" target="_blank" rel="noopener">Read design decisions</a>
+          <button type="button" class="btn btn-light btn-sm btn-watch" data-video="media/telemetry-60s.mp4" data-poster="media/telemetry-poster.jpg" data-title="Real-time vehicle telemetry Lakehouse"><i aria-hidden="true">▶</i>Watch 60-sec walkthrough</button>
         </div>
       </div>
       <div class="proj-visual">
@@ -916,6 +931,64 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </svg>
       </div>
     </article>
+
+    <article class="proj reveal">
+      <div class="proj-text">
+        <div class="eyebrow">Governed batch analytics · Banking credit risk</div>
+        <h3>Azure Banking Risk Lakehouse</h3>
+        <p>Risk, finance and treasury each calculated NPL ratio, roll rate and loss allowance their own way. This Azure Lakehouse gives Power BI, SQL users and an AI assistant one certified answer, governed from the source contract to the dashboard.</p>
+        <ul class="proj-points">
+          <li>Data contracts drive the schema, quality rules and PII masking</li>
+          <li>Bad rows go to quarantine; credit-risk fields like CECL stages are recomputed, not trusted</li>
+          <li>Gold is published only after a BCBS 239-style reconciliation gate</li>
+          <li>Governed metrics catalog and an Azure OpenAI index so AI answers match Power BI</li>
+        </ul>
+        <div class="chips"><span class="chip">Azure Data Factory</span><span class="chip">Databricks</span><span class="chip">Delta Lake</span><span class="chip">Unity Catalog</span><span class="chip">Azure OpenAI</span><span class="chip">Power BI</span><span class="chip">Terraform</span></div>
+        <div class="proj-btns">
+          <a href="https://github.com/SykamVenkata/azure-banking-risk-lakehouse" class="btn btn-dark btn-sm" target="_blank" rel="noopener">View code on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          <a href="https://github.com/SykamVenkata/azure-banking-risk-lakehouse/blob/main/docs/design-decisions.md" class="btn btn-light btn-sm" target="_blank" rel="noopener">Read design decisions</a>
+          <button type="button" class="btn btn-light btn-sm btn-watch" data-video="media/banking-60s.mp4" data-poster="media/banking-poster.jpg" data-title="Azure Banking Risk Lakehouse"><i aria-hidden="true">▶</i>Watch 60-sec walkthrough</button>
+        </div>
+      </div>
+      <div class="proj-visual">
+        <button type="button" class="proj-media" data-video="media/banking-60s.mp4" data-poster="media/banking-poster.jpg" data-title="Azure Banking Risk Lakehouse" aria-label="Play the 60-second walkthrough of the Azure Banking Risk Lakehouse">
+          <img src="media/banking-cover.jpg" width="1200" height="627" loading="lazy" alt="Azure Banking Risk Lakehouse: ingest with ADF and Auto Loader, Bronze with contract schema, Silver with quality rules and quarantine, Gold star schema with CECL, then Power BI and an AI assistant">
+          <span class="play-badge"><i aria-hidden="true">▶</i>Watch · 1:00</span>
+        </button>
+      </div>
+    </article>
+
+    <article class="proj reveal">
+      <div class="proj-text">
+        <div class="eyebrow">Master data + ML · Microsoft Fabric</div>
+        <h3>Credit Union Member 360 on Microsoft Fabric</h3>
+        <p>Core banking, insurance and investment systems share no member key. This project resolves the same person across all three into one golden member, then puts that Member 360 to work in BI, machine learning and a PII-safe service copilot.</p>
+        <ul class="proj-points">
+          <li>Identity resolution with 100% match precision and 98% recall, measured against ground truth</li>
+          <li>Churn model (AUC 0.88) and next-best-product offers that respect eligibility, logged to MLflow</li>
+          <li>dbt gold layer on Fabric Warehouse and a Direct Lake model with row-level security</li>
+          <li>AML monitoring kept out of front-line tools; the copilot gets an allow-list brief</li>
+        </ul>
+        <div class="chips"><span class="chip">Microsoft Fabric</span><span class="chip">OneLake</span><span class="chip">PySpark</span><span class="chip">dbt</span><span class="chip">MLflow</span><span class="chip">Direct Lake</span><span class="chip">Terraform</span></div>
+        <div class="proj-btns">
+          <a href="https://github.com/SykamVenkata/credit-union-member360-fabric" class="btn btn-dark btn-sm" target="_blank" rel="noopener">View code on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          <a href="https://github.com/SykamVenkata/credit-union-member360-fabric/blob/main/docs/design-decisions.md" class="btn btn-light btn-sm" target="_blank" rel="noopener">Read design decisions</a>
+          <button type="button" class="btn btn-light btn-sm btn-watch" data-video="media/member360-60s.mp4" data-poster="media/member360-poster.jpg" data-title="Credit Union Member 360 on Microsoft Fabric"><i aria-hidden="true">▶</i>Watch 60-sec walkthrough</button>
+        </div>
+      </div>
+      <div class="proj-visual">
+        <button type="button" class="proj-media" data-video="media/member360-60s.mp4" data-poster="media/member360-poster.jpg" data-title="Credit Union Member 360 on Microsoft Fabric" aria-label="Play the 60-second walkthrough of Member 360 on Microsoft Fabric">
+          <img src="media/member360-cover.jpg" width="1200" height="627" loading="lazy" alt="Member 360 on Microsoft Fabric: three source systems into OneLake, identity resolution, a dbt gold Member 360 mart, then Power BI and a copilot brief">
+          <span class="play-badge"><i aria-hidden="true">▶</i>Watch · 1:00</span>
+        </button>
+      </div>
+    </article>
+
+    <dialog class="vid-modal" aria-label="Project walkthrough video">
+      <div class="vid-head"><span class="vid-title"></span><button type="button" class="vid-close" aria-label="Close video">×</button></div>
+      <video controls playsinline preload="none"></video>
+      <p class="vid-note">Silent walkthrough with on-screen captions · 60 seconds</p>
+    </dialog>
   </div>
 </section>
 
@@ -1792,6 +1865,26 @@ if ('IntersectionObserver' in window) {
   set(false);
   if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => set(e.isIntersecting)).observe(svg); else set(true);
   setInterval(() => { if (!on || document.hidden) return; v = Math.min(2.4, Math.max(1.9, v + (Math.random() - .45) * .05)); count.textContent = v.toFixed(1) + 'M'; }, 1500);
+})();
+
+/* ===== Project walkthrough videos (loaded only when opened) ===== */
+(() => {
+  const dlg = document.querySelector('.vid-modal');
+  if (!dlg) return;
+  const video = dlg.querySelector('video'), title = dlg.querySelector('.vid-title');
+  let opener = null;
+  const close = () => { video.pause(); video.removeAttribute('src'); video.load(); if (dlg.open) dlg.close(); opener && opener.focus(); };
+  document.querySelectorAll('[data-video]').forEach(b => b.addEventListener('click', () => {
+    opener = b;
+    title.textContent = b.dataset.title + ' · 60-second walkthrough';
+    video.poster = b.dataset.poster || '';
+    video.src = b.dataset.video;
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else { window.open(b.dataset.video, '_blank', 'noopener'); return; }
+    video.play().catch(() => {});
+  }));
+  dlg.querySelector('.vid-close').addEventListener('click', close);
+  dlg.addEventListener('cancel', e => { e.preventDefault(); close(); });
+  dlg.addEventListener('click', e => { if (e.target === dlg) close(); });
 })();
 
 /* ===== Header copy-email button ===== */
