@@ -405,10 +405,44 @@ footer .logo{color:#fff}
 
 /* ===== Bitsy: pixel buddy + Ask-me assistant ===== */
 .to-top{bottom:84px}
-.bitsy{position:fixed;left:0;bottom:10px;z-index:85;width:48px;height:64px;pointer-events:none;will-change:transform;display:none}
+.bitsy{position:fixed;left:0;bottom:10px;z-index:85;width:56px;height:63px;pointer-events:none;will-change:transform;display:none}
 .bitsy.on{display:block}
-.bitsy canvas{width:48px;height:64px;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer;pointer-events:auto;display:block;filter:drop-shadow(0 4px 3px rgba(8,47,73,.25))}
-.bitsy-shadow{position:absolute;left:10px;bottom:-2px;width:28px;height:5px;border-radius:50%;background:rgba(8,47,73,.18);transition:transform .1s}
+.bitsy .bz{width:56px;height:63px;cursor:pointer;pointer-events:auto;display:block;overflow:visible;filter:drop-shadow(0 6px 6px rgba(8,47,73,.22))}
+.bitsy .bz:focus-visible{outline:2px solid #0369a1;outline-offset:4px;border-radius:12px}
+.bz *{transform-box:fill-box;transform-origin:center}
+.bz-all{transform-origin:50% 100%;transition:transform .15s}
+.bitsy.flip .bz-all{transform:scaleX(-1)}
+.bz-body{transform-origin:50% 100%;animation:bzbreathe 3.2s ease-in-out infinite}
+.bz-eyes{animation:bzblink 5s infinite}
+.bz-arm-l{transform-origin:70% 15%}.bz-arm-r{transform-origin:30% 15%}
+.bz-laptop{opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
+@keyframes bzbreathe{50%{transform:scale(1.025,.975)}}
+@keyframes bzblink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes bzbob{50%{transform:translateY(-2.5px) scale(1.02,.98)}}
+@keyframes bzstep{0%,100%{transform:translateY(0)}50%{transform:translateY(-3.5px)}}
+@keyframes bzswing{50%{transform:rotate(-16deg)}}
+@keyframes bzwave{0%,100%{transform:translate(1px,-9px) rotate(-150deg)}50%{transform:translate(1px,-9px) rotate(-115deg)}}
+@keyframes bztype{50%{transform:translateY(1.5px)}}
+.bitsy.walk .bz-body,.bitsy.run .bz-body{animation:bzbob .5s ease-in-out infinite}
+.bitsy.walk .bz-foot-l,.bitsy.run .bz-foot-l{animation:bzstep .5s ease-in-out infinite}
+.bitsy.walk .bz-foot-r,.bitsy.run .bz-foot-r{animation:bzstep .5s ease-in-out -.25s infinite}
+.bitsy.walk .bz-arm,.bitsy.run .bz-arm{animation:bzswing .5s ease-in-out infinite}
+.bitsy.run .bz-body,.bitsy.run .bz-foot,.bitsy.run .bz-arm{animation-duration:.26s}
+.bitsy.run .bz-foot-r{animation-delay:-.13s}
+.bitsy.jump .bz-body{animation:none;transform:scale(.94,1.08)}
+.bitsy.jump .bz-arm-l{transform:translate(-1px,-9px) rotate(150deg)}.bitsy.jump .bz-arm-r{transform:translate(1px,-9px) rotate(-150deg)}
+.bitsy.jump .bz-mouth{d:path("M28.5 43.5 Q32 48.5 35.5 43.5 Z");fill:#0f172a}
+.bitsy.wave .bz-arm-r{animation:bzwave .6s ease-in-out infinite}
+.bitsy.wave .bz-mouth{d:path("M28.5 43.5 Q32 48.5 35.5 43.5 Z");fill:#0f172a}
+.bitsy.sit .bz-foot{transform:translateY(-3px) scaleY(.7)}
+.bitsy.sit .bz-laptop{opacity:1;transform:none}
+.bitsy.sit .bz-arm-l{transform:translate(9px,1px)}.bitsy.sit .bz-arm-r{transform:translate(-9px,1px)}
+.bitsy.sit .bz-arm>*{animation:bztype .22s ease-in-out infinite}
+.bitsy.sit .bz-arm-r>*{animation-delay:-.11s}
+.bitsy.sit .bz-eyes{transform:translateY(2px)}
+.ask-head .bz-mini{width:34px;height:38px;display:block;flex:0 0 34px}
+.ask-head .bz-mini svg{width:100%;height:100%;overflow:visible}
+.bitsy-shadow{position:absolute;left:12px;bottom:-1px;width:32px;height:5px;border-radius:50%;background:rgba(8,47,73,.18);transition:transform .1s}
 .bitsy-bubble{position:absolute;bottom:72px;left:50%;transform:translateX(-50%) scale(.9);transform-origin:bottom center;white-space:nowrap;background:#fff;color:var(--ink);font-size:13px;font-weight:500;padding:8px 12px;border-radius:12px;border:1px solid var(--line);box-shadow:0 10px 24px -14px rgba(0,0,0,.4);opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
 .bitsy-bubble::after{content:"";position:absolute;left:50%;bottom:-6px;width:10px;height:10px;background:#fff;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:translateX(-50%) rotate(45deg)}
 .bitsy-bubble.show{opacity:1;transform:translateX(-50%) scale(1);pointer-events:auto;cursor:pointer}
@@ -430,7 +464,6 @@ footer .logo{color:#fff}
 .ask-panel{position:fixed;right:22px;bottom:22px;z-index:130;width:360px;max-width:calc(100vw - 24px);max-height:min(560px,calc(100vh - 110px));display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 70px -30px rgba(8,47,73,.55);opacity:0;transform:translateY(14px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .25s,transform .25s}
 .ask-panel.open{opacity:1;transform:none;pointer-events:auto}
 .ask-head{display:flex;align-items:center;gap:10px;padding:14px 14px 12px 16px;border-bottom:1px solid var(--line)}
-.ask-head canvas{width:28px;height:36px;image-rendering:pixelated}
 .ask-head b{display:block;font-size:15px}
 .ask-head small{font-size:12px;color:var(--dim)}
 .ask-close{margin-left:auto;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--muted);font-size:16px}
@@ -923,7 +956,36 @@ footer .logo{color:#fff}
 <!-- Bitsy: pixel buddy + Ask-me assistant -->
 <div class="bitsy" aria-hidden="false">
   <div class="bitsy-bubble" role="button" tabindex="-1">Hi! Ask me about Narendra</div>
-  <canvas width="12" height="16" role="button" tabindex="0" aria-label="Bitsy, Narendra's assistant. Open the Ask me panel"></canvas>
+  <svg class="bz" viewBox="0 0 64 72" role="button" tabindex="0" aria-label="Bitsy, Narendra's assistant. Open the Ask me panel" focusable="true">
+    <defs>
+      <filter id="bz-fluff" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter>
+      <radialGradient id="bz-fur" cx="42%" cy="34%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".62" stop-color="#eef7ff"/><stop offset="1" stop-color="#bfdcf5"/></radialGradient>
+      <radialGradient id="bz-limb" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#a9cdee"/></radialGradient>
+    </defs>
+    <g class="bz-all">
+      <g class="bz-foot bz-foot-l"><ellipse cx="24" cy="64" rx="7" ry="4.6" fill="#7cc4e8" filter="url(#bz-fluff)"/></g>
+      <g class="bz-foot bz-foot-r"><ellipse cx="40" cy="64" rx="7" ry="4.6" fill="#7cc4e8" filter="url(#bz-fluff)"/></g>
+      <g class="bz-body">
+        <g filter="url(#bz-fluff)" fill="url(#bz-fur)">
+          <ellipse cx="32" cy="40" rx="23" ry="21.5"/>
+          <circle cx="27" cy="19.5" r="5"/><circle cx="33" cy="17.5" r="5.5"/><circle cx="38.5" cy="20" r="4.5"/>
+        </g>
+        <path d="M11 33 C12 15 52 15 53 33" fill="none" stroke="#0e7490" stroke-width="2.6" stroke-linecap="round"/>
+        <rect x="6.5" y="29" width="7" height="11" rx="3.5" fill="#14b8a6"/><rect x="50.5" y="29" width="7" height="11" rx="3.5" fill="#14b8a6"/>
+        <g class="bz-face">
+          <g class="bz-eyes">
+            <ellipse cx="24.5" cy="37" rx="3.4" ry="4.3" fill="#0f172a"/><ellipse cx="39.5" cy="37" rx="3.4" ry="4.3" fill="#0f172a"/>
+            <circle cx="25.7" cy="35.4" r="1.25" fill="#fff"/><circle cx="40.7" cy="35.4" r="1.25" fill="#fff"/>
+          </g>
+          <ellipse cx="19" cy="44" rx="3.6" ry="2.2" fill="#fb9fb1" opacity=".55"/><ellipse cx="45" cy="44" rx="3.6" ry="2.2" fill="#fb9fb1" opacity=".55"/>
+          <path class="bz-mouth" d="M29 44.2 Q32 47.2 35 44.2" fill="none" stroke="#0f172a" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <g class="bz-arm bz-arm-l"><ellipse cx="9" cy="51" rx="5" ry="6.5" fill="url(#bz-limb)" filter="url(#bz-fluff)"/></g>
+        <g class="bz-arm bz-arm-r"><ellipse cx="55" cy="51" rx="5" ry="6.5" fill="url(#bz-limb)" filter="url(#bz-fluff)"/></g>
+        <g class="bz-laptop"><rect x="17" y="48" width="30" height="10" rx="1.5" fill="#334155"/><rect x="19.5" y="50.5" width="11" height="1.6" rx=".8" fill="#5eead4"/><rect x="19.5" y="53.5" width="17" height="1.6" rx=".8" fill="#7dd3fc"/><path d="M14 58 L50 58 L53 63 L11 63 Z" fill="#cbd5e1"/></g>
+      </g>
+    </g>
+  </svg>
   <div class="bitsy-shadow"></div>
   <button type="button" class="bitsy-hide" aria-label="Hide Bitsy" title="Hide Bitsy">&times;</button>
 </div>
@@ -933,7 +995,7 @@ footer .logo{color:#fff}
 </button>
 <section class="ask-panel" role="dialog" aria-modal="false" aria-label="Ask about Narendra">
   <div class="ask-head">
-    <canvas width="12" height="16" aria-hidden="true"></canvas>
+    <span class="bz-mini" aria-hidden="true"></span>
     <div><b>Ask about Narendra</b><small>Bitsy · quick answers from his resume</small></div>
     <button type="button" class="ask-close" aria-label="Close">&times;</button>
   </div>
@@ -1028,37 +1090,12 @@ if ('IntersectionObserver' in window) {
   };
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- sprite (12 x 16 pixels, original character) ---------- */
-  const PAL = { k: '#0f172a', s: '#f2c9a0', h: '#3b2a20', p: '#111827', b: '#0369a1', t: '#14b8a6',
-                j: '#1e3a5f', w: '#f8fafc', l: '#cbd5e1', d: '#64748b' };
-  const HEAD = ['....hhhh....', '...hhhhhh...', '..phsssshp..', '..pskssksp..', '...ssssss...', '....ssss....'];
-  const TORSO = ['..bbbttbbb..', '.bbbbttbbbb.', '.sbbbbbbbbs.', '..bbbbbbbb..', '..tttttttt..'];
-  const BLANK = '............';
-  const F = {
-    stand: [...HEAD, ...TORSO, '..jjj..jjj..', '..jjj..jjj..', '..jjj..jjj..', '.wwww..wwww.', BLANK],
-    walk1: [...HEAD, '..bbbttbbb..', '.bbbbttbbbb.', 'sbbbbbbbbb..', '..bbbbbbbbs.', '..tttttttt..',
-            '..jjj...jj..', '.jjj....jjj.', 'jjj......jjj', 'www......www', BLANK],
-    walk2: [...HEAD, ...TORSO, '...jjjjjj...', '....jjjj....', '....jjjj....', '...wwwwww...', BLANK],
-    jump: [...HEAD.slice(0, 5), 's...ssss...s', 's.bbbttbbb.s', '.bbbbttbbbb.', '..bbbbbbbb..', '..bbbbbbbb..',
-           '..tttttttt..', '..jjj..jjj..', '.jjj....jjj.', '.ww......ww.', BLANK, BLANK],
-    wave1: [...HEAD.slice(0, 5), '....ssss...s', '..bbbttbbbb.', '.bbbbttbbb..', '.sbbbbbbbb..', '..bbbbbbbb..',
-            '..tttttttt..', '..jjj..jjj..', '..jjj..jjj..', '..jjj..jjj..', '.wwww..wwww.', BLANK],
-    wave2: [...HEAD.slice(0, 5), '....ssss..s.', '..bbbttbbbs.', '.bbbbttbbb..', '.sbbbbbbbb..', '..bbbbbbbb..',
-            '..tttttttt..', '..jjj..jjj..', '..jjj..jjj..', '..jjj..jjj..', '.wwww..wwww.', BLANK],
-    sit1: [BLANK, BLANK, BLANK, ...HEAD, '..bbbttbbb..', '.bbbbttbbbb.', '.bbbbbbbblll',
-           '..bbbbbbslll', '..ttttttdddd', '..jjjjjjjjw.', BLANK],
-    sit2: [BLANK, BLANK, BLANK, ...HEAD, '..bbbttbbb..', '.bbbbttbbbb.', '.bbbbbbbslll',
-           '..bbbbbbblll', '..ttttttdddd', '..jjjjjjjjw.', BLANK]
-  };
-  function draw(ctx, frame, flip) {
-    ctx.clearRect(0, 0, 12, 16);
-    F[frame].forEach((row, y) => [...row].forEach((c, x) => {
-      if (c === '.') return;
-      ctx.fillStyle = PAL[c];
-      ctx.fillRect(flip ? 11 - x : x, y, 1, 1);
-    }));
+  /* ---------- Bitsy pose (soft SVG character, poses are CSS classes) ---------- */
+  const POSES = ['idle', 'walk', 'run', 'jump', 'wave', 'sit'];
+  function setPose(el, pose, flip) {
+    if (el.dataset.pose !== pose) { POSES.forEach(p => el.classList.toggle(p, p === pose)); el.dataset.pose = pose; }
+    el.classList.toggle('flip', !!flip);
   }
-
   /* ---------- Ask-me assistant ---------- */
   const RESUME = 'Narendra_Sykam_Resume.pdf';
   const EMAIL = 'venkatanksykam@gmail.com';
@@ -1204,15 +1241,17 @@ if ('IntersectionObserver' in window) {
   function hideChips() { clearTimeout(chipTimer); chips.classList.remove('show'); }
 
   /* ---------- Bitsy behavior ---------- */
-  const el = $('.bitsy'), cv = el.querySelector('canvas'), ctx = cv.getContext('2d');
+  const el = $('.bitsy'), cv = el.querySelector('.bz');
   const shadow = el.querySelector('.bitsy-shadow'), speech = el.querySelector('.bitsy-bubble');
-  const headCtx = panel.querySelector('.ask-head canvas').getContext('2d');
-  draw(headCtx, 'stand', false);
+  { const mini = cv.cloneNode(true); mini.removeAttribute('role'); mini.removeAttribute('tabindex'); mini.removeAttribute('aria-label'); mini.setAttribute('aria-hidden', 'true');
+    mini.querySelector('.bz-laptop').remove(); mini.querySelector('filter').id = 'bz-fluff2'; mini.querySelectorAll('[filter]').forEach(n => n.setAttribute('filter', 'url(#bz-fluff2)'));
+    mini.querySelectorAll('radialGradient').forEach(g => { const o = g.id; g.id = o + '2'; mini.querySelectorAll(`[fill="url(#${o})"]`).forEach(n => n.setAttribute('fill', `url(#${o}2)`)); });
+    panel.querySelector('.bz-mini').appendChild(mini); }
   const back = $('.bitsy-back');
-  const W = 48;
+  const W = 56;
   const mobile = () => innerWidth < 560;
 
-  const st = { x: 40, y: 0, vy: 0, dir: 1, mode: 'walk', target: 300, until: 0, frame: 'stand', lastInput: performance.now(),
+  const st = { x: 40, y: 0, vy: 0, dir: 1, mode: 'walk', target: 300, until: 0, frame: 'idle', lastInput: performance.now(),
                runUntil: 0, nextJump: 0, waving: false, lastBit: 0 };
   let raf = 0, last = performance.now(), active = false;
 
@@ -1238,8 +1277,8 @@ if ('IntersectionObserver' in window) {
     b.className = 'bit';
     b.textContent = Math.random() < 0.5 ? '0' : '1';
     const r = cv.getBoundingClientRect();
-    b.style.left = (r.left + 30 + Math.random() * 14) + 'px';
-    b.style.top = (r.top + 18) + 'px';
+    b.style.left = (r.left + 18 + Math.random() * 20) + 'px';
+    b.style.top = (r.top + 22) + 'px';
     document.body.appendChild(b);
     setTimeout(() => b.remove(), 1300);
   }
@@ -1259,15 +1298,15 @@ if ('IntersectionObserver' in window) {
       if (st.y === 0 && st.vy < 0) { st.vy = 0; st.mode = 'idle'; st.until = now + 600; }
       st.frame = 'jump';
     } else if (st.waving) {
-      st.frame = Math.floor(t * 4) % 2 ? 'wave1' : 'wave2';
+      st.frame = 'wave';
     } else if (st.mode === 'sit') {
-      st.frame = Math.floor(t * 5) % 2 ? 'sit1' : 'sit2';
+      st.frame = 'sit';
       if (!reduce && now - st.lastBit > 450) { st.lastBit = now; emitBit(); }
       if (idleFor < 400) { st.mode = 'idle'; st.until = now + 500; }
     } else if (idleFor > 5000 && st.mode !== 'jump') {
       st.mode = 'sit';
     } else if (st.mode === 'idle') {
-      st.frame = 'stand';
+      st.frame = 'idle';
       if (now > st.until) { pickTarget(); st.mode = 'walk'; }
     } else {
       const running = now < st.runUntil;
@@ -1279,13 +1318,13 @@ if ('IntersectionObserver' in window) {
       } else {
         st.dir = dx > 0 ? 1 : -1;
         st.x += st.dir * Math.min(Math.abs(dx), speed * dt);
-        st.frame = Math.floor(t * (running ? 12 : 6)) % 2 ? 'walk1' : 'walk2';
+        st.frame = running ? 'run' : 'walk';
       }
     }
     st.x = Math.max(8, Math.min(innerWidth - W - 8, st.x));
     el.style.transform = `translate(${st.x.toFixed(1)}px, ${(-st.y).toFixed(1)}px)`;
     shadow.style.transform = `translateY(${st.y.toFixed(1)}px) scale(${Math.max(0.5, 1 - st.y / 160)})`;
-    draw(ctx, st.frame, st.dir < 0);
+    setPose(el, st.frame, st.dir < 0);
     raf = active && !document.hidden ? requestAnimationFrame(step) : 0;
   }
   function loopStart() { if (!raf && active && !document.hidden) { last = performance.now(); raf = requestAnimationFrame(step); } }
@@ -1312,7 +1351,7 @@ if ('IntersectionObserver' in window) {
     if (performance.now() > 1500) onFirst();
     if (!active || mobile()) return;
     const r = cv.getBoundingClientRect();
-    const near = Math.abs(e.clientX - (r.left + 24)) < 70 && e.clientY > r.top - 60 && e.clientY < r.bottom + 10;
+    const near = Math.abs(e.clientX - (r.left + 28)) < 70 && e.clientY > r.top - 60 && e.clientY < r.bottom + 10;
     if (near && performance.now() > st.nextJump) { st.nextJump = performance.now() + 2500; jump(); }
   }, { passive: true });
   addEventListener('touchstart', () => { input(); onFirst(); }, { passive: true });
@@ -1351,7 +1390,7 @@ if ('IntersectionObserver' in window) {
   } else {
     setVisible(store.get('bitsy-hidden') !== '1');
   }
-  draw(ctx, 'stand', false);
+  setPose(el, 'idle', false);
 })();
 
 /* ===== Hero motion backdrop ===== */
