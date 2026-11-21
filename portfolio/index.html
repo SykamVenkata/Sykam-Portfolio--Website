@@ -402,6 +402,102 @@ footer .logo{color:#fff}
   .bar b{transition:none}
   .case:not(.in) .bar b{width:auto!important}
 }
+
+/* ===== Bitsy: pixel buddy + Ask-me assistant ===== */
+.to-top{bottom:84px}
+.bitsy{position:fixed;left:0;bottom:10px;z-index:85;width:48px;height:64px;pointer-events:none;will-change:transform;display:none}
+.bitsy.on{display:block}
+.bitsy canvas{width:48px;height:64px;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer;pointer-events:auto;display:block;filter:drop-shadow(0 4px 3px rgba(8,47,73,.25))}
+.bitsy-shadow{position:absolute;left:10px;bottom:-2px;width:28px;height:5px;border-radius:50%;background:rgba(8,47,73,.18);transition:transform .1s}
+.bitsy-bubble{position:absolute;bottom:72px;left:50%;transform:translateX(-50%) scale(.9);transform-origin:bottom center;white-space:nowrap;background:#fff;color:var(--ink);font-size:13px;font-weight:500;padding:8px 12px;border-radius:12px;border:1px solid var(--line);box-shadow:0 10px 24px -14px rgba(0,0,0,.4);opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
+.bitsy-bubble::after{content:"";position:absolute;left:50%;bottom:-6px;width:10px;height:10px;background:#fff;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:translateX(-50%) rotate(45deg)}
+.bitsy-bubble.show{opacity:1;transform:translateX(-50%) scale(1);pointer-events:auto;cursor:pointer}
+.bitsy-hide{position:absolute;top:-6px;right:-10px;width:20px;height:20px;border-radius:50%;border:1px solid var(--line-2);background:#fff;color:var(--muted);font-size:12px;line-height:1;display:grid;place-items:center;cursor:pointer;opacity:0;transition:opacity .2s;pointer-events:none}
+.bitsy:hover .bitsy-hide,.bitsy-hide:focus-visible{opacity:1;pointer-events:auto}
+.bit{position:fixed;z-index:84;font-family:var(--mono);font-size:11px;font-weight:600;color:#0d9488;pointer-events:none;animation:bitup 1.3s ease-out forwards}
+@keyframes bitup{from{opacity:.9;transform:translateY(0)}to{opacity:0;transform:translateY(-34px)}}
+
+.ask-fab{position:fixed;right:22px;bottom:22px;z-index:86;width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;color:#fff;background:linear-gradient(135deg,#0369a1,#14b8a6);box-shadow:0 14px 28px -12px rgba(3,105,161,.8);display:grid;place-items:center;transition:transform .2s}
+.ask-fab:hover{transform:translateY(-2px) scale(1.04)}
+.ask-chips{position:fixed;right:22px;bottom:86px;z-index:86;display:flex;flex-direction:column;align-items:flex-end;gap:8px;pointer-events:none}
+.ask-chips button{font:inherit;font-size:14px;color:#0369a1;background:#fff;border:1px solid #93c5fd;border-radius:10px;padding:9px 14px;cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s,background .2s;box-shadow:0 10px 24px -16px rgba(0,0,0,.45)}
+.ask-chips button:hover{background:#eff6ff}
+.ask-chips.show{pointer-events:auto}
+.ask-chips.show button{opacity:1;transform:none}
+.ask-chips.show button:nth-child(2){transition-delay:.08s}
+.ask-chips.show button:nth-child(3){transition-delay:.16s}
+
+.ask-panel{position:fixed;right:22px;bottom:22px;z-index:130;width:360px;max-width:calc(100vw - 24px);max-height:min(560px,calc(100vh - 110px));display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 70px -30px rgba(8,47,73,.55);opacity:0;transform:translateY(14px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .25s,transform .25s}
+.ask-panel.open{opacity:1;transform:none;pointer-events:auto}
+.ask-head{display:flex;align-items:center;gap:10px;padding:14px 14px 12px 16px;border-bottom:1px solid var(--line)}
+.ask-head canvas{width:28px;height:36px;image-rendering:pixelated}
+.ask-head b{display:block;font-size:15px}
+.ask-head small{font-size:12px;color:var(--dim)}
+.ask-close{margin-left:auto;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--muted);font-size:16px}
+.ask-close:hover{border-color:var(--ink);color:var(--ink)}
+.ask-body{flex:1;overflow-y:auto;padding:14px 14px 6px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;font-size:14.5px;line-height:1.5;padding:10px 13px;border-radius:14px}
+.msg.bot{background:var(--tile);border:1px solid var(--line);border-bottom-left-radius:4px;color:var(--ink-2)}
+.msg.me{align-self:flex-end;background:#0369a1;color:#fff;border-bottom-right-radius:4px}
+.msg .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.msg .acts a,.msg .acts button{font:inherit;font-size:13px;font-weight:500;color:#0369a1;background:#fff;border:1px solid #bfdbfe;border-radius:999px;padding:5px 11px;cursor:pointer;text-decoration:none}
+.msg .acts a:hover,.msg .acts button:hover{background:#eff6ff}
+.ask-head,.ask-sugg,.ask-form,.ask-foot{flex-shrink:0}
+.ask-body{min-height:120px}
+.ask-panel{padding:0!important;margin:0}
+.ask-sugg{display:flex;flex-wrap:wrap;gap:6px;padding:4px 14px 10px}
+.ask-sugg button{font:inherit;font-size:13px;color:var(--ink-2);background:#fff;border:1px solid var(--line-2);border-radius:999px;padding:6px 11px;cursor:pointer}
+.ask-sugg button:hover{border-color:var(--ink)}
+.ask-form{display:flex;gap:8px;padding:10px 12px 12px;border-top:1px solid var(--line)}
+.ask-form input{flex:1;font:inherit;font-size:14.5px;border:1px solid var(--line-2);border-radius:999px;padding:9px 14px;outline:none}
+.ask-form input:focus{border-color:#0369a1}
+.ask-form button{width:40px;height:40px;border-radius:50%;border:0;background:var(--ink);color:#fff;cursor:pointer;display:grid;place-items:center}
+.ask-foot{font-size:11.5px;color:var(--dim);text-align:center;padding:0 12px 10px}
+.ask-foot button{font:inherit;color:#0369a1;background:none;border:0;cursor:pointer;text-decoration:underline;padding:0}
+@media (max-width:560px){
+  .bitsy{bottom:80px}
+  .ask-fab{bottom:80px;right:14px;width:46px;height:46px}
+  .ask-chips{display:none}
+  .ask-panel{right:12px;bottom:12px}
+}
+@media (prefers-reduced-motion:reduce){.bit{display:none}}
+
+/* ===== Hero motion backdrop (IBM-style tilted pipeline) ===== */
+.hero{position:relative;isolation:isolate}
+.hero>.wrap{position:relative;z-index:2}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;perspective:1500px;perspective-origin:60% 40%;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 82%,transparent 100%)}
+.hb-plane{position:absolute;left:50%;top:48%;width:1800px;height:960px;margin:-480px 0 0 -900px;transform-style:preserve-3d;opacity:.62;
+  animation:hbcam 54s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes hbcam{
+  0%  {transform:rotateX(54deg) rotateZ(-24deg) translate3d(380px,40px,0) scale(1.12)}
+  30% {transform:rotateX(54deg) rotateZ(-24deg) translate3d(40px,-10px,0) scale(1.18)}
+  60% {transform:rotateX(50deg) rotateZ(-20deg) translate3d(-330px,30px,0) scale(1.14)}
+  80% {transform:rotateX(52deg) rotateZ(-22deg) translate3d(-120px,-60px,0) scale(1.08)}
+  100%{transform:rotateX(54deg) rotateZ(-24deg) translate3d(380px,40px,0) scale(1.12)}}
+.hb-plane svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.hb-plane path{fill:none;stroke:rgba(15,23,42,.28);stroke-width:2.5}
+.hb-plane path.flow{stroke:#0369a1;stroke-width:3;stroke-dasharray:6 22;animation:hbflow 1.6s linear infinite;opacity:.8}
+.hb-plane path.gov{stroke-dasharray:4 8;stroke:rgba(15,23,42,.22)}
+@keyframes hbflow{to{stroke-dashoffset:-28}}
+.hb-node{position:absolute;width:250px;height:78px;display:flex;align-items:center;gap:14px;padding:0 18px 0 22px;background:rgba(255,255,255,.94);border-radius:10px;
+  box-shadow:0 30px 40px -24px rgba(8,47,73,.45),0 2px 0 rgba(255,255,255,.8) inset;font-family:var(--display);overflow:hidden}
+.hb-node::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--c)}
+.hb-ic{width:38px;height:38px;flex:0 0 38px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--c)}
+.hb-ic svg{position:static;width:20px;height:20px}
+.hb-node b{display:block;font-size:19px;font-weight:700;letter-spacing:-.01em;color:#111}
+.hb-node small{display:block;font-size:13.5px;color:#5d6271;margin-top:2px;white-space:nowrap}
+.hb-node i{position:absolute;right:14px;top:12px;width:8px;height:8px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:hbpulse 2.4s infinite}
+@keyframes hbpulse{70%{box-shadow:0 0 0 8px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+.hb-node .rows{font-variant-numeric:tabular-nums}
+.hb-dof{position:absolute;inset:0;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);
+  -webkit-mask-image:radial-gradient(ellipse 34% 30% at 62% 52%,transparent 35%,#000 100%);mask-image:radial-gradient(ellipse 34% 30% at 62% 52%,transparent 35%,#000 100%)}
+.hb-veil{position:absolute;inset:0;background:radial-gradient(56% 36% at 50% 36%,rgba(250,248,244,.8),rgba(250,248,244,0) 75%)}
+.hb-pause{position:absolute;right:24px;bottom:22px;z-index:3;width:34px;height:34px;border-radius:50%;border:0;background:rgba(15,23,42,.82);color:#fff;cursor:pointer;display:grid;place-items:center;opacity:.75;transition:opacity .2s}
+.hb-pause:hover,.hb-pause:focus-visible{opacity:1}
+.hero-bg.paused .hb-plane,.hero-bg.paused .hb-plane *,.hero-bg.off .hb-plane,.hero-bg.off .hb-plane *{animation-play-state:paused!important}
+@media (max-width:760px){.hb-plane{opacity:.38}.hb-dof{display:none}.hb-pause{bottom:14px;right:14px;width:30px;height:30px}}
+@media (prefers-reduced-motion:reduce){.hb-plane,.hb-plane *{animation:none!important}.hb-plane{transform:rotateX(54deg) rotateZ(-24deg) translate3d(40px,-10px,0) scale(1.15)}.hb-pause{display:none}}
 </style>
 </head>
 <body>
@@ -427,6 +523,8 @@ footer .logo{color:#fff}
 <main id="top">
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true"><div class="hb-plane"></div><div class="hb-dof"></div><div class="hb-veil"></div></div>
+  <button class="hb-pause" type="button" aria-label="Pause background animation" aria-pressed="false"></button>
   <div class="wrap">
     <div class="avail"><i></i>Open to new opportunities</div>
     <div class="eyebrow">Narendra Sykam · Senior Azure Data Engineer</div>
@@ -821,6 +919,33 @@ footer .logo{color:#fff}
   <a href="mailto:venkatanksykam@gmail.com?subject=Senior%20Data%20Engineer%20opportunity" class="btn btn-dark">Email me</a>
   <a href="Narendra_Sykam_Resume.pdf" class="btn btn-light" download>Resume</a>
 </div>
+
+<!-- Bitsy: pixel buddy + Ask-me assistant -->
+<div class="bitsy" aria-hidden="false">
+  <div class="bitsy-bubble" role="button" tabindex="-1">Hi! Ask me about Narendra</div>
+  <canvas width="12" height="16" role="button" tabindex="0" aria-label="Bitsy, Narendra's assistant. Open the Ask me panel"></canvas>
+  <div class="bitsy-shadow"></div>
+  <button type="button" class="bitsy-hide" aria-label="Hide Bitsy" title="Hide Bitsy">&times;</button>
+</div>
+<div class="ask-chips" aria-label="Suggested questions"></div>
+<button type="button" class="ask-fab" aria-label="Ask about Narendra" aria-expanded="false">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/><path d="M9 10h.01M12 10h.01M15 10h.01"/></svg>
+</button>
+<section class="ask-panel" role="dialog" aria-modal="false" aria-label="Ask about Narendra">
+  <div class="ask-head">
+    <canvas width="12" height="16" aria-hidden="true"></canvas>
+    <div><b>Ask about Narendra</b><small>Bitsy · quick answers from his resume</small></div>
+    <button type="button" class="ask-close" aria-label="Close">&times;</button>
+  </div>
+  <div class="ask-body" aria-live="polite"></div>
+  <div class="ask-sugg"></div>
+  <form class="ask-form" autocomplete="off">
+    <input type="text" name="q" placeholder="Ask about skills, projects, contact…" aria-label="Your question" maxlength="200">
+    <button type="submit" aria-label="Send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></button>
+  </form>
+  <div class="ask-foot">Pre-written answers, no AI. <button type="button" class="bitsy-back" hidden>Bring Bitsy back</button></div>
+</section>
+
 <div class="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -893,6 +1018,417 @@ if ('IntersectionObserver' in window) {
   onScroll();
   top.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
 })();
+
+/* ===== Bitsy: pixel buddy + Ask-me assistant ===== */
+(() => {
+  const $ = q => document.querySelector(q);
+  const store = {
+    get: k => { try { return localStorage.getItem(k); } catch { return null; } },
+    set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} }
+  };
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- sprite (12 x 16 pixels, original character) ---------- */
+  const PAL = { k: '#0f172a', s: '#f2c9a0', h: '#3b2a20', p: '#111827', b: '#0369a1', t: '#14b8a6',
+                j: '#1e3a5f', w: '#f8fafc', l: '#cbd5e1', d: '#64748b' };
+  const HEAD = ['....hhhh....', '...hhhhhh...', '..phsssshp..', '..pskssksp..', '...ssssss...', '....ssss....'];
+  const TORSO = ['..bbbttbbb..', '.bbbbttbbbb.', '.sbbbbbbbbs.', '..bbbbbbbb..', '..tttttttt..'];
+  const BLANK = '............';
+  const F = {
+    stand: [...HEAD, ...TORSO, '..jjj..jjj..', '..jjj..jjj..', '..jjj..jjj..', '.wwww..wwww.', BLANK],
+    walk1: [...HEAD, '..bbbttbbb..', '.bbbbttbbbb.', 'sbbbbbbbbb..', '..bbbbbbbbs.', '..tttttttt..',
+            '..jjj...jj..', '.jjj....jjj.', 'jjj......jjj', 'www......www', BLANK],
+    walk2: [...HEAD, ...TORSO, '...jjjjjj...', '....jjjj....', '....jjjj....', '...wwwwww...', BLANK],
+    jump: [...HEAD.slice(0, 5), 's...ssss...s', 's.bbbttbbb.s', '.bbbbttbbbb.', '..bbbbbbbb..', '..bbbbbbbb..',
+           '..tttttttt..', '..jjj..jjj..', '.jjj....jjj.', '.ww......ww.', BLANK, BLANK],
+    wave1: [...HEAD.slice(0, 5), '....ssss...s', '..bbbttbbbb.', '.bbbbttbbb..', '.sbbbbbbbb..', '..bbbbbbbb..',
+            '..tttttttt..', '..jjj..jjj..', '..jjj..jjj..', '..jjj..jjj..', '.wwww..wwww.', BLANK],
+    wave2: [...HEAD.slice(0, 5), '....ssss..s.', '..bbbttbbbs.', '.bbbbttbbb..', '.sbbbbbbbb..', '..bbbbbbbb..',
+            '..tttttttt..', '..jjj..jjj..', '..jjj..jjj..', '..jjj..jjj..', '.wwww..wwww.', BLANK],
+    sit1: [BLANK, BLANK, BLANK, ...HEAD, '..bbbttbbb..', '.bbbbttbbbb.', '.bbbbbbbblll',
+           '..bbbbbbslll', '..ttttttdddd', '..jjjjjjjjw.', BLANK],
+    sit2: [BLANK, BLANK, BLANK, ...HEAD, '..bbbttbbb..', '.bbbbttbbbb.', '.bbbbbbbslll',
+           '..bbbbbbblll', '..ttttttdddd', '..jjjjjjjjw.', BLANK]
+  };
+  function draw(ctx, frame, flip) {
+    ctx.clearRect(0, 0, 12, 16);
+    F[frame].forEach((row, y) => [...row].forEach((c, x) => {
+      if (c === '.') return;
+      ctx.fillStyle = PAL[c];
+      ctx.fillRect(flip ? 11 - x : x, y, 1, 1);
+    }));
+  }
+
+  /* ---------- Ask-me assistant ---------- */
+  const RESUME = 'Narendra_Sykam_Resume.pdf';
+  const EMAIL = 'venkatanksykam@gmail.com';
+  const LINKEDIN = 'https://www.linkedin.com/in/venkatanksykam';
+  const GITHUB_PROJECT = 'https://github.com/SykamVenkata/realtime-vehicle-telemetry-lakehouse';
+  const A = {
+    stack: { q: "What's your core stack?",
+      a: 'Azure Databricks, Delta Lake, Microsoft Fabric (OneLake and Fabric Warehouse), Azure Data Factory and Synapse, with Python, PySpark, SQL and dbt. Streaming with Event Hubs and Kafka; governance with Unity Catalog and Purview.',
+      acts: [['See all tools', '#skills']] },
+    work: { q: 'Show me your best work',
+      a: 'Three highlights: a Databricks-to-Microsoft Fabric production cutover with full data integrity, Power BI queries cut from 18 seconds to under 6, and a streaming Lakehouse handling 2M+ vehicle events an hour. There is also an open-source real-time telemetry Lakehouse on GitHub.',
+      acts: [['Case studies', '#work'], ['GitHub project', GITHUB_PROJECT, true]] },
+    experience: { q: 'How much experience do you have?',
+      a: '8+ years in data engineering. He is currently a Senior Azure Data Engineer building Lakehouse platforms for analytics and AI teams.',
+      acts: [['See experience', '#experience']] },
+    industries: { q: 'Which industries?',
+      a: 'Banking and financial services, payments, and automotive, at US banks and financial institutions, a global payments platform and a Fortune 500 automaker.' },
+    certs: { q: 'Certifications?',
+      a: 'Microsoft Certified: Fabric Analytics Engineer Associate, and AWS Certified Data Engineer – Associate.',
+      acts: [['Credentials', '#credentials']] },
+    availability: { q: 'Are you open to new roles?',
+      a: 'Yes. Narendra is open to new Senior Data Engineer opportunities on teams building data platforms on Azure.',
+      acts: [['Get in touch', '#contact']] },
+    location: { q: 'Where are you based?', a: 'Dallas-Fort Worth, Texas.' },
+    resume: { q: 'Download resume', a: 'Here is his resume (PDF, 2 pages).', acts: [['Download resume', RESUME, false, true]] },
+    contact: { q: 'How do I reach you?',
+      a: `Email ${EMAIL} or connect on LinkedIn. He usually replies quickly.`,
+      acts: [['Copy email', 'copy'], ['Email', `mailto:${EMAIL}?subject=Senior%20Data%20Engineer%20opportunity`], ['LinkedIn', LINKEDIN, true]] }
+  };
+  A.contact.a = `Email ${EMAIL} or connect on LinkedIn.`;
+  const KEYS = [
+    ['stack', /stack|tool|skill|tech|databricks|azure|fabric|spark|python|sql|dbt|kafka|synapse/i],
+    ['work', /project|work|case|github|portfolio|built|example|best/i],
+    ['experience', /experience|years|background|role|current|senior/i],
+    ['industries', /industr|domain|bank|financ|payment|automotive|bfsi|sector/i],
+    ['certs', /cert/i],
+    ['resume', /resume|cv/i],
+    ['contact', /contact|email|reach|linkedin|call|phone|connect/i],
+    ['availability', /avail|open|hire|hiring|job|opportunit|looking|notice|join/i],
+    ['location', /where|locat|based|city|relocat/i]
+  ];
+  const FIRST = ['stack', 'work', 'resume'];
+
+  const panel = $('.ask-panel'), body = $('.ask-body'), sugg = $('.ask-sugg'), fab = $('.ask-fab');
+  const chips = $('.ask-chips'), form = $('.ask-form'), toast = $('.toast');
+  let greeted = false;
+
+  function bubble(cls, text, acts) {
+    const m = document.createElement('div');
+    m.className = 'msg ' + cls;
+    m.textContent = text;
+    if (acts && acts.length) {
+      const row = document.createElement('div');
+      row.className = 'acts';
+      acts.forEach(([label, href, external, download]) => {
+        let el;
+        if (href === 'copy') {
+          el = document.createElement('button');
+          el.type = 'button';
+          el.addEventListener('click', async () => {
+            try { await navigator.clipboard.writeText(EMAIL); } catch {}
+            if (toast) { toast.textContent = 'Email address copied'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1800); }
+          });
+        } else {
+          el = document.createElement('a');
+          el.href = href;
+          if (external) { el.target = '_blank'; el.rel = 'noopener'; }
+          if (download) el.setAttribute('download', '');
+          if (href.startsWith('#')) el.addEventListener('click', () => { if (innerWidth < 760) closePanel(); });
+        }
+        el.textContent = label;
+        row.appendChild(el);
+      });
+      m.appendChild(row);
+    }
+    body.appendChild(m);
+    body.scrollTop = body.scrollHeight;
+  }
+  function renderSuggestions(exclude) {
+    sugg.innerHTML = '';
+    Object.keys(A).filter(k => k !== exclude).slice(0, exclude === undefined ? 5 : 3).forEach(k => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = A[k].q;
+      b.addEventListener('click', () => ask(k));
+      sugg.appendChild(b);
+    });
+  }
+  function ask(key, typed) {
+    bubble('me', typed || A[key].q);
+    setTimeout(() => {
+      if (key) bubble('bot', A[key].a, A[key].acts);
+      else bubble('bot', "I only have a few pre-written answers. Try one of the questions below, or email Narendra directly.",
+                  [['Copy email', 'copy'], ['LinkedIn', LINKEDIN, true]]);
+      renderSuggestions(key);
+    }, 280);
+  }
+  function openPanel(key) {
+    hideChips();
+    if (!greeted) {
+      bubble('bot', "Hi, I'm Bitsy, Narendra's assistant. Ask me about his skills, projects or how to reach him.");
+      renderSuggestions();
+      greeted = true;
+    }
+    panel.classList.add('open');
+    fab.setAttribute('aria-expanded', 'true');
+    fab.style.visibility = 'hidden';
+    if (key) ask(key);
+    setTimeout(() => form.q.focus({ preventScroll: true }), 50);
+  }
+  function closePanel() {
+    panel.classList.remove('open');
+    fab.setAttribute('aria-expanded', 'false');
+    fab.style.visibility = '';
+  }
+  fab.addEventListener('click', () => openPanel());
+  $('.ask-close').addEventListener('click', closePanel);
+  addEventListener('keydown', e => { if (e.key === 'Escape' && panel.classList.contains('open')) closePanel(); });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const q = form.q.value.trim();
+    if (!q) return;
+    form.q.value = '';
+    const hit = KEYS.find(([, re]) => re.test(q));
+    ask(hit ? hit[0] : null, q);
+  });
+
+  // IBM-style suggestion chips above the button, once per visit, after the first interaction
+  FIRST.forEach(k => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = A[k].q;
+    b.addEventListener('click', () => openPanel(k));
+    chips.appendChild(b);
+  });
+  let chipsShown = false, chipTimer = 0;
+  function showChips() {
+    if (chipsShown || panel.classList.contains('open')) return;
+    chipsShown = true;
+    chips.classList.add('show');
+    chipTimer = setTimeout(hideChips, 9000);
+  }
+  function hideChips() { clearTimeout(chipTimer); chips.classList.remove('show'); }
+
+  /* ---------- Bitsy behavior ---------- */
+  const el = $('.bitsy'), cv = el.querySelector('canvas'), ctx = cv.getContext('2d');
+  const shadow = el.querySelector('.bitsy-shadow'), speech = el.querySelector('.bitsy-bubble');
+  const headCtx = panel.querySelector('.ask-head canvas').getContext('2d');
+  draw(headCtx, 'stand', false);
+  const back = $('.bitsy-back');
+  const W = 48;
+  const mobile = () => innerWidth < 560;
+
+  const st = { x: 40, y: 0, vy: 0, dir: 1, mode: 'walk', target: 300, until: 0, frame: 'stand', lastInput: performance.now(),
+               runUntil: 0, nextJump: 0, waving: false, lastBit: 0 };
+  let raf = 0, last = performance.now(), active = false;
+
+  function setVisible(on) {
+    active = on;
+    el.classList.toggle('on', on);
+    back.hidden = on;
+    if (on) { st.x = mobile() ? 16 : Math.min(innerWidth * 0.2, 200); loopStart(); }
+  }
+  function say(text, ms = 5000) {
+    speech.textContent = text;
+    speech.classList.add('show');
+    clearTimeout(say.t);
+    say.t = setTimeout(() => speech.classList.remove('show'), ms);
+  }
+  function jump(power = 260) {
+    if (st.y > 0 || st.mode === 'sit') return;
+    st.vy = power;
+    st.mode = 'jump';
+  }
+  function emitBit() {
+    const b = document.createElement('span');
+    b.className = 'bit';
+    b.textContent = Math.random() < 0.5 ? '0' : '1';
+    const r = cv.getBoundingClientRect();
+    b.style.left = (r.left + 30 + Math.random() * 14) + 'px';
+    b.style.top = (r.top + 18) + 'px';
+    document.body.appendChild(b);
+    setTimeout(() => b.remove(), 1300);
+  }
+  function pickTarget() {
+    const max = innerWidth - W - (mobile() ? 70 : 90);
+    if (mobile()) { st.target = 16; return; }
+    st.target = 16 + Math.random() * Math.max(40, max - 16);
+  }
+
+  function step(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    const idleFor = now - st.lastInput;
+    const t = now / 1000;
+
+    if (st.mode === 'jump' || st.y > 0) {
+      st.vy -= 900 * dt; st.y = Math.max(0, st.y + st.vy * dt);
+      if (st.y === 0 && st.vy < 0) { st.vy = 0; st.mode = 'idle'; st.until = now + 600; }
+      st.frame = 'jump';
+    } else if (st.waving) {
+      st.frame = Math.floor(t * 4) % 2 ? 'wave1' : 'wave2';
+    } else if (st.mode === 'sit') {
+      st.frame = Math.floor(t * 5) % 2 ? 'sit1' : 'sit2';
+      if (!reduce && now - st.lastBit > 450) { st.lastBit = now; emitBit(); }
+      if (idleFor < 400) { st.mode = 'idle'; st.until = now + 500; }
+    } else if (idleFor > 5000 && st.mode !== 'jump') {
+      st.mode = 'sit';
+    } else if (st.mode === 'idle') {
+      st.frame = 'stand';
+      if (now > st.until) { pickTarget(); st.mode = 'walk'; }
+    } else {
+      const running = now < st.runUntil;
+      const speed = running ? 150 : 45;
+      const dx = st.target - st.x;
+      if (Math.abs(dx) < 3) {
+        st.mode = 'idle'; st.until = now + 800 + Math.random() * 2200;
+        if (Math.random() < 0.4) st.dir *= -1; // look around
+      } else {
+        st.dir = dx > 0 ? 1 : -1;
+        st.x += st.dir * Math.min(Math.abs(dx), speed * dt);
+        st.frame = Math.floor(t * (running ? 12 : 6)) % 2 ? 'walk1' : 'walk2';
+      }
+    }
+    st.x = Math.max(8, Math.min(innerWidth - W - 8, st.x));
+    el.style.transform = `translate(${st.x.toFixed(1)}px, ${(-st.y).toFixed(1)}px)`;
+    shadow.style.transform = `translateY(${st.y.toFixed(1)}px) scale(${Math.max(0.5, 1 - st.y / 160)})`;
+    draw(ctx, st.frame, st.dir < 0);
+    raf = active && !document.hidden ? requestAnimationFrame(step) : 0;
+  }
+  function loopStart() { if (!raf && active && !document.hidden) { last = performance.now(); raf = requestAnimationFrame(step); } }
+
+  function input() { st.lastInput = performance.now(); }
+  let lastY = scrollY, lastT = performance.now(), firstInteraction = false;
+  function onFirst() {
+    if (firstInteraction) return;
+    firstInteraction = true;
+    setTimeout(() => {
+      showChips();
+      if (active) say('Hi! Click me to ask about Narendra', 6000);
+    }, 600);
+  }
+  addEventListener('scroll', () => {
+    input();
+    const now = performance.now(), v = Math.abs(scrollY - lastY) / Math.max(1, now - lastT) * 1000;
+    if (v > 1800) st.runUntil = now + 1500;
+    lastY = scrollY; lastT = now;
+    if (scrollY > 200) onFirst();
+  }, { passive: true });
+  addEventListener('mousemove', e => {
+    input();
+    if (performance.now() > 1500) onFirst();
+    if (!active || mobile()) return;
+    const r = cv.getBoundingClientRect();
+    const near = Math.abs(e.clientX - (r.left + 24)) < 70 && e.clientY > r.top - 60 && e.clientY < r.bottom + 10;
+    if (near && performance.now() > st.nextJump) { st.nextJump = performance.now() + 2500; jump(); }
+  }, { passive: true });
+  addEventListener('touchstart', () => { input(); onFirst(); }, { passive: true });
+  addEventListener('keydown', input);
+  addEventListener('resize', () => { st.x = Math.min(st.x, innerWidth - W - 8); });
+  document.addEventListener('visibilitychange', loopStart);
+
+  // Hop when a new section heading scrolls into view
+  if ('IntersectionObserver' in window) {
+    const seen = new WeakSet();
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting && !seen.has(e.target)) {
+        seen.add(e.target);
+        if (active && performance.now() > st.nextJump) { st.nextJump = performance.now() + 2000; setTimeout(() => jump(300), 150); }
+      }
+    }), { threshold: 1 });
+    document.querySelectorAll('main h2').forEach(h => io.observe(h));
+  }
+
+  cv.addEventListener('mouseenter', () => { st.waving = true; });
+  cv.addEventListener('mouseleave', () => { st.waving = false; });
+  const openFromBitsy = () => { speech.classList.remove('show'); openPanel(); };
+  cv.addEventListener('click', openFromBitsy);
+  speech.addEventListener('click', openFromBitsy);
+  cv.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFromBitsy(); } });
+  el.querySelector('.bitsy-hide').addEventListener('click', e => {
+    e.stopPropagation();
+    store.set('bitsy-hidden', '1');
+    setVisible(false);
+    if (toast) { toast.textContent = 'Bitsy is taking a break. Bring it back from the chat button.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600); }
+  });
+  back.addEventListener('click', () => { store.set('bitsy-hidden', null); setVisible(true); say('Back to work!', 2500); });
+
+  if (reduce) {
+    back.hidden = true;
+  } else {
+    setVisible(store.get('bitsy-hidden') !== '1');
+  }
+  draw(ctx, 'stand', false);
+})();
+
+/* ===== Hero motion backdrop ===== */
+(() => {
+  const bg = document.querySelector('.hero-bg');
+  if (!bg) return;
+  const plane = bg.querySelector('.hb-plane');
+  const I = {
+    stream: '<path d="M2 12h4l3-8 4 16 3-8h6"/>',
+    batch: '<path d="M4 6h16M4 12h16M4 18h10"/>',
+    db: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
+    layer: '<path d="M12 3 2 8l10 5 10-5-10-5zM2 16l10 5 10-5M2 12l10 5 10-5"/>',
+    check: '<path d="M20 6 9 17l-5-5"/>',
+    chart: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    lock: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+    spark: '<path d="M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M5 19l4-4M15 9l4-4"/>',
+    warn: '<path d="M12 3 2 21h20L12 3zM12 10v5M12 18h.01"/>'
+  };
+  const N = [
+    ['eh', 80, 250, '#0369a1', 'stream', 'Event Hubs', 'Kafka · <span class="rows" data-r="2.1">2.1M</span> events/hr', 1],
+    ['adf', 80, 430, '#7c3aed', 'batch', 'Data Factory', 'Batch · 40+ sources'],
+    ['cdc', 80, 610, '#475569', 'db', 'SQL Server', 'Change data capture'],
+    ['br', 420, 430, '#b45309', 'layer', 'Bronze', 'Raw · append-only Delta', 1],
+    ['dq', 720, 430, '#16a34a', 'check', 'Data quality', '13 rules · 99.98% pass'],
+    ['qt', 720, 640, '#dc2626', 'warn', 'Quarantine', 'Bad rows held for review'],
+    ['sv', 1020, 430, '#64748b', 'layer', 'Silver', 'Deduped · conformed', 1],
+    ['gd', 1320, 430, '#ca8a04', 'layer', 'Gold', 'Daily KPIs · MERGE'],
+    ['uc', 1020, 180, '#0f766e', 'lock', 'Unity Catalog', 'Lineage · access control'],
+    ['pbi', 1620, 250, '#eab308', 'chart', 'Power BI', 'Direct Lake · < 6 s', 1],
+    ['fw', 1620, 430, '#0284c7', 'db', 'Fabric Warehouse', 'OneLake · SQL endpoint'],
+    ['ml', 1620, 610, '#db2777', 'spark', 'ML features', 'Feature tables for AI']
+  ];
+  const E = [['eh','br'],['adf','br'],['cdc','br'],['br','dq'],['dq','sv'],['dq','qt',0],['sv','gd'],['gd','pbi'],['gd','fw'],['gd','ml'],['uc','sv','gov'],['uc','gd','gov']];
+  const pos = {};
+  const W = 250, H = 78;
+  let html = '';
+  N.forEach(([id, x, y, c, ic, t, s, live]) => {
+    pos[id] = [x, y];
+    html += `<div class="hb-node" style="left:${x}px;top:${y}px;--c:${c}"><span class="hb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${I[ic]}</svg></span><span><b>${t}</b><small>${s}</small></span>${live ? '<i></i>' : ''}</div>`;
+  });
+  let paths = '';
+  E.forEach(([a, b, kind]) => {
+    const [ax, ay] = pos[a], [bx, by] = pos[b];
+    let d;
+    if (kind === 'gov') { d = `M${ax + W / 2} ${ay + H} L${bx + W / 2 + (bx - ax) * .0} ${by}`; if (bx !== ax) d = `M${ax + W} ${ay + H / 2} C${bx - 60} ${ay + H / 2} ${bx + W / 2} ${ay + 120} ${bx + W / 2} ${by}`; }
+    else if (kind === 0) d = `M${ax + W / 2} ${ay + H} L${bx + W / 2} ${by}`;
+    else { const x1 = ax + W, y1 = ay + H / 2, x2 = bx, y2 = by + H / 2, m = (x1 + x2) / 2; d = `M${x1} ${y1} C${m} ${y1} ${m} ${y2} ${x2} ${y2}`; }
+    paths += `<path class="${kind === 'gov' ? 'gov' : ''}" d="${d}"/>`;
+    if (kind !== 'gov') paths += `<path class="flow" d="${d}" style="animation-delay:-${(Math.random() * 1.6).toFixed(2)}s"/>`;
+  });
+  plane.innerHTML = `<svg viewBox="0 0 1800 960" preserveAspectRatio="none">${paths}</svg>${html}`;
+
+  // live-looking counter
+  const rows = plane.querySelector('.rows');
+  let v = 2.1;
+  setInterval(() => {
+    if (bg.classList.contains('paused') || bg.classList.contains('off') || document.hidden) return;
+    v = Math.min(2.4, Math.max(1.9, v + (Math.random() - .45) * .06));
+    rows.textContent = v.toFixed(1) + 'M';
+  }, 1800);
+
+  // pause button + pause when the hero is offscreen
+  const btn = bg.parentNode.querySelector('.hb-pause');
+  const ICON_PAUSE = '<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="1" width="3" height="10" rx="1"/><rect x="7" y="1" width="3" height="10" rx="1"/></svg>';
+  const ICON_PLAY = '<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M3 1.5v9l7-4.5z"/></svg>';
+  if (btn) {
+    btn.innerHTML = ICON_PAUSE;
+    btn.addEventListener('click', () => {
+      const p = bg.classList.toggle('paused');
+      btn.innerHTML = p ? ICON_PLAY : ICON_PAUSE;
+      btn.setAttribute('aria-label', p ? 'Play background animation' : 'Pause background animation');
+      btn.setAttribute('aria-pressed', String(p));
+    });
+  }
+  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => bg.classList.toggle('off', !e.isIntersecting)).observe(bg);
+})();
+
 </script>
 </body>
 </html>
