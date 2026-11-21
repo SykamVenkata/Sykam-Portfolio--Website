@@ -1545,7 +1545,7 @@ if ('IntersectionObserver' in window) {
   plane.innerHTML = `<svg viewBox="0 0 1800 960" preserveAspectRatio="none">${paths}</svg>${html}`;
     bg.classList.add('ready');
   };
-  const idle = window.requestIdleCallback || (f => setTimeout(f, 200));
+  const idle = f => (window.requestIdleCallback ? requestIdleCallback(f, { timeout: 1200 }) : setTimeout(f, 300));
   if (document.readyState === 'complete') idle(build); else addEventListener('load', () => idle(build), { once: true });
 
   // live-looking counter
