@@ -12,7 +12,13 @@
 <meta property="og:url" content="https://sykamsolutions.com/portfolio/">
 <meta property="og:title" content="Narendra Sykam | Senior Azure Data Engineer">
 <meta property="og:description" content="Lakehouse and warehouse platforms on Azure Databricks, Microsoft Fabric, ADF and Synapse. 8+ years. Dallas-Fort Worth.">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://sykamsolutions.com/portfolio/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Narendra Sykam, Senior Azure Data Engineer: I build Lakehouse platforms for analytics and AI teams">
+<meta property="og:site_name" content="Narendra Sykam">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sykamsolutions.com/portfolio/og.png">
 <meta name="twitter:title" content="Narendra Sykam | Senior Azure Data Engineer">
 <meta name="twitter:description" content="Lakehouse and warehouse platforms on Azure Databricks, Microsoft Fabric, ADF and Synapse.">
 <meta name="theme-color" content="#faf8f4">
@@ -40,7 +46,7 @@
 <style>
 :root{
   --bg:#faf8f4; --bg-2:#f4f1eb; --card:#ffffff; --tile:#f7f5f0;
-  --ink:#141414; --ink-2:#2b2b2b; --muted:#5d6271; --dim:#8a8f9c;
+  --ink:#141414; --ink-2:#2b2b2b; --muted:#4b5060; --dim:#6b7080;
   --line:#e8e3da; --line-2:#dad4c8;
   --accent:#0369a1; --green:#16a34a;
   --dark:#141414;
@@ -52,7 +58,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 html,body{overflow-x:clip}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 .eyebrow{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
@@ -135,7 +141,7 @@ p,dd,li{text-wrap:pretty}
 /* impact strip */
 .hero .stats{max-width:1080px;margin:44px auto 0;text-align:left}
 .hero .stat{background:rgba(255,255,255,.86);border-color:rgba(255,255,255,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 18px 40px -28px rgba(8,47,73,.6)}
-.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .stat{background:var(--tile);border:1px solid var(--line);border-radius:18px;padding:20px 18px}
 .stat .num{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.035em;line-height:1;margin-bottom:8px}
 .stat .num small{font-size:17px;color:var(--dim);font-weight:700}
@@ -254,7 +260,7 @@ details p a{color:var(--accent);text-decoration:underline;text-underline-offset:
 
 footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px}
 .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
-.foot h4{color:#fff;font-size:14.5px;font-weight:600;margin-bottom:14px}
+.foot h3{color:#fff;font-size:14.5px;font-weight:600;margin-bottom:14px}
 .foot a,.foot > div > span{display:block;color:#b9bdc8;margin-bottom:10px}
 .foot .logo{color:#fff;margin-bottom:0}
 .foot .mark{display:grid;margin:0;color:#fff}
@@ -268,7 +274,7 @@ footer{background:var(--dark);color:#cfd2da;padding:60px 0 40px;font-size:14.5px
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
 @media (max-width:1060px){
-  .stats{grid-template-columns:repeat(3,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
   .tiles{grid-template-columns:repeat(4,1fr)}
   .nav-links{display:none}
 }
@@ -404,7 +410,7 @@ footer .logo{color:#fff}
 }
 
 /* ===== Bitsy: pixel buddy + Ask-me assistant ===== */
-.to-top{bottom:84px}
+.to-top{bottom:26px;right:86px}
 .bitsy{position:fixed;left:0;bottom:10px;z-index:85;width:56px;height:63px;pointer-events:none;will-change:transform;display:none}
 .bitsy.on{display:block}
 .bitsy .bz{width:56px;height:63px;cursor:pointer;pointer-events:auto;display:block;overflow:visible;filter:drop-shadow(0 6px 6px rgba(8,47,73,.22))}
@@ -495,19 +501,26 @@ footer .logo{color:#fff}
 }
 @media (prefers-reduced-motion:reduce){.bit{display:none}}
 
-/* ===== Hero motion backdrop (IBM-style tilted pipeline) ===== */
-.hero{position:relative;isolation:isolate}
-.hero>.wrap{position:relative;z-index:2}
-.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;perspective:1500px;perspective-origin:60% 40%;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 82%,transparent 100%)}
-.hb-plane{position:absolute;left:50%;top:48%;width:1800px;height:960px;margin:-480px 0 0 -900px;transform-style:preserve-3d;opacity:.62;
+/* ===== Hero motion backdrop (IBM-style tilted pipeline, in its own lane) ===== */
+.hero{text-align:left}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px;align-items:center;margin-bottom:56px}
+.hero-copy{position:relative;z-index:2;max-width:640px}
+.hero .hero-copy h1{margin:0 0 22px;max-width:none;font-size:clamp(40px,4.6vw,62px);line-height:1.05}
+.hero .hero-copy .lede{margin:0 0 30px;max-width:34em;font-size:clamp(17px,1.4vw,19px);line-height:1.65;color:#262a36}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-cta .btn{padding:13px 22px;font-size:15.5px}
+.hero-visual{position:relative;height:520px;margin-right:-24px}
+.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;perspective:1400px;perspective-origin:50% 40%;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0,#000 12%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0,#000 12%,#000 86%,transparent 100%);mask-composite:intersect}
+.hb-plane{position:absolute;left:50%;top:50%;width:1800px;height:960px;margin:-480px 0 0 -900px;transform-style:preserve-3d;opacity:.9;
   animation:hbcam 54s cubic-bezier(.45,0,.55,1) infinite}
 @keyframes hbcam{
-  0%  {transform:rotateX(54deg) rotateZ(-24deg) translate3d(380px,40px,0) scale(1.12)}
-  30% {transform:rotateX(54deg) rotateZ(-24deg) translate3d(40px,-10px,0) scale(1.18)}
-  60% {transform:rotateX(50deg) rotateZ(-20deg) translate3d(-330px,30px,0) scale(1.14)}
-  80% {transform:rotateX(52deg) rotateZ(-22deg) translate3d(-120px,-60px,0) scale(1.08)}
-  100%{transform:rotateX(54deg) rotateZ(-24deg) translate3d(380px,40px,0) scale(1.12)}}
+  0%  {transform:rotateX(52deg) rotateZ(-24deg) translate3d(470px,40px,0) scale(.92)}
+  30% {transform:rotateX(52deg) rotateZ(-24deg) translate3d(80px,0,0) scale(.98)}
+  60% {transform:rotateX(48deg) rotateZ(-20deg) translate3d(-400px,30px,0) scale(.95)}
+  80% {transform:rotateX(50deg) rotateZ(-22deg) translate3d(-160px,-60px,0) scale(.9)}
+  100%{transform:rotateX(52deg) rotateZ(-24deg) translate3d(470px,40px,0) scale(.92)}}
 .hb-plane svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .hb-plane path{fill:none;stroke:rgba(15,23,42,.28);stroke-width:2.5}
 .hb-plane path.flow{stroke:#0369a1;stroke-width:3;stroke-dasharray:6 22;animation:hbflow 1.6s linear infinite;opacity:.8}
@@ -523,17 +536,46 @@ footer .logo{color:#fff}
 .hb-node i{position:absolute;right:14px;top:12px;width:8px;height:8px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:hbpulse 2.4s infinite}
 @keyframes hbpulse{70%{box-shadow:0 0 0 8px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
 .hb-node .rows{font-variant-numeric:tabular-nums}
-.hb-dof{position:absolute;inset:0;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);
-  -webkit-mask-image:radial-gradient(ellipse 34% 30% at 62% 52%,transparent 35%,#000 100%);mask-image:radial-gradient(ellipse 34% 30% at 62% 52%,transparent 35%,#000 100%)}
-.hb-veil{position:absolute;inset:0;background:radial-gradient(56% 36% at 50% 36%,rgba(250,248,244,.8),rgba(250,248,244,0) 75%)}
-.hb-pause{position:absolute;right:24px;bottom:22px;z-index:3;width:34px;height:34px;border-radius:50%;border:0;background:rgba(15,23,42,.82);color:#fff;cursor:pointer;display:grid;place-items:center;opacity:.75;transition:opacity .2s}
+.hb-dof{position:absolute;inset:0;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  -webkit-mask-image:radial-gradient(ellipse 46% 40% at 50% 50%,transparent 45%,#000 100%);mask-image:radial-gradient(ellipse 46% 40% at 50% 50%,transparent 45%,#000 100%)}
+.hb-pause{position:absolute;right:30px;bottom:18px;z-index:3;width:34px;height:34px;border-radius:50%;border:0;background:rgba(15,23,42,.82);color:#fff;cursor:pointer;display:grid;place-items:center;opacity:.75;transition:opacity .2s}
 .hb-pause:hover,.hb-pause:focus-visible{opacity:1}
 .hero-bg.paused .hb-plane,.hero-bg.paused .hb-plane *,.hero-bg.off .hb-plane,.hero-bg.off .hb-plane *{animation-play-state:paused!important}
-@media (max-width:760px){.hb-plane{opacity:.38}.hb-dof{display:none}.hb-pause{bottom:14px;right:14px;width:30px;height:30px}}
-@media (prefers-reduced-motion:reduce){.hb-plane,.hb-plane *{animation:none!important}.hb-plane{transform:rotateX(54deg) rotateZ(-24deg) translate3d(40px,-10px,0) scale(1.15)}.hb-pause{display:none}}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:8px;margin-bottom:36px}
+  .hero-copy{max-width:none}
+  .hero-visual{height:230px;margin:0 -24px}
+  .hb-plane{opacity:.8}
+  .hb-dof{display:none}
+  .hb-pause{bottom:10px;right:16px;width:30px;height:30px}
+}
+@media (prefers-reduced-motion:reduce){.hb-plane,.hb-plane *{animation:none!important}.hb-plane{transform:rotateX(52deg) rotateZ(-24deg) translate3d(80px,0,0) scale(.98)}.hb-pause{display:none}}
+/* ===== Projects ===== */
+.proj{display:grid;grid-template-columns:1fr 1.05fr;gap:16px;margin-top:40px;background:#fdfcfa;border:1px solid var(--line);border-radius:22px;padding:12px}
+.proj-text{padding:26px 22px 22px}
+.proj-text .eyebrow{font-size:12px;letter-spacing:.08em;color:var(--dim);margin-bottom:10px}
+.proj h3{font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.025em;line-height:1.15;margin-bottom:12px}
+.proj-text>p{color:var(--ink-2);font-size:15.5px;line-height:1.65;max-width:62ch}
+.proj-points{list-style:none;margin:16px 0 18px;display:grid;gap:8px}
+.proj-points li{position:relative;padding-left:24px;font-size:15px;color:var(--ink-2)}
+.proj-points li::before{content:"";position:absolute;left:2px;top:7px;width:12px;height:7px;border-left:2px solid #0f766e;border-bottom:2px solid #0f766e;transform:rotate(-45deg)}
+.proj-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.proj-visual{background:linear-gradient(160deg,#f8fbff,#eef6fb);border:1px solid var(--line);border-radius:16px;display:grid;place-items:center;padding:18px}
+.proj-arch{width:100%;height:auto;max-width:560px}
+.pa-t{font:600 13px var(--body);fill:#111}
+.pa-s{font:500 11px var(--body);fill:#5d6271}
+@media (max-width:900px){.proj{grid-template-columns:1fr}.proj-text{padding:18px 14px}}
+/* ===== Accessibility ===== */
+.skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;transition:top .2s}
+.skip:focus{top:12px}
+a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid #0369a1;outline-offset:3px;border-radius:8px}
+/* ===== Speed: show backdrop only once built ===== */
+.hero-bg{opacity:0;transition:opacity .8s ease}
+.hero-bg.ready{opacity:1}
 </style>
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
 <div class="progress" aria-hidden="true"></div>
 
 <header>
@@ -542,6 +584,7 @@ footer .logo{color:#fff}
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#work">Case Studies</a>
+      <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#faq">FAQ</a>
@@ -553,23 +596,31 @@ footer .logo{color:#fff}
   </nav>
 </header>
 
-<main id="top">
+<main id="top" tabindex="-1">
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" aria-hidden="true"><div class="hb-plane"></div><div class="hb-dof"></div><div class="hb-veil"></div></div>
-  <button class="hb-pause" type="button" aria-label="Pause background animation" aria-pressed="false"></button>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="avail"><i></i>Open to new opportunities</div>
+      <div class="eyebrow">Narendra Sykam · Senior Azure Data Engineer</div>
+      <h1>I build <span class="hl">Lakehouse platforms</span> for analytics &amp; AI teams</h1>
+      <p class="lede">8+ years designing pipelines, warehouses and Lakehouses on Azure Databricks, Microsoft Fabric, Azure Data Factory and Synapse, from raw ingestion to the Power BI models leadership uses every day.</p>
+      <div class="hero-cta">
+        <a href="Narendra_Sykam_Resume.pdf" class="btn btn-dark" download>Download resume <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m-5-5 5 5 5-5M5 20h14"/></svg></a>
+        <a href="mailto:venkatanksykam@gmail.com?subject=Senior%20Data%20Engineer%20opportunity" class="btn btn-light">Email me</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-bg" aria-hidden="true"><div class="hb-plane"></div><div class="hb-dof"></div></div>
+      <button class="hb-pause" type="button" aria-label="Pause background animation" aria-pressed="false"></button>
+    </div>
+  </div>
   <div class="wrap">
-    <div class="avail"><i></i>Open to new opportunities</div>
-    <div class="eyebrow">Narendra Sykam · Senior Azure Data Engineer</div>
-    <h1>I build <span class="hl">Lakehouse platforms</span> for analytics &amp; AI teams</h1>
-    <p class="lede">8+ years designing pipelines, warehouses and Lakehouses on Azure Databricks, Microsoft Fabric, Azure Data Factory and Synapse, from raw ingestion to the Power BI models leadership uses every day.</p>
     <div class="stats">
       <div class="stat"><div class="num"><span class="cu" data-to="8">8</span><small>+ yrs</small></div><p>Data platforms for banking, payments and automotive</p></div>
       <div class="stat"><div class="num"><span class="cu" data-to="2" data-suffix="M">2M</span><small>+/hr</small></div><p>Telemetry events streamed into Delta Lake</p></div>
-      <div class="stat"><div class="num"><span class="cu" data-to="40">40</span><small>%</small></div><p>Faster pipeline releases across 5 teams</p></div>
       <div class="stat"><div class="num"><span class="cu" data-to="6" data-prefix="&lt;" data-from="18">&lt;6</span><small>s</small></div><p>Power BI queries, down from 18 seconds</p></div>
       <div class="stat"><div class="num"><span class="cu" data-to="99.9" data-dec="1">99.9</span><small>%</small></div><p>SLA held with 24/7 production ownership</p></div>
-      <div class="stat"><div class="num"><span class="cu" data-to="32">32</span><small>%</small></div><p>Lower refresh latency with CDC pipelines</p></div>
     </div>
     <div class="prompt callin">
       <div class="prompt-label">Where I usually get called in</div>
@@ -743,6 +794,55 @@ footer .logo{color:#fff}
       </article>
 
     </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="padding-top:40px">
+  <div class="wrap">
+    <h2 class="reveal">Open-source project</h2>
+    <p class="sub reveal">Real, runnable code you can read today. Built the way I build production pipelines.</p>
+    <article class="proj reveal">
+      <div class="proj-text">
+        <div class="eyebrow">Featured · Streaming Lakehouse</div>
+        <h3>Real-time vehicle telemetry Lakehouse</h3>
+        <p>A simulated fleet streams readings into Event Hubs. Databricks Structured Streaming lands them in Delta Lake Bronze, Silver and Gold tables with data quality rules, deduplication and late-data handling, Unity Catalog governs access, and Power BI shows the fleet live.</p>
+        <ul class="proj-points">
+          <li>13 data quality rules, with failed rows kept in a quarantine table</li>
+          <li>Exactly-once Gold tables using watermarks and MERGE</li>
+          <li>Terraform and a Databricks Asset Bundle for Azure deployment</li>
+          <li>Runs on a laptop with one command, tested in CI on every push</li>
+        </ul>
+        <div class="chips"><span class="chip">PySpark</span><span class="chip">Structured Streaming</span><span class="chip">Delta Lake</span><span class="chip">Event Hubs</span><span class="chip">Unity Catalog</span><span class="chip">Terraform</span><span class="chip">GitHub Actions</span></div>
+        <div class="proj-btns">
+          <a href="https://github.com/SykamVenkata/realtime-vehicle-telemetry-lakehouse" class="btn btn-dark btn-sm" target="_blank" rel="noopener">View code on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          <a href="https://github.com/SykamVenkata/realtime-vehicle-telemetry-lakehouse/blob/main/docs/design-decisions.md" class="btn btn-light btn-sm" target="_blank" rel="noopener">Read design decisions</a>
+        </div>
+      </div>
+      <div class="proj-visual">
+        <svg class="proj-arch" viewBox="0 0 560 312" role="img" aria-labelledby="pa-title pa-desc">
+          <title id="pa-title">Architecture of the real-time vehicle telemetry Lakehouse</title>
+          <desc id="pa-desc">Simulated fleet streams into Event Hubs, Databricks Structured Streaming writes Bronze, Silver and Gold Delta tables with a quarantine for bad rows, Unity Catalog governs access, and Power BI reads the Gold tables.</desc>
+          <defs><marker id="pa-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#64748b"/></marker></defs>
+          <rect x="150" y="40" width="300" height="200" rx="16" fill="#f0f9ff" stroke="#bae6fd" stroke-dasharray="5 5"/>
+          <text x="164" y="60" class="pa-s" style="fill:#0369a1">Azure Databricks · Delta Lake</text>
+          <g class="pa-lines" fill="none" stroke="#64748b" stroke-width="1.6" marker-end="url(#pa-ar)">
+            <path d="M120 95 H160"/>
+            <path d="M285 95 H305"/><path d="M222 118 V150"/>
+            <path d="M380 118 V182"/>
+          </g>
+          <g><rect x="14" y="72" width="106" height="46" rx="9" fill="#fff" stroke="#0369a1" stroke-width="1.5"/><rect x="14" y="72" width="5" height="46" rx="2" fill="#0369a1"/><text x="28" y="92" class="pa-t">Event Hubs</text><text x="28" y="108" class="pa-s">Kafka stream</text></g>
+          <g><rect x="160" y="72" width="125" height="46" rx="9" fill="#fff" stroke="#b45309" stroke-width="1.5"/><rect x="160" y="72" width="5" height="46" rx="2" fill="#b45309"/><text x="174" y="92" class="pa-t">Bronze</text><text x="174" y="108" class="pa-s">raw + offsets</text></g>
+          <g><rect x="305" y="72" width="135" height="46" rx="9" fill="#fff" stroke="#64748b" stroke-width="1.5"/><rect x="305" y="72" width="5" height="46" rx="2" fill="#64748b"/><text x="319" y="92" class="pa-t">Silver</text><text x="319" y="108" class="pa-s">validated, deduped</text></g>
+          <g><rect x="160" y="150" width="125" height="46" rx="9" fill="#fff" stroke="#dc2626" stroke-width="1.5"/><rect x="160" y="150" width="5" height="46" rx="2" fill="#dc2626"/><text x="174" y="170" class="pa-t">Quarantine</text><text x="174" y="186" class="pa-s">failed rules</text></g>
+          <g><rect x="305" y="182" width="135" height="46" rx="9" fill="#fff" stroke="#ca8a04" stroke-width="1.5"/><rect x="305" y="182" width="5" height="46" rx="2" fill="#ca8a04"/><text x="319" y="202" class="pa-t">Gold</text><text x="319" y="218" class="pa-s">metrics, alerts</text></g>
+          <g><rect x="468" y="72" width="86" height="46" rx="9" fill="#fff" stroke="#eab308" stroke-width="1.5"/><rect x="468" y="72" width="5" height="46" rx="2" fill="#eab308"/><text x="482" y="92" class="pa-t">Power BI</text><text x="482" y="108" class="pa-s">live fleet</text></g>
+          <g><rect x="150" y="256" width="300" height="46" rx="9" fill="#fff" stroke="#0f766e" stroke-width="1.5"/><rect x="150" y="256" width="5" height="46" rx="2" fill="#0f766e"/><text x="164" y="276" class="pa-t">Unity Catalog</text><text x="164" y="292" class="pa-s">grants · column masks · lineage</text></g>
+          <path d="M300 256 V242" fill="none" stroke="#0f766e" stroke-width="1.6" stroke-dasharray="3 4"/>
+          <path d="M440 205 H511 V120" fill="none" stroke="#64748b" stroke-width="1.6" marker-end="url(#pa-ar)"/>
+        </svg>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -939,9 +1039,9 @@ footer .logo{color:#fff}
   <div class="wrap">
     <div class="foot">
       <div><a href="#top" class="logo" style="display:flex"><span class="mark">NS</span>Narendra Sykam</a><span style="margin-top:14px">Senior Azure Data Engineer<br>Dallas-Fort Worth, TX</span></div>
-      <div><h4>Portfolio</h4><a href="#about">About</a><a href="#work">Case studies</a><a href="#experience">Experience</a><a href="#skills">Skills</a></div>
-      <div><h4>More</h4><a href="#credentials">Certifications</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
-      <div><h4>Connect</h4><a href="mailto:venkatanksykam@gmail.com">Email</a><a href="https://www.linkedin.com/in/venkatanksykam" target="_blank" rel="noopener">LinkedIn</a><a href="Narendra_Sykam_Resume.pdf" download>Resume (PDF)</a></div>
+      <div><h3>Portfolio</h3><a href="#about">About</a><a href="#work">Case studies</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a></div>
+      <div><h3>More</h3><a href="#credentials">Certifications</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+      <div><h3>Connect</h3><a href="mailto:venkatanksykam@gmail.com">Email</a><a href="https://www.linkedin.com/in/venkatanksykam" target="_blank" rel="noopener">LinkedIn</a><a href="Narendra_Sykam_Resume.pdf" download>Resume (PDF)</a></div>
     </div>
     <div class="copy"><span>© <span id="yr">2026</span> Narendra Sykam</span><span>sykamsolutions.com/portfolio</span></div>
   </div>
@@ -959,7 +1059,7 @@ footer .logo{color:#fff}
   <svg class="bz" viewBox="0 0 64 72" role="button" tabindex="0" aria-label="Bitsy, Narendra's assistant. Open the Ask me panel" focusable="true">
     <defs>
       <filter id="bz-fluff" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter>
-      <radialGradient id="bz-fur" cx="42%" cy="34%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".62" stop-color="#eef7ff"/><stop offset="1" stop-color="#bfdcf5"/></radialGradient>
+      <radialGradient id="bz-fur" cx="42%" cy="34%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#e2f0fc"/><stop offset="1" stop-color="#9cc8ee"/></radialGradient>
       <radialGradient id="bz-limb" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#a9cdee"/></radialGradient>
     </defs>
     <g class="bz-all">
@@ -1398,6 +1498,7 @@ if ('IntersectionObserver' in window) {
   const bg = document.querySelector('.hero-bg');
   if (!bg) return;
   const plane = bg.querySelector('.hb-plane');
+  const build = () => {
   const I = {
     stream: '<path d="M2 12h4l3-8 4 16 3-8h6"/>',
     batch: '<path d="M4 6h16M4 12h16M4 18h10"/>',
@@ -1442,12 +1543,17 @@ if ('IntersectionObserver' in window) {
     if (kind !== 'gov') paths += `<path class="flow" d="${d}" style="animation-delay:-${(Math.random() * 1.6).toFixed(2)}s"/>`;
   });
   plane.innerHTML = `<svg viewBox="0 0 1800 960" preserveAspectRatio="none">${paths}</svg>${html}`;
+    bg.classList.add('ready');
+  };
+  const idle = window.requestIdleCallback || (f => setTimeout(f, 200));
+  if (document.readyState === 'complete') idle(build); else addEventListener('load', () => idle(build), { once: true });
 
   // live-looking counter
-  const rows = plane.querySelector('.rows');
-  let v = 2.1;
+  let rows = null, v = 2.1;
   setInterval(() => {
     if (bg.classList.contains('paused') || bg.classList.contains('off') || document.hidden) return;
+    rows = rows || plane.querySelector('.rows');
+    if (!rows) return;
     v = Math.min(2.4, Math.max(1.9, v + (Math.random() - .45) * .06));
     rows.textContent = v.toFixed(1) + 'M';
   }, 1800);
