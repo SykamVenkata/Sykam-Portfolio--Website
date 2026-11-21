@@ -436,9 +436,9 @@ footer .logo{color:#fff}
 .bitsy.run .bz-foot-r{animation-delay:-.13s}
 .bitsy.jump .bz-body{animation:none;transform:scale(.94,1.08)}
 .bitsy.jump .bz-arm-l{transform:translate(-1px,-9px) rotate(150deg)}.bitsy.jump .bz-arm-r{transform:translate(1px,-9px) rotate(-150deg)}
-.bitsy.jump .bz-mouth{d:path("M28.5 43.5 Q32 48.5 35.5 43.5 Z");fill:#0f172a}
+.bitsy.jump .bz-mouth{opacity:0}.bitsy.jump .bz-mouth-open{opacity:1}
 .bitsy.wave .bz-arm-r{animation:bzwave .6s ease-in-out infinite}
-.bitsy.wave .bz-mouth{d:path("M28.5 43.5 Q32 48.5 35.5 43.5 Z");fill:#0f172a}
+.bitsy.wave .bz-mouth{opacity:0}.bitsy.wave .bz-mouth-open{opacity:1}
 .bitsy.sit .bz-foot{transform:translateY(-3px) scaleY(.7)}
 .bitsy.sit .bz-laptop{opacity:1;transform:none}
 .bitsy.sit .bz-arm-l{transform:translate(9px,1px)}.bitsy.sit .bz-arm-r{transform:translate(-9px,1px)}
@@ -595,6 +595,35 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 @media (max-width:560px){.ico-mail{display:none}.ico{width:34px;height:34px}.nav-cta{gap:2px}.nav-resume{padding:8px 12px}}
 .logo{white-space:nowrap}
 @media (max-width:430px){.nav-resume span{display:none}.nav-resume{width:38px;height:38px;padding:0!important;justify-content:center;border-radius:50%}}
+/* ===== Bitsy reactions (hover or tap) ===== */
+.bz-happy-eyes,.bz-mouth-open{opacity:0;transition:opacity .12s}
+.bz-cheeks{transition:transform .25s;transform-origin:center}
+.bitsy[class*="r-"] .bz-body{animation:none}
+.bitsy.r-happy .bz-eyes,.bitsy.r-tummy .bz-eyes,.bitsy.r-giggle .bz-eyes{opacity:0}
+.bitsy.r-happy .bz-happy-eyes,.bitsy.r-tummy .bz-happy-eyes,.bitsy.r-giggle .bz-happy-eyes{opacity:1}
+.bitsy.r-happy .bz-mouth,.bitsy.r-giggle .bz-mouth{opacity:0}
+.bitsy.r-happy .bz-mouth-open,.bitsy.r-giggle .bz-mouth-open{opacity:1}
+.bitsy[class*="r-"] .bz-cheeks{transform:scale(1.25)}
+.bitsy.r-happy .bz-all{animation:bzyay .45s ease-in-out 3}
+.bitsy.r-happy .bz-arm-l{transform:translate(-1px,-9px) rotate(150deg)}.bitsy.r-happy .bz-arm-r{transform:translate(1px,-9px) rotate(-150deg)}
+@keyframes bzyay{0%,100%{transform:translateY(0) scale(1)}40%{transform:translateY(-7px) scale(.97,1.04)}70%{transform:translateY(0) scale(1.05,.95)}}
+.bitsy.r-blink .bz-eyes{animation:bzsleepy 1.6s ease-in-out}
+@keyframes bzsleepy{0%,100%{transform:scaleY(1)}20%,40%{transform:scaleY(.08)}55%{transform:scaleY(1)}70%,82%{transform:scaleY(.08)}}
+.bitsy.r-blink .bz-body{animation:bzbreathe 1.6s ease-in-out}
+.bitsy.r-tummy .bz-arm-r{animation:bzrub .32s ease-in-out infinite}
+@keyframes bzrub{0%,100%{transform:translate(-15px,-4px) rotate(-30deg)}50%{transform:translate(-20px,-1px) rotate(-14deg)}}
+.bitsy.r-tummy .bz-all{animation:bzsway .64s ease-in-out infinite}
+@keyframes bzsway{50%{transform:rotate(-3deg)}}
+.bitsy.r-giggle .bz-all{animation:bzwiggle .18s ease-in-out 8}
+@keyframes bzwiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-7deg)}75%{transform:rotate(7deg)}}
+.bitsy.r-giggle .bz-arm{animation:bzswing .18s ease-in-out infinite}
+.bitsy.r-wave .bz-arm-r{animation:bzwave .6s ease-in-out infinite}
+.bitsy.r-wave .bz-mouth{opacity:0}.bitsy.r-wave .bz-mouth-open{opacity:1}
+.bitsy.flip.r-giggle .bz-all,.bitsy.flip.r-happy .bz-all,.bitsy.flip.r-tummy .bz-all{scale:-1 1}
+.bz-heart{position:fixed;z-index:86;width:14px;height:14px;pointer-events:none;animation:bzheart 1.4s ease-out forwards}
+.bz-heart svg{width:100%;height:100%;display:block}
+@keyframes bzheart{0%{opacity:0;transform:translate(0,0) scale(.5)}15%{opacity:1;transform:translate(0,-6px) scale(1)}100%{opacity:0;transform:translate(var(--dx),-46px) scale(.8)}}
+@media (prefers-reduced-motion:reduce){.bz-heart{display:none}}
 </style>
 </head>
 <body>
@@ -1108,8 +1137,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
             <ellipse cx="24.5" cy="37" rx="3.4" ry="4.3" fill="#0f172a"/><ellipse cx="39.5" cy="37" rx="3.4" ry="4.3" fill="#0f172a"/>
             <circle cx="25.7" cy="35.4" r="1.25" fill="#fff"/><circle cx="40.7" cy="35.4" r="1.25" fill="#fff"/>
           </g>
-          <ellipse cx="19" cy="44" rx="3.6" ry="2.2" fill="#fb9fb1" opacity=".55"/><ellipse cx="45" cy="44" rx="3.6" ry="2.2" fill="#fb9fb1" opacity=".55"/>
+          <g class="bz-happy-eyes" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round"><path d="M21 38 Q24.5 33.6 28 38"/><path d="M36 38 Q39.5 33.6 43 38"/></g>
+          <g class="bz-cheeks"><ellipse cx="19" cy="44" rx="3.6" ry="2.2" fill="#fb9fb1" opacity=".55"/><ellipse cx="45" cy="44" rx="3.6" ry="2.2" fill="#fb9fb1" opacity=".55"/></g>
           <path class="bz-mouth" d="M29 44.2 Q32 47.2 35 44.2" fill="none" stroke="#0f172a" stroke-width="1.6" stroke-linecap="round"/>
+          <g class="bz-mouth-open"><path d="M28.4 43.4 Q32 49.6 35.6 43.4 Z" fill="#0f172a"/><path d="M30.2 46.6 Q32 48.6 33.8 46.6 Q32 45.6 30.2 46.6Z" fill="#fb7185"/></g>
         </g>
         <g class="bz-arm bz-arm-l"><ellipse cx="9" cy="51" rx="5" ry="6.5" fill="url(#bz-limb)" filter="url(#bz-fluff)"/></g>
         <g class="bz-arm bz-arm-r"><ellipse cx="55" cy="51" rx="5" ry="6.5" fill="url(#bz-limb)" filter="url(#bz-fluff)"/></g>
@@ -1395,7 +1426,7 @@ if ('IntersectionObserver' in window) {
   const footOf = n => n ? n.getBoundingClientRect().top : band().bottom + 4;
 
   const st = { plat: null, off: 0, hop: null, dir: 1, mode: 'idle', walkTo: 0, until: 0, frame: 'idle',
-               lastInput: performance.now(), waving: false, lastBit: 0, nextHop: 0, nextPoke: 0 };
+               lastInput: performance.now(), react: null, lastBit: 0, nextHop: 0, nextPoke: 0 };
   let raf = 0, last = performance.now(), active = false;
   let scrollV = 0, scrollDir = 1, lastScrollAt = 0, lastY = scrollY, lastT = performance.now();
 
@@ -1457,6 +1488,7 @@ if ('IntersectionObserver' in window) {
     } else off = clampOff(null, x);
     const ty = footOf(target);
     const dur = Math.max(260, Math.min(560, 560 - scrollV * 0.12)) * (fast ? 0.8 : 1);
+    endReact();
     st.hop = { x0: x, y0: y, to: target, off, t0: performance.now(), dur, h: 36 + Math.max(0, y - ty) * 0.35 };
     st.dir = (target ? target.getBoundingClientRect().left + off : off) >= x ? 1 : -1;
     st.mode = 'idle';
@@ -1497,11 +1529,11 @@ if ('IntersectionObserver' in window) {
       x = h.x0 + (tx - h.x0) * p;
       y = h.y0 + (ty - h.y0) * p - h.h * 4 * p * (1 - p);
       st.frame = 'jump';
-      if (p >= 1) { st.plat = h.to; st.off = h.off; st.hop = null; st.until = now + 400; st.frame = 'idle'; }
+      if (p >= 1) { st.plat = h.to; st.off = h.off; st.hop = null; st.until = now + 400; st.frame = 'idle'; if (hovering) setTimeout(react, 0); }
     }
 
     if (!st.hop) {
-      if (st.waving) st.frame = 'wave';
+      if (st.react) st.frame = 'idle';
       else if (st.mode === 'sit') {
         st.frame = 'sit';
         if (!reduce && now - st.lastBit > 450) { st.lastBit = now; emitBit(); }
@@ -1553,7 +1585,7 @@ if ('IntersectionObserver' in window) {
   addEventListener('mousemove', e => {
     input();
     if (performance.now() > 1500) onFirst();
-    if (!active || mobile() || st.hop) return;
+    if (!active || mobile() || st.hop || st.react || cv.contains(e.target)) return;
     const r = cv.getBoundingClientRect();
     const near = Math.abs(e.clientX - (r.left + 28)) < 70 && e.clientY > r.top - 60 && e.clientY < r.bottom + 10;
     if (near && performance.now() > st.nextPoke) { st.nextPoke = performance.now() + 2500; hopTo(st.plat); }
@@ -1564,10 +1596,59 @@ if ('IntersectionObserver' in window) {
   addEventListener('load', collect);
   document.addEventListener('visibilitychange', loopStart);
 
-  cv.addEventListener('mouseenter', () => { st.waving = true; });
-  cv.addEventListener('mouseleave', () => { st.waving = false; });
+  /* Reactions: hover (or tap on a phone) and Bitsy reacts happily */
+  const REACTS = [
+    ['happy', 1500, 'Yay!', 4],
+    ['tummy', 1900, 'Hehe, that tickles!', 3],
+    ['blink', 1600, '', 0],
+    ['giggle', 1500, 'Hehe!', 2],
+    ['wave', 1500, 'Hi there!', 0]
+  ];
+  let reactTimer = 0, lastReact = -1, hovering = false, lastReactAt = 0, pointerType = 'mouse';
+  function heart() {
+    const h = document.createElement('span');
+    h.className = 'bz-heart';
+    h.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.4 2.5.8-1.3 2.3-2.5 4.4-2.5 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z" fill="#fb7185"/></svg>';
+    const r = cv.getBoundingClientRect();
+    h.style.left = (r.left + 20 + Math.random() * 16) + 'px';
+    h.style.top = (r.top + 4) + 'px';
+    h.style.setProperty('--dx', ((Math.random() - 0.5) * 30).toFixed(0) + 'px');
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 1500);
+  }
+  function endReact() {
+    clearTimeout(reactTimer);
+    if (st.react) el.classList.remove('r-' + st.react);
+    st.react = null;
+  }
+  function react() {
+    if (!active || st.hop) return;
+    endReact();
+    let i; do { i = Math.floor(Math.random() * REACTS.length); } while (i === lastReact);
+    lastReact = i;
+    const [name, ms, line, hearts] = REACTS[i];
+    st.react = name; st.mode = 'idle'; st.lastInput = performance.now(); lastReactAt = performance.now();
+    el.classList.add('r-' + name);
+    if (line) say(line, Math.min(ms, 1600));
+    for (let k = 0; k < hearts; k++) setTimeout(heart, k * 220);
+    reactTimer = setTimeout(() => {
+      endReact();
+      if (hovering) reactTimer = setTimeout(react, 700);  // keep reacting while the cursor stays
+    }, ms);
+  }
+  cv.addEventListener('pointerdown', e => { pointerType = e.pointerType; });
+  cv.addEventListener('mouseenter', () => { hovering = true; if (!st.react) react(); });
+  cv.addEventListener('mouseleave', () => { hovering = false; });
   const openFromBitsy = () => { speech.classList.remove('show'); openPanel(); };
-  cv.addEventListener('click', openFromBitsy);
+  // Mouse: click opens the Ask-me panel. Touch: first tap gets a reaction, a second tap opens the panel.
+  cv.addEventListener('click', () => {
+    if (pointerType === 'touch' && performance.now() - lastReactAt > 4000) {
+      react();
+      setTimeout(() => say('Tap me again to chat!', 2200), 1600);
+      return;
+    }
+    openFromBitsy();
+  });
   speech.addEventListener('click', openFromBitsy);
   cv.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFromBitsy(); } });
   el.querySelector('.bitsy-hide').addEventListener('click', e => {
