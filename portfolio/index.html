@@ -628,6 +628,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .bz-heart svg{width:100%;height:100%;display:block}
 @keyframes bzheart{0%{opacity:0;transform:translate(0,0) scale(.5)}15%{opacity:1;transform:translate(0,-6px) scale(1)}100%{opacity:0;transform:translate(var(--dx),-46px) scale(.8)}}
 @media (prefers-reduced-motion:reduce){.bz-heart{display:none}}
+/* ===== Python snake timeline ===== */
+.log::after{display:none}
+.snake{position:absolute;left:-6px;top:0;width:26px;height:100%;overflow:visible;pointer-events:none;z-index:1}
+.sn-head{transition:opacity .2s}
+.sn-tongue{transform-origin:0 9px;animation:sntongue 2.6s ease-in-out infinite}
+@keyframes sntongue{0%,70%,100%{transform:scaleY(0)}76%,88%{transform:scaleY(1)}82%{transform:scaleY(.6)}}
+.commit::before{z-index:2}
+.commit.lit::before{background:#ffd43b;border-color:#3776ab;box-shadow:0 0 0 4px rgba(55,118,171,.15)}
+@media (prefers-reduced-motion:reduce){.sn-tongue{animation:none;transform:scaleY(0)}}
 </style>
 </head>
 <body>
@@ -915,6 +924,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
   <div class="wrap">
     <h2 class="reveal">Where I've done it</h2>
     <div class="log">
+      <svg class="snake" aria-hidden="true" focusable="false">
+        <defs><linearGradient id="sn-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b5d8a"/><stop offset="1" stop-color="#3776ab"/></linearGradient></defs>
+        <path class="sn-tail" fill="none" stroke="#3776ab" stroke-width="3.2" stroke-linecap="round"/>
+        <path class="sn-body" fill="none" stroke="url(#sn-body)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="sn-spots" fill="none" stroke="#ffd43b" stroke-width="3" stroke-linecap="round" stroke-dasharray="2.5 9"/>
+        <g class="sn-head">
+          <path class="sn-tongue" d="M0 9 V15 M0 15 L-2.4 18.5 M0 15 L2.4 18.5" stroke="#e11d48" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+          <path d="M-6.2 -3 C-6.8 4 -3.6 10.4 0 10.4 C3.6 10.4 6.8 4 6.2 -3 C5.4 -7.4 -5.4 -7.4 -6.2 -3Z" fill="#3776ab"/>
+          <path d="M-3.4 3.5 C-2 6.6 2 6.6 3.4 3.5" fill="none" stroke="#ffd43b" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="-2.9" cy="0" r="1.9" fill="#fff"/><circle cx="2.9" cy="0" r="1.9" fill="#fff"/>
+          <circle cx="-2.7" cy=".5" r="1" fill="#0f172a"/><circle cx="2.7" cy=".5" r="1" fill="#0f172a"/>
+        </g>
+      </svg>
       <div class="commit head reveal">
         <div class="c-meta"><span class="ref">● current</span> · Jan 2026 – Present</div>
         <h3>Senior Azure Data Engineer</h3>
@@ -1782,6 +1804,47 @@ if ('IntersectionObserver' in window) {
     if (t) { t.textContent = 'Email address copied'; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 1800); }
     setTimeout(() => { b.dataset.tip = 'Copy email'; }, 1800);
   });
+})();
+
+/* ===== Python snake that slithers down the experience timeline ===== */
+(() => {
+  const log = document.querySelector('.log'), svg = log && log.querySelector('.snake');
+  if (!svg) return;
+  const body = svg.querySelector('.sn-body'), spots = svg.querySelector('.sn-spots'), tail = svg.querySelector('.sn-tail'), head = svg.querySelector('.sn-head');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CX = 13, AMP = 3.6, WAVE = 26;
+  let phase = 0, lastP = -1, lastScroll = scrollY, visible = false, raf = 0;
+  const xAt = (y, end) => {
+    const fade = Math.min(1, Math.max(0, (end - y) / 30));      // straighten near the head
+    return CX + AMP * fade * Math.sin(y / WAVE + phase);
+  };
+  function draw() {
+    raf = 0;
+    const h = log.offsetHeight, p = parseFloat(log.style.getPropertyValue('--p')) || 0;
+    const end = 10 + (h - 20) * p;
+    // slither: phase follows scroll movement, plus a slow idle sway
+    if (!reduce) { phase += (scrollY - lastScroll) * 0.045 + 0.012; }
+    lastScroll = scrollY;
+    if (end < 16) { body.setAttribute('d', ''); spots.setAttribute('d', ''); tail.setAttribute('d', ''); head.style.opacity = 0; }
+    else {
+      const neck = Math.max(10, end - 8), tailEnd = Math.min(neck, 34);
+      let d = '', t = `M${xAt(10, end).toFixed(2)} 10`;
+      for (let y = 10; y <= tailEnd; y += 4) t += ` L${xAt(y, end).toFixed(2)} ${y}`;
+      for (let y = tailEnd; y <= neck; y += 4) d += (d ? ' L' : 'M') + xAt(y, end).toFixed(2) + ' ' + y;
+      d += ` L${xAt(neck, end).toFixed(2)} ${neck}`;
+      tail.setAttribute('d', t); body.setAttribute('d', d); spots.setAttribute('d', d);
+      spots.style.strokeDashoffset = (-phase * 8).toFixed(1);
+      const ang = Math.atan2(xAt(neck, end) - xAt(neck - 6, end), 6) * -57.3;
+      head.style.opacity = 1;
+      head.setAttribute('transform', `translate(${xAt(end, end).toFixed(2)} ${end.toFixed(1)}) rotate(${ang.toFixed(1)}) scale(1.35)`);
+    }
+    if (visible && !reduce && !document.hidden) raf = requestAnimationFrame(draw);
+  }
+  const kick = () => { if (!raf) raf = requestAnimationFrame(draw); };
+  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) kick(); }, { rootMargin: '100px' }).observe(log);
+  addEventListener('scroll', kick, { passive: true });
+  addEventListener('resize', kick);
+  kick();
 })();
 </script>
 </body>
