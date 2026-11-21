@@ -564,6 +564,15 @@ footer .logo{color:#fff}
 .proj-arch{width:100%;height:auto;max-width:560px}
 .pa-t{font:600 13px var(--body);fill:#111}
 .pa-s{font:500 11px var(--body);fill:#5d6271}
+.pa-lines path,.pa-flow{stroke-dasharray:5 6;animation:paflow 1.1s linear infinite}
+@keyframes paflow{to{stroke-dashoffset:-22}}
+.pa-pk{filter:drop-shadow(0 0 3px rgba(14,165,233,.6))}
+.pa-pulse{transform-box:fill-box;transform-origin:center;opacity:0;animation:papulse 1.5s ease-out infinite}
+@keyframes papulse{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.18)}}
+.pa-dot{animation:padot 1.4s ease-in-out infinite}
+@keyframes padot{50%{opacity:.25}}
+.proj-arch.paused *{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){.pa-lines path,.pa-flow,.pa-pulse,.pa-dot{animation:none}.pa-packets{display:none}}
 @media (max-width:900px){.proj{grid-template-columns:1fr}.proj-text{padding:18px 14px}}
 /* ===== Accessibility ===== */
 .skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;transition:top .2s}
@@ -831,6 +840,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
             <path d="M285 95 H305"/><path d="M222 118 V150"/>
             <path d="M380 118 V182"/>
           </g>
+          <g class="pa-packets"><circle r="4" fill="#0ea5e9" class="pa-pk"><animateMotion dur="6s" begin="0s" repeatCount="indefinite" path="M120 95 H380 V205 H511 V120" keyPoints="0;1" keyTimes="0;1" calcMode="linear"/></circle><circle r="4" fill="#14b8a6" class="pa-pk"><animateMotion dur="6s" begin="-1.5s" repeatCount="indefinite" path="M120 95 H380 V205 H511 V120" keyPoints="0;1" keyTimes="0;1" calcMode="linear"/></circle><circle r="4" fill="#0ea5e9" class="pa-pk"><animateMotion dur="6s" begin="-3s" repeatCount="indefinite" path="M120 95 H380 V205 H511 V120" keyPoints="0;1" keyTimes="0;1" calcMode="linear"/></circle><circle r="4" fill="#14b8a6" class="pa-pk"><animateMotion dur="6s" begin="-4.5s" repeatCount="indefinite" path="M120 95 H380 V205 H511 V120" keyPoints="0;1" keyTimes="0;1" calcMode="linear"/></circle><circle r="3.6" fill="#ef4444" class="pa-pk"><animateMotion dur="4.5s" begin="-1s" repeatCount="indefinite" path="M120 95 H222 V172" keyPoints="0;1" keyTimes="0;1" calcMode="linear"/></circle></g>
           <g><rect x="14" y="72" width="106" height="46" rx="9" fill="#fff" stroke="#0369a1" stroke-width="1.5"/><rect x="14" y="72" width="5" height="46" rx="2" fill="#0369a1"/><text x="28" y="92" class="pa-t">Event Hubs</text><text x="28" y="108" class="pa-s">Kafka stream</text></g>
           <g><rect x="160" y="72" width="125" height="46" rx="9" fill="#fff" stroke="#b45309" stroke-width="1.5"/><rect x="160" y="72" width="5" height="46" rx="2" fill="#b45309"/><text x="174" y="92" class="pa-t">Bronze</text><text x="174" y="108" class="pa-s">raw + offsets</text></g>
           <g><rect x="305" y="72" width="135" height="46" rx="9" fill="#fff" stroke="#64748b" stroke-width="1.5"/><rect x="305" y="72" width="5" height="46" rx="2" fill="#64748b"/><text x="319" y="92" class="pa-t">Silver</text><text x="319" y="108" class="pa-s">validated, deduped</text></g>
@@ -839,7 +849,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
           <g><rect x="468" y="72" width="86" height="46" rx="9" fill="#fff" stroke="#eab308" stroke-width="1.5"/><rect x="468" y="72" width="5" height="46" rx="2" fill="#eab308"/><text x="482" y="92" class="pa-t">Power BI</text><text x="482" y="108" class="pa-s">live fleet</text></g>
           <g><rect x="150" y="256" width="300" height="46" rx="9" fill="#fff" stroke="#0f766e" stroke-width="1.5"/><rect x="150" y="256" width="5" height="46" rx="2" fill="#0f766e"/><text x="164" y="276" class="pa-t">Unity Catalog</text><text x="164" y="292" class="pa-s">grants · column masks · lineage</text></g>
           <path d="M300 256 V242" fill="none" stroke="#0f766e" stroke-width="1.6" stroke-dasharray="3 4"/>
-          <path d="M440 205 H511 V120" fill="none" stroke="#64748b" stroke-width="1.6" marker-end="url(#pa-ar)"/>
+          <path class="pa-flow" d="M440 205 H511 V120" fill="none" stroke="#64748b" stroke-width="1.6" marker-end="url(#pa-ar)"/>
+          <rect class="pa-pulse" x="468" y="72" width="86" height="46" rx="9" fill="none" stroke="#eab308" stroke-width="2"/>
+          <g class="pa-live"><rect x="470" y="16" width="84" height="24" rx="12" fill="#fff" stroke="#bbf7d0"/><circle cx="485" cy="28" r="4" fill="#16a34a" class="pa-dot"/><text x="495" y="32" class="pa-s" style="fill:#15803d;font-weight:600">Streaming</text></g>
+          <text x="14" y="150" class="pa-s">events/hr</text><text x="14" y="134" class="pa-t pa-count" style="font-size:16px">2.1M</text>
         </svg>
       </div>
     </article>
@@ -1574,6 +1587,19 @@ if ('IntersectionObserver' in window) {
   if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => bg.classList.toggle('off', !e.isIntersecting)).observe(bg);
 })();
 
+
+/* ===== Projects diagram: run only while visible ===== */
+(() => {
+  const svg = document.querySelector('.proj-arch');
+  if (!svg) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const count = svg.querySelector('.pa-count');
+  let v = 2.1, on = false;
+  const set = vis => { on = vis && !reduce; svg.classList.toggle('paused', !on); try { on ? svg.unpauseAnimations() : svg.pauseAnimations(); } catch {} };
+  set(false);
+  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => set(e.isIntersecting)).observe(svg); else set(true);
+  setInterval(() => { if (!on || document.hidden) return; v = Math.min(2.4, Math.max(1.9, v + (Math.random() - .45) * .05)); count.textContent = v.toFixed(1) + 'M'; }, 1500);
+})();
 </script>
 </body>
 </html>
