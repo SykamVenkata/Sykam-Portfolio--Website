@@ -681,6 +681,60 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .proj-visual.pv-media .proj-media{border-radius:12px}
 .pv-chips{margin-top:14px;justify-content:center;justify-self:stretch}
 @media (min-width:961px){.proj:has(.pv-media){grid-template-columns:1.1fr 1fr;align-items:start}.proj-visual.pv-media{align-self:stretch;margin:12px 10px 12px 0;display:flex;flex-direction:column;justify-content:center;gap:0}}
+
+/* isometric glass Lakehouse (hero) */
+.hero-visual .hero-bg{display:none}
+.iso{position:absolute;inset:0;pointer-events:none}
+.iso-beam{position:absolute;left:50%;top:14%;width:120px;height:66%;transform:translateX(-50%);background:linear-gradient(180deg,rgba(56,189,248,0) 0%,rgba(59,130,246,.35) 55%,rgba(37,99,235,.65) 100%);filter:blur(16px);border-radius:60px}
+.iso-scene{position:absolute;left:52%;top:70%;width:210px;height:210px;margin:-105px 0 0 -105px;transform:rotateX(58deg) rotateZ(-45deg);transform-style:preserve-3d}
+.iso-base{position:absolute;inset:-30px;border-radius:40px;background:linear-gradient(135deg,#ffffff,#e7edf8);box-shadow:16px 16px 0 #b9c6e2,16px 16px 24px rgba(30,64,175,.35),0 0 60px rgba(59,130,246,.35);transform:translateZ(0)}
+.iso-ring{position:absolute;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:3px solid rgba(59,130,246,.85);box-shadow:0 0 22px rgba(59,130,246,.75),inset 0 0 18px rgba(59,130,246,.45)}
+.iso-ring.r2{width:96px;height:96px;margin:-48px 0 0 -48px;border-color:rgba(14,165,233,.9);animation:isoSpin 9s linear infinite}
+.iso-core{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:radial-gradient(circle,#fff 0 30%,#60a5fa 55%,#2563eb 100%);box-shadow:0 0 30px 8px rgba(59,130,246,.7)}
+@keyframes isoSpin{to{transform:rotate(360deg)}}
+.iso-layer{position:absolute;inset:0;border-radius:24px;padding:0;color:#0f172a;
+  background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(235,242,255,.45));border:1.5px solid rgba(255,255,255,.95);
+  box-shadow:5px 5px 0 rgba(148,170,220,.55),0 0 0 1px rgba(59,130,246,.18),0 30px 40px -18px rgba(30,64,175,.35);
+  transform:translateZ(var(--z));animation:isoFloat 6s ease-in-out infinite alternate;animation-delay:var(--d)}
+.iso-layer b{position:absolute;left:18px;bottom:30px;font:700 21px/1 var(--display);letter-spacing:-.02em}
+.iso-layer span{position:absolute;left:18px;bottom:12px;font:600 11.5px var(--body);color:#475569;white-space:nowrap}
+.iso-layer .ui{position:absolute;left:18px;right:44px;top:20px;display:grid;gap:8px}
+.iso-layer .ui u{display:block;height:9px;border-radius:5px;background:rgba(148,163,184,.35)}
+.iso-layer .ui u:nth-child(2){width:72%}.iso-layer .ui u:nth-child(3){width:48%}
+.iso-layer .dot{position:absolute;top:18px;right:20px;width:14px;height:14px;border-radius:50%;box-shadow:0 0 0 4px rgba(255,255,255,.7)}
+.iso-layer.l1{--z:56px;--d:0s}.iso-layer.l2{--z:126px;--d:-1.5s}.iso-layer.l3{--z:196px;--d:-3s}
+.iso-layer.l4{--z:266px;--d:-4.5s;background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(219,234,254,.6));box-shadow:5px 5px 0 rgba(148,170,220,.55),0 0 0 1px rgba(59,130,246,.3),0 0 40px rgba(59,130,246,.35)}
+@keyframes isoFloat{from{transform:translateZ(var(--z))}to{transform:translateZ(calc(var(--z) + 12px))}}
+.iso-orbit{position:absolute;left:51%;top:60%;width:500px;height:150px;margin:-75px 0 0 -250px;border-radius:50%;border:1.5px solid rgba(255,255,255,.85);box-shadow:0 0 18px rgba(59,130,246,.25);transform:rotate(-8deg)}
+.iso-card{position:absolute;width:118px;padding:10px 10px 8px;border-radius:16px;background:linear-gradient(140deg,rgba(255,255,255,.85),rgba(255,255,255,.45));border:1px solid rgba(255,255,255,.95);box-shadow:0 18px 30px -16px rgba(30,64,175,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:isoBob 5s ease-in-out infinite alternate}
+.iso-card svg{display:block;width:100%;height:46px}
+.iso-card small{display:block;font:600 11.5px var(--body);color:#334155;margin-top:4px}
+.iso-card .ok{position:absolute;top:-10px;right:-8px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:13px;color:#fff;background:linear-gradient(135deg,#fb923c,#f43f5e);box-shadow:0 6px 12px -4px rgba(244,63,94,.6)}
+.iso-card.c3{width:96px}.iso-card.c3 svg{height:52px}
+.iso-card.c1{left:0;top:44%;animation-delay:-1s}.iso-card.c2{right:0;top:20%;animation-delay:-2.5s}.iso-card.c3{right:2%;bottom:16%;animation-delay:-4s}
+@keyframes isoBob{from{transform:translateY(0)}to{transform:translateY(-10px)}}
+.hero-bg.paused~.iso *,.hero-bg.off~.iso *{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){.iso *{animation:none!important}}
+@media (max-width:900px){.iso-scene{transform:scale(.46) rotateX(58deg) rotateZ(-45deg);top:72%}.iso-orbit{width:300px;margin-left:-150px;height:80px;margin-top:-40px;top:62%}.iso-card{width:86px;padding:6px 7px 5px;border-radius:12px}.iso-card svg{height:26px}.iso-card small{font-size:9.5px;margin-top:2px}.iso-card .ok{width:18px;height:18px;font-size:10px;top:-7px;right:-6px}.iso-card.c1{left:6%;top:30%}.iso-card.c2{right:6%;top:8%}.iso-card.c3{display:none}.iso-beam{height:70%;width:80px}}
+
+/* glossy growth icon (At a glance) */
+.glance-title{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.glossy-ic{width:46px;height:46px;flex:none;filter:drop-shadow(0 10px 14px rgba(192,38,211,.35))}
+/* glossy 3D tiles (Where I usually get called in) */
+.callin .ci-ic{position:relative;overflow:hidden;color:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -6px 10px -6px rgba(0,0,0,.35),0 10px 16px -8px rgba(30,41,90,.55)}
+.callin .ci-ic::after{content:"";position:absolute;left:8%;right:8%;top:6%;height:42%;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.65),rgba(255,255,255,0));pointer-events:none}
+.callin .ci-ic svg{position:relative;z-index:1}
+.callin .ci:nth-child(1) .ci-ic{background:linear-gradient(140deg,#38bdf8,#4f46e5)!important}
+.callin .ci:nth-child(2) .ci-ic{background:linear-gradient(140deg,#2dd4bf,#0f766e)!important}
+.callin .ci:nth-child(3) .ci-ic{background:linear-gradient(140deg,#a78bfa,#db2777)!important}
+/* frosted notification card (contact) */
+.contact .note-card{background:linear-gradient(150deg,rgba(255,255,255,.16),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 30px 60px -30px rgba(0,0,0,.6);color:#fff}
+.contact .note-card .prompt-label{color:rgba(255,255,255,.7)}
+.contact .note-card .mail-line{color:#fff}
+.contact .note-card .status{color:rgba(255,255,255,.85)}
+.note-ic{display:flex;flex-direction:column;align-items:center;gap:6px;margin:-4px 0 14px;color:#fff;text-align:center}
+.note-ic svg{width:38px;height:38px}
+.note-ic span{font:700 20px var(--display);letter-spacing:-.01em}
 </style>
 </head>
 <body>
@@ -725,7 +779,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
     </div>
     <div class="hero-visual">
       <div class="hero-bg" aria-hidden="true"><div class="hb-plane"></div><div class="hb-dof"></div></div>
-      <button class="hb-pause" type="button" aria-label="Pause background animation" aria-pressed="false"></button>
+      <div class="iso" aria-hidden="true">
+          <div class="iso-beam"></div>
+          <div class="iso-orbit"></div>
+          <div class="iso-scene">
+            <div class="iso-base"><i class="iso-ring"></i><i class="iso-ring r2"></i><i class="iso-core"></i></div>
+            <div class="iso-layer l1"><b>Sources</b><span>ADF · Event Hubs · CDC</span><i class="ui"><u></u><u></u><u></u></i></div>
+            <div class="iso-layer l2"><b>Bronze</b><span>raw · append-only</span><i class="ui"><u></u><u></u></i><s class="dot" style="background:#c47a3c"></s></div>
+            <div class="iso-layer l3"><b>Silver</b><span>quality · quarantine</span><i class="ui"><u></u><u></u><u></u></i><s class="dot" style="background:#94a3b8"></s></div>
+            <div class="iso-layer l4"><b>Gold</b><span>star schema · Direct Lake</span><i class="ui"><u></u><u></u></i><s class="dot" style="background:#eab308"></s></div>
+          </div>
+          <div class="iso-card c1"><svg viewBox="0 0 64 40"><path d="M4 30 L18 20 L28 25 L44 10 L58 14" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 36h54" stroke="#cbd5e1" stroke-width="2"/></svg><em class="ok">✓</em><small>Quality checks</small></div>
+          <div class="iso-card c2"><svg viewBox="0 0 64 40"><g fill="#3b82f6"><rect x="6" y="22" width="7" height="14" rx="2"/><rect x="18" y="14" width="7" height="22" rx="2"/><rect x="30" y="6" width="7" height="30" rx="2"/><rect x="42" y="16" width="7" height="20" rx="2" opacity=".7"/><rect x="54" y="10" width="7" height="26" rx="2" opacity=".85"/></g></svg><small>Gold KPIs</small></div>
+          <div class="iso-card c3"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="none" stroke="#e2e8f0" stroke-width="6"/><circle cx="20" cy="20" r="13" fill="none" stroke="#3b82f6" stroke-width="6" stroke-dasharray="62 82" stroke-linecap="round" transform="rotate(-90 20 20)"/><circle cx="20" cy="20" r="13" fill="none" stroke="#fb923c" stroke-width="6" stroke-dasharray="14 82" stroke-dashoffset="-66" transform="rotate(-90 20 20)"/></svg><small>Lineage tracked</small></div>
+        </div>
+        <button class="hb-pause" type="button" aria-label="Pause background animation" aria-pressed="false"></button>
     </div>
   </div>
   <div class="wrap">
@@ -769,7 +837,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 <section class="glance" aria-label="At a glance">
   <div class="wrap">
     <div class="glance-card reveal">
-      <div class="glance-head"><div class="glance-title"><span>At a glance</span><small>The 30-second version</small></div>
+      <div class="glance-head"><div class="glance-title"><svg class="glossy-ic" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="gg1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4f46e5"/><stop offset=".55" stop-color="#c026d3"/><stop offset="1" stop-color="#fb7185"/></linearGradient><linearGradient id="gg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><filter id="gg3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"/></filter></defs><rect x="4" y="4" width="56" height="56" rx="17" fill="url(#gg1)"/><g fill="#fff" opacity=".35"><rect x="17" y="38" width="6" height="12" rx="1.5"/><rect x="26" y="33" width="6" height="17" rx="1.5"/><rect x="35" y="28" width="6" height="22" rx="1.5"/><rect x="44" y="21" width="6" height="29" rx="1.5"/></g><path d="M14 40l10-9 7 5 15-15" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#gg3)" opacity=".7"/><path d="M14 40l10-9 7 5 15-15" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 20h9v9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="4" width="56" height="56" rx="17" fill="url(#gg2)"/><rect x="4.75" y="4.75" width="54.5" height="54.5" rx="16.3" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/></svg><span>At a glance</span><small>The 30-second version</small></div>
       <a href="Narendra_Sykam_Resume.pdf" class="btn btn-dark glance-btn" download>Download resume
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg></a></div>
       <div class="glance-grid">
@@ -1251,7 +1319,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
   <div class="wrap">
     <h2 class="reveal">If that sounds like your team,<br>let's talk.</h2>
     <p class="reveal">I'm open to new Senior Data Engineer opportunities on teams building serious data platforms on Azure.</p>
-    <div class="prompt reveal">
+    <div class="prompt reveal note-card"><div class="note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg><span>New message</span></div>
       <div class="prompt-label">Email</div>
       <div class="mail-row"><a class="mail-line" href="mailto:venkatanksykam@gmail.com">venkatanksykam@gmail.com</a>
         <button type="button" class="copy-btn" data-copy="venkatanksykam@gmail.com" aria-label="Copy email address"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg><span>Copy</span></button></div>
