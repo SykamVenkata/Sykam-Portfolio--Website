@@ -679,8 +679,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 /* video cards hug their cover instead of stretching to the text column */
 .proj-visual.pv-media{align-self:center;padding:12px;background:linear-gradient(160deg,#eef4fb,#e6eef8)}
 .proj-visual.pv-media .proj-media{border-radius:12px}
-.pv-watch{margin-top:12px;justify-self:center}
-@media (min-width:961px){.proj:has(.pv-media){grid-template-columns:1.25fr 1fr;align-items:start}.proj-visual.pv-media{align-self:start;margin-top:22px;margin-right:10px}}
+.pv-chips{margin-top:14px;justify-content:center;justify-self:stretch}
+@media (min-width:961px){.proj:has(.pv-media){grid-template-columns:1.1fr 1fr;align-items:start}.proj-visual.pv-media{align-self:stretch;margin:12px 10px 12px 0;display:flex;flex-direction:column;justify-content:center;gap:0}}
 </style>
 </head>
 <body>
@@ -1009,7 +1009,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
           <li>Gold is published only after a BCBS 239-style reconciliation gate</li>
           <li>Governed metrics catalog and an Azure OpenAI index so AI answers match Power BI</li>
         </ul>
-        <div class="chips"><span class="chip">Azure Data Factory</span><span class="chip">Databricks</span><span class="chip">Delta Lake</span><span class="chip">Unity Catalog</span><span class="chip">Azure OpenAI</span><span class="chip">Power BI</span><span class="chip">Terraform</span></div>
         <div class="proj-btns">
           <a href="https://github.com/SykamVenkata/azure-banking-risk-lakehouse" class="btn btn-dark btn-sm" target="_blank" rel="noopener">View code on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
           <a href="https://github.com/SykamVenkata/azure-banking-risk-lakehouse/blob/main/docs/design-decisions.md" class="btn btn-light btn-sm" target="_blank" rel="noopener">Read design decisions</a>
@@ -1020,6 +1019,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
           <img src="media/banking-cover.jpg" width="1200" height="627" loading="lazy" alt="Azure Banking Risk Lakehouse: ingest with ADF and Auto Loader, Bronze with contract schema, Silver with quality rules and quarantine, Gold star schema with CECL, then Power BI and an AI assistant">
           <span class="play-badge"><i aria-hidden="true">▶</i>Watch · 1:00</span>
         </button>
+          <div class="chips pv-chips"><span class="chip">Azure Data Factory</span><span class="chip">Databricks</span><span class="chip">Delta Lake</span><span class="chip">Unity Catalog</span><span class="chip">Azure OpenAI</span><span class="chip">Power BI</span><span class="chip">Terraform</span></div>
       </div>
     </article>
 
@@ -1034,7 +1034,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
           <li>dbt gold layer on Fabric Warehouse and a Direct Lake model with row-level security</li>
           <li>AML monitoring kept out of front-line tools; the copilot gets an allow-list brief</li>
         </ul>
-        <div class="chips"><span class="chip">Microsoft Fabric</span><span class="chip">OneLake</span><span class="chip">PySpark</span><span class="chip">dbt</span><span class="chip">MLflow</span><span class="chip">Direct Lake</span><span class="chip">Terraform</span></div>
         <div class="proj-btns">
           <a href="https://github.com/SykamVenkata/credit-union-member360-fabric" class="btn btn-dark btn-sm" target="_blank" rel="noopener">View code on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
           <a href="https://github.com/SykamVenkata/credit-union-member360-fabric/blob/main/docs/design-decisions.md" class="btn btn-light btn-sm" target="_blank" rel="noopener">Read design decisions</a>
@@ -1045,6 +1044,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
           <img src="media/member360-cover.jpg" width="1200" height="627" loading="lazy" alt="Member 360 on Microsoft Fabric: three source systems into OneLake, identity resolution, a dbt gold Member 360 mart, then Power BI and a copilot brief">
           <span class="play-badge"><i aria-hidden="true">▶</i>Watch · 1:00</span>
         </button>
+          <div class="chips pv-chips"><span class="chip">Microsoft Fabric</span><span class="chip">OneLake</span><span class="chip">PySpark</span><span class="chip">dbt</span><span class="chip">MLflow</span><span class="chip">Direct Lake</span><span class="chip">Terraform</span></div>
       </div>
     </article>
 
