@@ -746,6 +746,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .lflow rect{fill:none;stroke:#06b6d4;stroke-width:4;stroke-linecap:round;stroke-dasharray:150 850;filter:drop-shadow(0 0 4px rgba(34,211,238,.9));animation:lflow var(--sp) linear infinite;animation-delay:var(--dl)}
 @keyframes lflow{to{stroke-dashoffset:-1000}}
 @media (max-width:900px){.iso-flow{transform:scale(.62);transform-origin:50% 70%}}
+
+/* metal tints for medallion layers */
+.iso-layer.l1{background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(207,232,255,.55));box-shadow:5px 5px 0 rgba(125,170,230,.6),0 0 0 1px rgba(59,130,246,.25),0 30px 40px -18px rgba(30,64,175,.35)}
+.iso-layer.l2{background:linear-gradient(135deg,rgba(255,226,196,.95) 0%,rgba(222,150,92,.75) 55%,rgba(176,98,45,.65) 100%);border-color:rgba(255,236,214,.95);box-shadow:5px 5px 0 rgba(140,74,30,.7),0 0 0 1px rgba(176,98,45,.35),0 30px 40px -18px rgba(120,60,20,.45)}
+.iso-layer.l3{background:linear-gradient(135deg,rgba(246,248,251,.97) 0%,rgba(196,205,218,.9) 45%,rgba(150,162,180,.85) 75%,rgba(205,212,222,.9) 100%);border-color:#fff;box-shadow:5px 5px 0 rgba(110,122,142,.7),0 0 0 1px rgba(120,132,150,.35),0 30px 40px -18px rgba(60,70,90,.4)}
+.iso-layer.l4{background:linear-gradient(135deg,rgba(255,246,200,.97) 0%,rgba(245,200,66,.85) 50%,rgba(201,150,20,.75) 100%);border-color:rgba(255,248,214,.98);box-shadow:5px 5px 0 rgba(150,105,10,.75),0 0 0 1px rgba(201,150,20,.45),0 0 44px rgba(245,190,40,.55),0 30px 40px -18px rgba(140,95,0,.45)}
+.iso-layer.l2 span{color:#5b2d0e}.iso-layer.l2 b{color:#3b1d08}
+.iso-layer.l3 span{color:#3f4a5c}
+.iso-layer.l4 span{color:#5c4204}.iso-layer.l4 b{color:#3d2b00}
+.iso-layer.l2 .ui u{background:rgba(120,60,20,.25)}.iso-layer.l3 .ui u{background:rgba(70,85,105,.22)}.iso-layer.l4 .ui u{background:rgba(130,90,0,.25)}
+.iso-layer.l2 .lflow rect{stroke:#fff1e0;filter:drop-shadow(0 0 5px #f97316)}
+.iso-layer.l3 .lflow rect{stroke:#ffffff;filter:drop-shadow(0 0 5px #64748b)}
+.iso-layer.l4 .lflow rect{stroke:#fffbe6;filter:drop-shadow(0 0 6px #f59e0b)}
 </style>
 </head>
 <body>
