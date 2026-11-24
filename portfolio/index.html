@@ -675,6 +675,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .mono-ic{position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -8px 14px -10px rgba(0,0,0,.35),0 10px 18px -12px rgba(30,10,60,.55)}
 .mono-ic::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(150deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.12) 38%,rgba(255,255,255,0) 60%);pointer-events:none}
 .mono-ic svg{position:relative;z-index:1}
+
+/* video cards hug their cover instead of stretching to the text column */
+.proj-visual.pv-media{align-self:center;padding:12px;background:linear-gradient(160deg,#eef4fb,#e6eef8)}
+.proj-visual.pv-media .proj-media{border-radius:12px}
+@media (min-width:961px){.proj:has(.pv-media){grid-template-columns:.92fr 1.18fr;align-items:center}}
 </style>
 </head>
 <body>
@@ -1010,7 +1015,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
           <button type="button" class="btn btn-light btn-sm btn-watch" data-video="media/banking-60s.mp4" data-poster="media/banking-poster.jpg" data-title="Azure Banking Risk Lakehouse"><i aria-hidden="true">▶</i>Watch 60-sec walkthrough</button>
         </div>
       </div>
-      <div class="proj-visual">
+      <div class="proj-visual pv-media">
         <button type="button" class="proj-media" data-video="media/banking-60s.mp4" data-poster="media/banking-poster.jpg" data-title="Azure Banking Risk Lakehouse" aria-label="Play the 60-second walkthrough of the Azure Banking Risk Lakehouse">
           <img src="media/banking-cover.jpg" width="1200" height="627" loading="lazy" alt="Azure Banking Risk Lakehouse: ingest with ADF and Auto Loader, Bronze with contract schema, Silver with quality rules and quarantine, Gold star schema with CECL, then Power BI and an AI assistant">
           <span class="play-badge"><i aria-hidden="true">▶</i>Watch · 1:00</span>
@@ -1036,7 +1041,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
           <button type="button" class="btn btn-light btn-sm btn-watch" data-video="media/member360-60s.mp4" data-poster="media/member360-poster.jpg" data-title="Credit Union Member 360 on Microsoft Fabric"><i aria-hidden="true">▶</i>Watch 60-sec walkthrough</button>
         </div>
       </div>
-      <div class="proj-visual">
+      <div class="proj-visual pv-media">
         <button type="button" class="proj-media" data-video="media/member360-60s.mp4" data-poster="media/member360-poster.jpg" data-title="Credit Union Member 360 on Microsoft Fabric" aria-label="Play the 60-second walkthrough of Member 360 on Microsoft Fabric">
           <img src="media/member360-cover.jpg" width="1200" height="627" loading="lazy" alt="Member 360 on Microsoft Fabric: three source systems into OneLake, identity resolution, a dbt gold Member 360 mart, then Power BI and a copilot brief">
           <span class="play-badge"><i aria-hidden="true">▶</i>Watch · 1:00</span>
