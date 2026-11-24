@@ -735,6 +735,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .note-ic{display:flex;flex-direction:column;align-items:center;gap:6px;margin:-4px 0 14px;color:#fff;text-align:center}
 .note-ic svg{width:38px;height:38px}
 .note-ic span{font:700 20px var(--display);letter-spacing:-.01em}
+
+/* live data flow in hero */
+.iso-flow{position:absolute;left:52%;top:0;bottom:0;width:0;z-index:2}
+.iso-flow .pk{position:absolute;left:var(--x);top:0;width:13px;height:13px;margin-left:-6.5px;border-radius:50%;background:radial-gradient(circle,#fff 0 25%,#0ea5e9 55%,#2563eb 75%);box-shadow:0 0 14px 4px rgba(14,165,233,.85);opacity:0;animation:pkRise var(--s) linear infinite;animation-delay:var(--d)}
+@keyframes pkRise{0%{transform:translateY(400px) scale(.6);opacity:0}12%{opacity:1}80%{opacity:1}100%{transform:translateY(120px) scale(1);opacity:0}}
+.iso-flow .chev{position:absolute;left:-9px;top:0;width:18px;height:18px;border-top:4px solid #2563eb;border-left:4px solid #2563eb;border-radius:3px 0 0 0;transform:translateY(360px) rotate(45deg);filter:drop-shadow(0 0 6px rgba(37,99,235,.9));opacity:0;animation:chevUp 3s ease-in infinite;animation-delay:var(--d)}
+@keyframes chevUp{0%{transform:translateY(380px) rotate(45deg);opacity:0}20%{opacity:.95}85%{opacity:.6}100%{transform:translateY(150px) rotate(45deg);opacity:0}}
+.lflow{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.lflow rect{fill:none;stroke:#06b6d4;stroke-width:4;stroke-linecap:round;stroke-dasharray:150 850;filter:drop-shadow(0 0 4px rgba(34,211,238,.9));animation:lflow var(--sp) linear infinite;animation-delay:var(--dl)}
+@keyframes lflow{to{stroke-dashoffset:-1000}}
+@media (max-width:900px){.iso-flow{transform:scale(.62);transform-origin:50% 70%}}
 </style>
 </head>
 <body>
@@ -782,12 +793,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
       <div class="iso" aria-hidden="true">
           <div class="iso-beam"></div>
           <div class="iso-orbit"></div>
+          <div class="iso-flow"><i class="pk" style="--x:-14px;--d:0s;--s:3.2s"></i><i class="pk" style="--x:10px;--d:-0.8s;--s:3.6s"></i><i class="pk" style="--x:0px;--d:-1.6s;--s:3s"></i><i class="pk" style="--x:-6px;--d:-2.4s;--s:3.4s"></i><i class="pk" style="--x:14px;--d:-0.4s;--s:4s"></i><i class="pk" style="--x:4px;--d:-2.9s;--s:3.1s"></i><b class="chev" style="--d:0s"></b><b class="chev" style="--d:-1s"></b><b class="chev" style="--d:-2s"></b></div>
           <div class="iso-scene">
             <div class="iso-base"><i class="iso-ring"></i><i class="iso-ring r2"></i><i class="iso-core"></i></div>
-            <div class="iso-layer l1"><b>Sources</b><span>ADF · Event Hubs · CDC</span><i class="ui"><u></u><u></u><u></u></i></div>
-            <div class="iso-layer l2"><b>Bronze</b><span>raw · append-only</span><i class="ui"><u></u><u></u></i><s class="dot" style="background:#c47a3c"></s></div>
-            <div class="iso-layer l3"><b>Silver</b><span>quality · quarantine</span><i class="ui"><u></u><u></u><u></u></i><s class="dot" style="background:#94a3b8"></s></div>
-            <div class="iso-layer l4"><b>Gold</b><span>star schema · Direct Lake</span><i class="ui"><u></u><u></u></i><s class="dot" style="background:#eab308"></s></div>
+            <div class="iso-layer l1"><svg class="lflow" viewBox="0 0 210 210" preserveAspectRatio="none"><rect x="1.5" y="1.5" width="207" height="207" rx="23" pathLength="1000" style="--sp:4.5s;--dl:0s"/></svg><b>Sources</b><span>ADF · Event Hubs · CDC</span><i class="ui"><u></u><u></u><u></u></i></div>
+            <div class="iso-layer l2"><svg class="lflow" viewBox="0 0 210 210" preserveAspectRatio="none"><rect x="1.5" y="1.5" width="207" height="207" rx="23" pathLength="1000" style="--sp:4.5s;--dl:-1.1s"/></svg><b>Bronze</b><span>raw · append-only</span><i class="ui"><u></u><u></u></i><s class="dot" style="background:#c47a3c"></s></div>
+            <div class="iso-layer l3"><svg class="lflow" viewBox="0 0 210 210" preserveAspectRatio="none"><rect x="1.5" y="1.5" width="207" height="207" rx="23" pathLength="1000" style="--sp:4.5s;--dl:-2.2s"/></svg><b>Silver</b><span>quality · quarantine</span><i class="ui"><u></u><u></u><u></u></i><s class="dot" style="background:#94a3b8"></s></div>
+            <div class="iso-layer l4"><svg class="lflow" viewBox="0 0 210 210" preserveAspectRatio="none"><rect x="1.5" y="1.5" width="207" height="207" rx="23" pathLength="1000" style="--sp:4.5s;--dl:-3.3s"/></svg><b>Gold</b><span>star schema · Direct Lake</span><i class="ui"><u></u><u></u></i><s class="dot" style="background:#eab308"></s></div>
           </div>
           <div class="iso-card c1"><svg viewBox="0 0 64 40"><path d="M4 30 L18 20 L28 25 L44 10 L58 14" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 36h54" stroke="#cbd5e1" stroke-width="2"/></svg><em class="ok">✓</em><small>Quality checks</small></div>
           <div class="iso-card c2"><svg viewBox="0 0 64 40"><g fill="#3b82f6"><rect x="6" y="22" width="7" height="14" rx="2"/><rect x="18" y="14" width="7" height="22" rx="2"/><rect x="30" y="6" width="7" height="30" rx="2"/><rect x="42" y="16" width="7" height="20" rx="2" opacity=".7"/><rect x="54" y="10" width="7" height="26" rx="2" opacity=".85"/></g></svg><small>Gold KPIs</small></div>
