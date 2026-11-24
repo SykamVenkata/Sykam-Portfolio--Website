@@ -713,7 +713,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .iso-card.c3{width:96px}.iso-card.c3 svg{height:52px}
 .iso-card.c1{left:0;top:44%;animation-delay:-1s}.iso-card.c2{right:0;top:20%;animation-delay:-2.5s}.iso-card.c3{right:2%;bottom:16%;animation-delay:-4s}
 @keyframes isoBob{from{transform:translateY(0)}to{transform:translateY(-10px)}}
-.hero-bg.paused~.iso *,.hero-bg.off~.iso *{animation-play-state:paused!important}
+.hero-bg.paused~.iso *,.iso.off *{animation-play-state:paused!important}
 @media (prefers-reduced-motion:reduce){.iso *{animation:none!important}}
 @media (max-width:900px){.iso-scene{transform:scale(.46) rotateX(58deg) rotateZ(-45deg);top:72%}.iso-orbit{width:300px;margin-left:-150px;height:80px;margin-top:-40px;top:62%}.iso-card{width:86px;padding:6px 7px 5px;border-radius:12px}.iso-card svg{height:26px}.iso-card small{font-size:9.5px;margin-top:2px}.iso-card .ok{width:18px;height:18px;font-size:10px;top:-7px;right:-6px}.iso-card.c1{left:6%;top:30%}.iso-card.c2{right:6%;top:8%}.iso-card.c3{display:none}.iso-beam{height:70%;width:80px}}
 
@@ -2093,5 +2093,6 @@ if ('IntersectionObserver' in window) {
   kick();
 })();
 </script>
+<script>(()=>{const s=document.querySelector('.iso');if(s&&'IntersectionObserver' in window)new IntersectionObserver(([e])=>s.classList.toggle('off',!e.isIntersecting)).observe(s.parentNode);})();</script>
 </body>
 </html>
