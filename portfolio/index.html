@@ -652,6 +652,29 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .commit::before{z-index:2}
 .commit.lit::before{background:#ffd43b;border-color:#3776ab;box-shadow:0 0 0 4px rgba(55,118,171,.15)}
 @media (prefers-reduced-motion:reduce){.sn-tongue{animation:none;transform:scaleY(0)}}
+
+/* glass band (What I do) */
+.glassband{position:relative;isolation:isolate;padding:28px;border-radius:30px;gap:14px;overflow:hidden;
+  background:radial-gradient(60% 70% at 18% 12%,rgba(255,79,163,.30),transparent 60%),radial-gradient(55% 60% at 88% 90%,rgba(79,123,255,.32),transparent 60%),radial-gradient(40% 50% at 50% 50%,rgba(150,40,120,.35),transparent 70%),linear-gradient(160deg,#1b0b33 0%,#2a0f45 45%,#120a2a 100%);
+  box-shadow:0 40px 80px -50px rgba(40,10,70,.8)}
+.glassband::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(30% 30% at 0% 100%,rgba(46,230,214,.22),transparent 70%),radial-gradient(25% 25% at 100% 0%,rgba(255,138,61,.20),transparent 70%)}
+.glassband .feature{background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#f4f1ff}
+.glassband .feature:hover{border-color:rgba(255,255,255,.32);box-shadow:0 30px 50px -30px rgba(0,0,0,.7)}
+.glassband .feature h3{color:#fff}
+.glassband .feature p{color:rgba(236,230,255,.78)}
+.glassband .plain{border-top-color:rgba(255,255,255,.18);color:rgba(244,241,255,.88)}
+.glassband .plain span{color:#ffd9f0;background:rgba(255,95,162,.18)}
+.gl-wrap{width:112px;height:112px;margin:-14px 0 6px -16px}
+.glassband .feature svg.gl-ic{width:112px;height:112px;margin:0;overflow:visible}
+.glassband .feature:hover svg.gl-ic{transform:translateY(-4px) rotate(-3deg)}
+.gl-ic .orbs{animation:glFloat 7s ease-in-out infinite alternate;transform-origin:center}
+@keyframes glFloat{from{transform:translate(0,0)}to{transform:translate(3px,-4px)}}
+@media (prefers-reduced-motion:reduce){.gl-ic .orbs{animation:none}}
+@media (max-width:640px){.glassband{padding:16px;border-radius:24px}}
+/* glass sheen on tool tiles */
+.mono-ic{position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -8px 14px -10px rgba(0,0,0,.35),0 10px 18px -12px rgba(30,10,60,.55)}
+.mono-ic::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(150deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.12) 38%,rgba(255,255,255,0) 60%);pointer-events:none}
+.mono-ic svg{position:relative;z-index:1}
 </style>
 </head>
 <body>
@@ -761,27 +784,63 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
       <p>I'm a Senior Azure Data Engineer based in Dallas-Fort Worth. For more than eight years I've built the pipelines, warehouses and Lakehouses behind reporting, regulatory, analytics and AI workloads at US banks and financial institutions, a global payments platform and a Fortune 500 automaker.</p>
       <p>I care about the boring things that make data teams fast: reusable data products, data contracts, lineage from day one, and releases that don't need a war room.</p>
     </div>
-    <div class="features">
+    <div class="features glassband">
       <div class="feature reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5" opacity=".55"/></svg>
+        <div class="gl-wrap"><svg class="gl-ic" viewBox="0 0 120 120" aria-hidden="true"><defs>
+<filter id="gb1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+<filter id="gf1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="13"/></filter>
+<linearGradient id="gw1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity=".08"/></linearGradient>
+<linearGradient id="gs1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".6" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity=".6"/></linearGradient>
+<clipPath id="gc1"><rect x="24" y="22" width="68" height="78" rx="20"/></clipPath></defs>
+<g class="orbs" filter="url(#gb1)"><circle cx="86" cy="28" r="19" fill="#ff8a3d"/><circle cx="30" cy="92" r="18" fill="#ff3d8b"/><circle cx="96" cy="90" r="9" fill="#ffd23f"/></g>
+<g clip-path="url(#gc1)"><g filter="url(#gf1)" opacity=".95"><circle cx="86" cy="28" r="26" fill="#ff8a3d"/><circle cx="30" cy="92" r="24" fill="#ff3d8b"/><circle cx="96" cy="90" r="12" fill="#ffd23f"/></g></g>
+<g fill="url(#gw1)" stroke="url(#gs1)" stroke-width="1.4"><rect x="24" y="22" width="68" height="78" rx="20"/></g>
+<g stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M40 44h36"/><path d="M40 61h36"/><path d="M40 78h22"/></g><circle cx="76" cy="78" r="4.5" fill="#ffd23f"/></svg></div>
         <h3>Lakehouse architecture</h3>
         <p>Medallion Lakehouses on Azure Databricks, Delta Lake and ADLS Gen2, with Bronze, Silver and Gold layers built for analytics and ML.</p>
         <div class="plain"><span>In plain terms</span>One reliable home for a company's data, ready for reports and AI.</div>
       </div>
       <div class="feature reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
+        <div class="gl-wrap"><svg class="gl-ic" viewBox="0 0 120 120" aria-hidden="true"><defs>
+<filter id="gb2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+<filter id="gf2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="13"/></filter>
+<linearGradient id="gw2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity=".08"/></linearGradient>
+<linearGradient id="gs2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".6" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity=".6"/></linearGradient>
+<clipPath id="gc2"><rect x="22" y="22" width="76" height="76" rx="24"/></clipPath></defs>
+<g class="orbs" filter="url(#gb2)"><circle cx="30" cy="32" r="20" fill="#4f7bff"/><circle cx="92" cy="88" r="18" fill="#2ee6d6"/><circle cx="94" cy="26" r="8" fill="#ff5fa2"/></g>
+<g clip-path="url(#gc2)"><g filter="url(#gf2)" opacity=".95"><circle cx="30" cy="32" r="27" fill="#4f7bff"/><circle cx="92" cy="88" r="24" fill="#2ee6d6"/><circle cx="94" cy="26" r="11" fill="#ff5fa2"/></g></g>
+<g fill="url(#gw2)" stroke="url(#gs2)" stroke-width="1.4"><rect x="22" y="22" width="76" height="76" rx="24"/></g>
+<path d="M64 36L46 63h15l-4 21 18-28H60z" fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg></div>
         <h3>Batch, streaming and CDC</h3>
         <p>Pipelines with Azure Data Factory, Event Hubs, Kafka, PySpark and SQL, from REST APIs and core databases to Delta tables.</p>
         <div class="plain"><span>In plain terms</span>Moving data from source systems to analysts, in real time or on a schedule.</div>
       </div>
       <div class="feature reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+        <div class="gl-wrap"><svg class="gl-ic" viewBox="0 0 120 120" aria-hidden="true"><defs>
+<filter id="gb3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+<filter id="gf3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="13"/></filter>
+<linearGradient id="gw3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity=".08"/></linearGradient>
+<linearGradient id="gs3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".6" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity=".6"/></linearGradient>
+<clipPath id="gc3"><path d="M20 40a10 10 0 0 1 10-10h20l9 9h31a10 10 0 0 1 10 10v35a10 10 0 0 1-10 10H30a10 10 0 0 1-10-10z"/></clipPath></defs>
+<g class="orbs" filter="url(#gb3)"><circle cx="90" cy="34" r="20" fill="#8b5cf6"/><circle cx="28" cy="84" r="19" fill="#ff5fa2"/><circle cx="26" cy="30" r="8" fill="#3ee28a"/></g>
+<g clip-path="url(#gc3)"><g filter="url(#gf3)" opacity=".95"><circle cx="90" cy="34" r="27" fill="#8b5cf6"/><circle cx="28" cy="84" r="26" fill="#ff5fa2"/><circle cx="26" cy="30" r="11" fill="#3ee28a"/></g></g>
+<g fill="url(#gw3)" stroke="url(#gs3)" stroke-width="1.4"><path d="M20 40a10 10 0 0 1 10-10h20l9 9h31a10 10 0 0 1 10 10v35a10 10 0 0 1-10 10H30a10 10 0 0 1-10-10z"/></g>
+<g stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M44 66h30"/><path d="M64 56l10 10-10 10"/></g></svg></div>
         <h3>Microsoft Fabric migrations</h3>
         <p>Moving workloads to OneLake, Fabric Warehouse and Power BI Direct Lake semantic models, with production cutovers that keep history intact.</p>
         <div class="plain"><span>In plain terms</span>Moving a company's data to Microsoft's newest platform without disrupting reports.</div>
       </div>
       <div class="feature reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div class="gl-wrap"><svg class="gl-ic" viewBox="0 0 120 120" aria-hidden="true"><defs>
+<filter id="gb4" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+<filter id="gf4" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="13"/></filter>
+<linearGradient id="gw4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity=".08"/></linearGradient>
+<linearGradient id="gs4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".6" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity=".6"/></linearGradient>
+<clipPath id="gc4"><path d="M58 18l32 12v24c0 22-14 38-32 46-18-8-32-24-32-46V30z"/></clipPath></defs>
+<g class="orbs" filter="url(#gb4)"><circle cx="28" cy="38" r="18" fill="#34d399"/><circle cx="92" cy="94" r="17" fill="#ff7a45"/><circle cx="98" cy="40" r="8" fill="#4f7bff"/></g>
+<g clip-path="url(#gc4)"><g filter="url(#gf4)" opacity=".95"><circle cx="28" cy="38" r="24" fill="#34d399"/><circle cx="92" cy="94" r="23" fill="#ff7a45"/><circle cx="98" cy="40" r="11" fill="#4f7bff"/></g></g>
+<g fill="url(#gw4)" stroke="url(#gs4)" stroke-width="1.4"><path d="M58 18l32 12v24c0 22-14 38-32 46-18-8-32-24-32-46V30z"/></g>
+<g stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M44 58l10 10 18-20"/></g></svg></div>
         <h3>Governance built in</h3>
         <p>Unity Catalog and Microsoft Purview, RBAC, PII masking, lineage and data contracts, plus CI/CD in Azure DevOps and Terraform.</p>
         <div class="plain"><span>In plain terms</span>Keeping data secure, compliant and trustworthy from day one.</div>
